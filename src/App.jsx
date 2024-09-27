@@ -4,9 +4,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css'
 // Components
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import VacationRentals from "./pages/VacationRentals";
-
+import Home from "./pages/Home";
+import AttractionsPage from "./pages/AttractionsPage";
+import AttractionDetailPage from "./pages/AttractionDetailPage"
 
 const router = createBrowserRouter([
     {
@@ -15,7 +15,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/location/:locationId',
-        element: <VacationRentals/>
+        element: <AttractionsPage/>
+    },
+    {
+        path: '/attraction/:attractionId',
+        element: <AttractionDetailPage/>
     }
 ])
 
