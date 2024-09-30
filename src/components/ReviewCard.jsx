@@ -1,4 +1,13 @@
-export default function ReviewCard({review, }) {
+import Gallery from "./Gallery"
+
+export default function ReviewCard({review }) {
+
+    // this method need to be callable everywhere (hook/useState)
+    function formatDate(stringDate) {
+        let newDate = new Date(stringDate)
+        return newDate.toDateString()
+    }
+
     return (
         <article>
             <div>
@@ -8,7 +17,7 @@ export default function ReviewCard({review, }) {
                     <p>{review.rating}</p>
                 </div>
                 <span>
-                    {review.published_date}
+                    {formatDate(review.published_date)}
                 </span>
             </div>
             <div>
@@ -16,7 +25,15 @@ export default function ReviewCard({review, }) {
                 <p>{review.text}</p>
             </div>
             {
-                // Here goes replies (if there are)
+                review.photos && <Gallery photos={review.photos} alt={review.title}/>
+            }
+            {
+                review.owner_response &&
+                <div>
+                    <p>{review.owner_response.responder}</p>
+                    <p>{review.owner_response.text}</p>
+                    <p>{formatDate(review.owner_response.published_date)}</p>
+                </div>
             }
             <hr />
         </article>
