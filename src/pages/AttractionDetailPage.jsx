@@ -16,7 +16,7 @@ export default function AttractionDetailPage() {
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': import.meta.env.VITE_X_RAPIDAPI_KEY,
+            'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
             'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
         }
     };

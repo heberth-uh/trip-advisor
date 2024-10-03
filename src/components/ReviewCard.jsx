@@ -19,6 +19,7 @@ export default function ReviewCard({review }) {
                 <span>
                     {formatDate(review.published_date)}
                 </span>
+                <p>Likes: {review.helpful_votes}</p>
             </div>
             <div>
                 <h4>{review.title}</h4>
