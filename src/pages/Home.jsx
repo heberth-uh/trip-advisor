@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useLocations } from '../hooks/useLocation.js'
+import LocationCard from '../components/LocationCard.jsx'
 
 export default function Home() {
-
     const [searchString, setSearchString] = useState('')
-    const { locations, searchLocations } = useLocations(searchString)
-    const navigate = useNavigate();
+    const { locations, searchLocations, isLoading } = useLocations(searchString)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,20 +23,14 @@ export default function Home() {
                     onChange={(e) => setSearchString(e.target.value)}
                     required
                 />
-                <button type="submit">Search</button>
+                <button type="submit" disabled={isLoading}>Search</button>
             </form>
             <section className='location-card'>
-                {locations && locations.map(({result_object}, id) => (
-                    <article key={id}>
-                        <div onClick={() => navigate(`/location/${result_object.locations_id}`)}>
-                            <img src={result_object.photo?.images?.medium.url } alt={result_object.location_string} />
-                            <h4>{result_object.name}</h4>
-                        </div>
-                        <p>{result_object.location_string}</p>
-                        <p>{result_object.subcategory[0].name}</p>
-                        <hr />
-                    </article>
-                ))}
+                {
+                    locations && locations.map(({ result_object }) => (
+                        <LocationCard location={result_object} key={result_object.location_id} />
+                    ))
+                }
             </section>
         </main>
     )
