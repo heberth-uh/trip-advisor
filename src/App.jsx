@@ -6,7 +6,7 @@ import './App.css'
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import AttractionsPage from "./pages/AttractionsPage";
-import AttractionDetailPage from "./pages/AttractionDetailPage"
+import AttractionDetailsPage from "./pages/AttractionDetailsPage"
 
 const router = createBrowserRouter([
     {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/attraction/:attractionId',
-        element: <AttractionDetailPage/>
+        element: <AttractionDetailsPage/>
     }
 ])
 

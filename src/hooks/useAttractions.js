@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 // Sample
 import { attractionsSample } from '../data/attractions.sample'
 
-export const useAtractions = () => {
+export const useAtractions = (locationId) => {
     const [attractions, setAttractions] = useState([])
-
-    const params = useParams()
-    const locationId = params.locationId
     // attractions/list
     const url = `https://travel-advisor.p.rapidapi.com/attractions/list?location_id=${locationId}&currency=USD&lang=en_US&lunit=km&sort=recommended`;
     const options = {

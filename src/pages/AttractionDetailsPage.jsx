@@ -1,43 +1,20 @@
-import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { attractionDetailSample } from '../data/attractionDetailSample';
-import {reviewsSample} from "../data/reviewsSample.js"
 // Components
-import Reviews from '../components/Reviews';
+import Reviews from '../components/Reviews.jsx';
+// Hooks
+import { useReviews } from '../hooks/useReviews.js';
+import { useAttraction } from '../hooks/useAttraction.js';
 
-export default function AttractionDetailPage() {
+export default function AttractionDetailsPage() {
 
     const params = useParams();
-    const [attraction, setAttraction] = useState({})
-    const [reviews, setReviews] = useState([])
-
     const attractionId = params.attractionId
-    const url = `https://travel-advisor.p.rapidapi.com/attractions/get-details?location_id=${attractionId}&currency=USD&lang=en_US`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
-            'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
-        }
-    };
-    useEffect(() => {
-        // fetch(url, options)
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log(data)
-        //     setAttraction(data)
-        // })
-        setAttraction(attractionDetailSample)
-    }, [attractionDetailSample])
 
-    useEffect(()=> {
+    const { attraction } = useAttraction(attractionId)
+    const { reviews } = useReviews(attraction)
+    console.log('attractionDetails', attraction)
+    console.log('reviews', reviews)
 
-        // here goes revies fetching...
-
-        setReviews(reviewsSample.data)
-    }, [attraction])
-
-    console.log(reviews)
     return (
         <main>
             <section>
@@ -73,7 +50,7 @@ export default function AttractionDetailPage() {
                     <p>phone: <span>{attraction.phone}</span></p>
                     <p>website: <span>{attraction.website}</span></p>
                 </section>
-                <Reviews reviews={reviews}/>
+                <Reviews reviews={reviews} />
             </section>
         </main>
     )
