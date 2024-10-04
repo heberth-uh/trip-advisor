@@ -5,7 +5,7 @@ export default function LocationCard({ location }) {
 
     return (
         <article>
-            <div onClick={() => navigate(`/location/${location.locations_id}`)}>
+            <div onClick={() => navigate(`/location/${location.location_id}`)}>
                 <img src={location.photo?.images?.medium.url} alt={location.location_string} />
                 <h4>{location.name}</h4>
             </div>
