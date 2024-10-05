@@ -6,13 +6,16 @@ export default function AttractionsPage() {
     const params = useParams()
     const locationId = params.locationId
 
-    const {attractions} = useAtractions(locationId)
+    const { attractions, isLoading } = useAtractions(locationId)
     console.log('attractions', attractions)
 
     return (
         <main>
             <h2>Attraction results</h2>
             <section>
+                {
+                    isLoading && <div>Loading...</div>
+                }
                 {
                     attractions && attractions.map((attraction, key) => (
                         <div key={key} onClick={() => navigate(`/attraction/${attraction.location_id}`)}>

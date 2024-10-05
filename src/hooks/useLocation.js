@@ -13,13 +13,15 @@ export const useLocations = (searchString) => {
         // let filtered = data.data.filter(location => location.result_type === 'geos')
         // console.log('locations', filtered)
         // setLocations(filtered)
+        // setIsLoading(false)
 
-        // For testing with static data
-        let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
-        setLocations(filtered)
-        console.log('locations', filtered)
-
-        setIsLoading(false)
+        // For testing with static data 
+        setTimeout(() => {
+            let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
+            setLocations(filtered)
+            console.log('locations', filtered)
+            setIsLoading(false)
+        }, 1000);
     }
     return { locations, searchLocations, isLoading }
 }

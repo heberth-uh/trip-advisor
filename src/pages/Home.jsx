@@ -27,6 +27,9 @@ export default function Home() {
             </form>
             <section className='location-card'>
                 {
+                    isLoading && <div>Loading...</div>
+                }
+                {
                     locations && locations.map(({ result_object }) => (
                         <LocationCard location={result_object} key={result_object.location_id} />
                     ))
