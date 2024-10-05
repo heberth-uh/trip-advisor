@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useLocations } from '../hooks/useLocation.js'
 import LocationCard from '../components/LocationCard.jsx'
+import { MainContext } from '../context/MainContext.jsx'
 
 export default function Home() {
     const [searchString, setSearchString] = useState('')
     const { locations, searchLocations, isLoading } = useLocations(searchString)
+    const { lang, units } = useContext(MainContext)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,6 +15,10 @@ export default function Home() {
 
     return (
         <main>
+            <ul>
+                <li>{lang}</li>
+                <li>{units}</li>
+            </ul>
             <h1>Where to go?</h1>
             <form onSubmit={handleSubmit}>
                 {/* // prevent multi submit */}
