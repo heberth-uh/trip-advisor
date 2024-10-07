@@ -8,9 +8,9 @@ import { useAttraction } from '../hooks/useAttraction.js';
 export default function AttractionDetailsPage() {
 
     const params = useParams();
-    const attractionId = params.attractionId
+    const placeId = params.placeId
 
-    const { attraction } = useAttraction(attractionId)
+    const { attraction } = useAttraction(placeId)
     const { reviews } = useReviews(attraction)
     console.log('attractionDetails', attraction)
     console.log('reviews', reviews)

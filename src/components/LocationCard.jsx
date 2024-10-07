@@ -1,11 +1,14 @@
+import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import { MainContext } from "../context/MainContext"
 
 export default function LocationCard({ location }) {
+    const { type } = useContext(MainContext)
     const navigate = useNavigate()
 
     return (
         <article>
-            <div onClick={() => navigate(`/location/${location.location_id}`)}>
+            <div onClick={() => navigate(`/${type}/results/location/${location.location_id}`)}>
                 <img src={location.photo?.images?.medium.url} alt={location.location_string} />
                 <h4>{location.name}</h4>
             </div>

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 // Sample reviews
 import { attractionDetailSample } from '../data/attractionDetailSample.js';
 
-export const useAttraction = (attractionId) => {
+export const useAttraction = (placeId) => {
     const [attraction, setAttraction] = useState({})
 
-    const url = `https://travel-advisor.p.rapidapi.com/attractions/get-details?location_id=${attractionId}&currency=USD&lang=en_US`;
+    const url = `https://travel-advisor.p.rapidapi.com/attractions/get-details?location_id=${placeId}&currency=USD&lang=en_US`;
     const options = {
         method: 'GET',
         headers: {

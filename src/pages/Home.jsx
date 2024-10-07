@@ -5,12 +5,16 @@ import { MainContext } from '../context/MainContext.jsx'
 
 export default function Home() {
     const [searchString, setSearchString] = useState('')
+    const { lang, units, type, setType } = useContext(MainContext)
     const { locations, searchLocations, isLoading } = useLocations(searchString)
-    const { lang, units } = useContext(MainContext)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         searchLocations()
+    }
+
+    const handleTypeSelection = (e) => {
+        setType(e.target.value)
     }
 
     return (
@@ -21,10 +25,18 @@ export default function Home() {
             </ul>
             <h1>Where to go?</h1>
             <form onSubmit={handleSubmit}>
-                {/* // prevent multi submit */}
+                <p>Search for {type} in...</p>
+                <select name="searchType"
+                    onChange={handleTypeSelection}
+                    value={type}
+                >
+                    <option value="attractions">Attractions</option>
+                    <option value="hotels">Hotels</option>
+                    <option value="restaurants">Restaurants</option>
+                </select>
                 <input
                     type="text"
-                    placeholder='Paris, Madrir, Hawai...'
+                    placeholder='Paris, Madrid, New York...'
                     value={searchString}
                     onChange={(e) => setSearchString(e.target.value)}
                     required
