@@ -18,7 +18,7 @@ export default function App() {
             element: <Home />
         },
         {
-            path: `/${type}/results/location/:locationId`,
+            path: `/:type/results/location/:locationId`,
             element: <AttractionsPage />
         },
         {

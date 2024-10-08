@@ -1,4 +1,6 @@
-const RAPIDAPI_HOST ='travel-advisor.p.rapidapi.com'
+import httpBuildQuery from "http-build-query";
+
+const RAPIDAPI_HOST = 'travel-advisor.p.rapidapi.com'
 const options = {
     method: 'GET',
     headers: {
@@ -17,11 +19,32 @@ export const getLocation = async ({ searchString }) => {
         })
 }
 
-export const getAttractions = async ({ locationId }) => {
-    const url = `https://${RAPIDAPI_HOST}/attractions/list?location_id=${locationId}&currency=USD&lang=en_US&lunit=km&sort=recommended`;
+// Get list of places (attractions, hotels or restaurants) by locations and parameters
+export const getPlacesList = async ({ locationId, type }) => {
+    const base = `https://${RAPIDAPI_HOST}/${type}/list?`
+
+    // those paramas must  be dynamic from useStete in usePlacesList hook
+    const params = {
+        location_id: locationId,
+        bar: false,
+        currency: 'USD',
+        lang: 'en_US',
+        lunit: 'km',
+        sort: 'recommended',
+    }
+
+    // Clean de object with empty nodes
+    const filtered_params = Object.fromEntries(
+        Object.entries(params).filter(a => (
+            !['', false, null].includes(a[1])
+        ))
+    )
+
+    const url = base + httpBuildQuery(filtered_params)
+
     return fetch(url, options)
-        .then(res => res.json())
-        .then(data => {
-            return data
-        })
+    .then(res => res.json())
+    .then(data => {
+        return data
+    })
 }
