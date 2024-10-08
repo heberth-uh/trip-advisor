@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { MainContext } from '../context/MainContext'
 import { usePlacesList } from '../hooks/usePlacesList'
 
-export default function AttractionsPage() {
+export default function PlacesPage() {
     const params = useParams()
     const locationId = params.locationId
 

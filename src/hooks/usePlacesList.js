@@ -15,7 +15,7 @@ export const usePlacesList = (locationId) => {
         //     try {
         //         const data = await getPlacesList({ locationId, type })
         //         // for some locations, it gets 200 as response but there is 'errors' node in the object instead 'data'
-        //         if (data.errors) throw new Error(data.errors[0].message || 'Error fetching attractions')
+        //         if (data.errors) throw new Error(data.errors[0].message || `Error fetching ${type}`)
         //         setPlaces(data.data)
         //     } catch (error) {
         //         alert(error) // define a error state instead an alert
@@ -28,10 +28,9 @@ export const usePlacesList = (locationId) => {
         // testing with static data 
         setTimeout(() => {
             setPlaces(attractionsSample.data)
-            console.log('sample:', attractionsSample)
             setIsLoading(false)
-        }, 1000);
-    }, [])
+        }, 500);
+    }, [locationId, type])
 
     return { places, isLoading}
 }

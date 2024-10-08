@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import {reviewsSample} from "../data/reviewsSample.js"
 
-export const useReviews = (attraction) => {
+export const useReviews = (place) => {
     const [reviews, setReviews] = useState([])
 
-    const url = `https://travel-advisor.p.rapidapi.com/reviews/list?location_id=${attraction.location_id}&limit=20&currency=USD&lang=en_US`;
+    const url = `https://travel-advisor.p.rapidapi.com/reviews/list?location_id=${place.location_id}&limit=20&currency=USD&lang=en_US`;
     const options = {
       method: 'GET',
       headers: {
@@ -21,7 +21,7 @@ export const useReviews = (attraction) => {
         // })
 
         setReviews(reviewsSample.data)
-    }, [attraction])
+    }, [place])
 
     return {reviews}
 }

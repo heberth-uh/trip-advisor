@@ -21,7 +21,7 @@ export const useLocations = (searchString) => {
             setLocations(filtered)
             console.log('locations', filtered)
             setIsLoading(false)
-        }, 1000);
+        }, 500);
     }
     return { locations, searchLocations, isLoading }
 }
