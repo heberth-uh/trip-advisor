@@ -5,7 +5,7 @@ import Reviews from '../components/Reviews.jsx';
 import { useReviews } from '../hooks/useReviews.js';
 import { useAttraction } from '../hooks/useAttraction.js';
 
-export default function AttractionDetailsPage() {
+export default function PlaceDetailsPage() {
 
     const params = useParams();
     const placeId = params.placeId

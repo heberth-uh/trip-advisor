@@ -6,8 +6,8 @@ import './App.css'
 // Components
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import AttractionsPage from "./pages/AttractionsPage";
-import AttractionDetailsPage from "./pages/AttractionDetailsPage"
+import PlacesPage from "./pages/PlacesPage";
+import PlaceDetailsPage from "./pages/PlaceDetailsPage"
 
 export default function App() {
     const { type } = useContext(MainContext)
@@ -19,11 +19,11 @@ export default function App() {
         },
         {
             path: `/:type/results/location/:locationId`,
-            element: <AttractionsPage />
+            element: <PlacesPage />
         },
         {
             path: `/${type}/get-details/:placeId`,
-            element: <AttractionDetailsPage />
+            element: <PlaceDetailsPage />
         }
     ])
 
