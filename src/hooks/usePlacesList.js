@@ -10,7 +10,7 @@ export const usePlacesList = (locationId) => {
     const { type } = useContext(MainContext)
 
     useEffect(() => {
-        // Fetch a list of places (attractions, restaurants, hotels) by location
+        // // Fetch a list of places (attractions, restaurants, hotels) by location
         // const fetchPlaces = async () => {
         //     try {
         //         const data = await getPlacesList({ locationId, type })
