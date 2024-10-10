@@ -49,11 +49,23 @@ export const getPlacesList = async ({ locationId, type }) => {
         })
 }
 
+// Get place (attraction, hotel or restaurant) details by its id
 export const getPlacesDetails = async ({ placeId, type, params }) => {
     const url = `https://travel-advisor.p.rapidapi.com/${type}/get-details?location_id=${placeId}&currency=USD&lang=en_US`;
     console.log('url>> ', url)
     // params formatting goes here
     // params = {...params, location_id: 'placeId', currency: 'USD', lang: 'en_US'}
+
+    return fetch(url, options)
+        .then(res => res.json())
+        .then(data => {
+            return data
+        })
+}
+
+// Get the reviews of a place by its id
+export const getReviews = async ({ placeId }) => {
+    const url = `https://${RAPIDAPI_HOST}/reviews/list?location_id=${placeId}&limit=20&currency=USD&lang=en_US`;
 
     return fetch(url, options)
         .then(res => res.json())

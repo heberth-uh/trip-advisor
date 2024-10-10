@@ -11,7 +11,7 @@ export default function PlaceDetailsPage() {
     const placeId = params.placeId
 
     const { place, isLoading } = usePlaceDetails(placeId)
-    const { reviews } = useReviews(place)
+    const { reviews, isReviewsLoading } = useReviews(place, placeId)
     console.log('placeDetails', place)
     console.log('reviews', reviews)
 
@@ -52,7 +52,11 @@ export default function PlaceDetailsPage() {
                     <p>phone: <span>{place.phone}</span></p>
                     <p>website: <span>{place.website}</span></p>
                 </section>
-                {/* <Reviews reviews={reviews} /> */}
+                {
+                    isReviewsLoading
+                    ? <div>Loading reviews...</div>
+                    : <Reviews reviews={reviews}/>
+                }
             </section>
         </main>
     )

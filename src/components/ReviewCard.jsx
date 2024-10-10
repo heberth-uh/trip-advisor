@@ -13,7 +13,7 @@ export default function ReviewCard({review }) {
             <div>
                 <img src={review.user.avatar?.small.url} alt={`${review.username} avatar`} />
                 <div>
-                    <p>{review.user.name}</p>
+                    <p>{review.user.name || review.user.username}</p>
                     <p>{review.rating}</p>
                 </div>
                 <span>

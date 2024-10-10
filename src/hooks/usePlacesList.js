@@ -18,7 +18,7 @@ export const usePlacesList = (locationId) => {
         //         if (data.errors) throw new Error(data.errors[0].message || `Error fetching ${type}`)
         //         setPlaces(data.data)
         //     } catch (error) {
-        //         alert(error) // define a error state instead an alert
+        //         alert(error) // define an error state instead an alert
         //     } finally {
         //         setIsLoading(false)
         //     }

@@ -1,27 +1,31 @@
 import { useEffect, useState } from "react"
-import {reviewsSample} from "../data/reviewsSample.js"
+import { reviewsSample } from "../data/reviewsSample.js"
+import { getReviews } from "../api/tripAdvisorApi.js"
 
-export const useReviews = (place) => {
-    const [reviews, setReviews] = useState([])
+export const useReviews = (place, placeId) => {
+	const [reviews, setReviews] = useState([])
+	const [isReviewsLoading, setIsReviewsLoading] = useState(true)
 
-    const url = `https://travel-advisor.p.rapidapi.com/reviews/list?location_id=${place.location_id}&limit=20&currency=USD&lang=en_US`;
-    const options = {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
-        'x-rapidapi-host': 'travel-advisor.p.rapidapi.com'
-      }
-    };
+	useEffect(() => {
+		// const fetchReviews = async () => {
+		// 	try {
+		// 		const data = await getReviews({ placeId })
+		// 		setReviews(data.data)
+		// 	} catch (error) {
+		// 		alert(error)
+		// 	} finally {
+		// 		setIsReviewsLoading(false)
+		// 	}
+		// }
+		// fetchReviews()
 
-    useEffect(()=> {
-        // fetch(url, options)
-        // .then(res => res.json())
-        // .then( data => {
-        //     setReviews(data.data)
-        // })
+		// for testing with static data
+		setTimeout(() => {
+			setReviews(reviewsSample.data)
+			setIsReviewsLoading(false)
+		}, 500)
 
-        setReviews(reviewsSample.data)
-    }, [place])
+	}, [place])
 
-    return {reviews}
+	return { reviews, isReviewsLoading }
 }
