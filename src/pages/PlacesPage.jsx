@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useContext } from 'react'
 import { MainContext } from '../context/MainContext'
 import { usePlacesList } from '../hooks/usePlacesList'
+import Navbar from '../components/Navbar'
 
 export default function PlacesPage() {
     const params = useParams()
@@ -11,25 +12,28 @@ export default function PlacesPage() {
     const { places, isLoading } = usePlacesList(locationId)
 
     return (
-        <main>
-            <h2>{type.charAt(0).toUpperCase() + type.slice(1)} results</h2>
-            <section>
-                {
-                    isLoading && <div>Loading...</div>
-                }
-                {
-                    places && places.map((place, key) => (
-                        <div key={key}>
-                            <Link to={`/${type}/get-details/${place.location_id}`}>
-                                <img src={place.photo?.images?.small?.url} alt={place.photo?.caption} />
-                            </Link>
-                            <p>{place.name}</p>
-                            <p>{place.rating}</p>
-                            <hr />
-                        </div>
-                    ))
-                }
-            </section>
-        </main>
+        <>
+            <Navbar/>
+            <main>
+                <h2>{type.charAt(0).toUpperCase() + type.slice(1)} results</h2>
+                <section>
+                    {
+                        isLoading && <div>Loading...</div>
+                    }
+                    {
+                        places && places.map((place, key) => (
+                            <div key={key}>
+                                <Link to={`/${type}/get-details/${place.location_id}`}>
+                                    <img src={place.photo?.images?.small?.url} alt={place.photo?.caption} />
+                                </Link>
+                                <p>{place.name}</p>
+                                <p>{place.rating}</p>
+                                <hr />
+                            </div>
+                        ))
+                    }
+                </section>
+            </main>
+        </>
     )
 }
