@@ -19,7 +19,6 @@ export const useLocations = (searchString) => {
         setTimeout(() => {
             let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
             setLocations(filtered)
-            console.log('locations', filtered)
             setIsLoading(false)
         }, 500);
     }

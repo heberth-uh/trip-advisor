@@ -3,13 +3,11 @@ import { useLocations } from '../hooks/useLocation.js'
 import LocationCard from '../components/LocationCard.jsx'
 import { MainContext } from '../context/MainContext.jsx'
 import Navbar from '../components/Navbar.jsx'
-import { useLocalStorage } from '../hooks/useLocalStorage.js'
 
 export default function Home() {
     const [searchString, setSearchString] = useState('')
     const { type, setType } = useContext(MainContext)
     const { locations, searchLocations, isLoading } = useLocations(searchString)
-    const { storagedType, storageValue} = useLocalStorage()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,7 +15,7 @@ export default function Home() {
     }
 
     const handleTypeSelection = (e) => {
-        storageValue('type', e.target.value)
+        setType(e.target.value)
     }
 
     return (

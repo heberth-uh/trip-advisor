@@ -1,25 +1,23 @@
-import { useEffect, useContext } from "react"
-import { MainContext } from "../context/MainContext"
+import { useState } from "react"
 
-export const useLocalStorage = () => {
-    const {type, setType} = useContext(MainContext)
-
-    useEffect( () => {
-        const stared_type = window.localStorage.getItem('type')
-        
-        if (!stared_type) {
-            window.localStorage.setItem('type', 'attractions')
-            setType('attractions')
+export const useLocalStorage = (key, initialValue) => {
+    const [storedValue, setStoredValue] = useState( () => {
+        try {
+            const item = window.localStorage.getItem(key)
+            return item ? JSON.parse(item) : initialValue
+        } catch (error) {
+            return initialValue
         }
-        else {
-            setType(stared_type)
-        }
-    }, [type])
+    })
 
-    const storageValue = (key, value) => {
-        window.localStorage.setItem(key, value)
-        setType(value)
+    const setLocalStorage = value => {
+        try {
+            setStoredValue(value)
+            window.localStorage.setItem(key, JSON.stringify(value))
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    return { type, storageValue }
+    return [storedValue, setLocalStorage]
 }

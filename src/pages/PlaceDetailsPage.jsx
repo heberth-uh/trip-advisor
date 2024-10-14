@@ -13,8 +13,8 @@ export default function PlaceDetailsPage() {
 
     const { place, isLoading } = usePlaceDetails(placeId)
     const { reviews, isReviewsLoading } = useReviews(place, placeId)
-    console.log('placeDetails', place)
-    console.log('reviews', reviews)
+    // console.log('placeDetails', place)
+    // console.log('reviews', reviews)
 
     return (
         <>
