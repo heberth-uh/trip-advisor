@@ -7,14 +7,12 @@ import { attractionDetailSample } from '../data/attractionDetailSample.js';
 export const usePlaceDetails = (placeId) => {
     const [place, setPlace] = useState({})
     const [isLoading, setIsLoading] = useState(true)
-    const { type } = useContext(MainContext)
+    const { type, currency, lang } = useContext(MainContext)
 
-    // **params building for place fetching goes here
-    console.log('type: ', type)
     useEffect(() => {
         // const fetchPlace = async () => {
         //     try {
-        //         const data = await getPlacesDetails({ placeId, type })
+        //         const data = await getPlacesDetails({ type, placeId, currency, lang })
         //         if (data.errors) throw new Error(data.errors[0].message || `Error fetching ${type} details`)
         //         setPlace(data)
         //     } catch (error) {

@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { locationsSample } from "../data/locations.sample";
 import { getLocation } from "../api/tripAdvisorApi";
+import { MainContext } from "../context/MainContext";
 
 export const useLocations = (searchString) => {
+    const { lang, units, currency, sort } = useContext(MainContext)
+
     const [locations, setLocations] = useState()
     const [isLoading, setIsLoading] = useState(false)
 
     const searchLocations = async () => {
         setIsLoading(true)
 
-        // const data = await getLocation({searchString})
+        // const data = await getLocation({searchString, lang, units, currency, sort })
         // let filtered = data.data.filter(location => location.result_type === 'geos')
-        // console.log('locations', filtered)
         // setLocations(filtered)
         // setIsLoading(false)
 

@@ -1,4 +1,4 @@
-import httpBuildQuery from "http-build-query";
+import { buildUrl } from "../utils/buildUrl";
 
 const RAPIDAPI_HOST = 'travel-advisor.p.rapidapi.com'
 const options = {
@@ -9,8 +9,11 @@ const options = {
     },
 };
 
-export const getLocation = async ({ searchString }) => {
-    const url = `https://${RAPIDAPI_HOST}/locations/search?query=${searchString}&lang=en_US&units=km`;
+// Get list of locations by a string
+export const getLocation = async ({ searchString, lang, units, currency, sort }) => {
+    const base_url = `https://${RAPIDAPI_HOST}/locations/search?`;
+    const params = { query: searchString, lang, units, currency, sort }
+    const url = buildUrl(base_url, params)
 
     return fetch(url, options)
         .then(res => res.json())
@@ -20,27 +23,10 @@ export const getLocation = async ({ searchString }) => {
 }
 
 // Get list of places (attractions, hotels or restaurants) by locations and parameters
-export const getPlacesList = async ({ locationId, type }) => {
-    const base = `https://${RAPIDAPI_HOST}/${type}/list?`
-
-    // these params must be dynamic from useState in usePlacesList hook
-    const params = {
-        location_id: locationId,
-        bar: false,
-        currency: 'USD',
-        lang: 'en_US',
-        lunit: 'km',
-        sort: 'recommended',
-    }
-
-    // Clean the object params with empty values
-    const filtered_params = Object.fromEntries(
-        Object.entries(params).filter(a => (
-            !['', false, null].includes(a[1])
-        ))
-    )
-
-    const url = base + httpBuildQuery(filtered_params)
+export const getPlacesList = async ({ type, locationId, lang, units, currency, sortPlaces }) => {
+    const base_url = `https://${RAPIDAPI_HOST}/${type}/list?`
+    const params = { location_id: locationId, currency, lang, lunit: units, sort: sortPlaces }
+    const url = buildUrl(base_url, params)
 
     return fetch(url, options)
         .then(res => res.json())
@@ -50,10 +36,10 @@ export const getPlacesList = async ({ locationId, type }) => {
 }
 
 // Get place (attraction, hotel or restaurant) details by its id
-export const getPlacesDetails = async ({ placeId, type, params }) => {
-    const url = `https://travel-advisor.p.rapidapi.com/${type}/get-details?location_id=${placeId}&currency=USD&lang=en_US`;
-    // params formatting goes here
-    // params = {...params, location_id: 'placeId', currency: 'USD', lang: 'en_US'}
+export const getPlacesDetails = async ({ type, placeId, currency, lang }) => {
+    const base_url = `https://travel-advisor.p.rapidapi.com/${type}/get-details?`;
+    const params = { location_id: placeId, currency, lang }
+    const url = buildUrl(base_url, params)
 
     return fetch(url, options)
         .then(res => res.json())
@@ -63,8 +49,10 @@ export const getPlacesDetails = async ({ placeId, type, params }) => {
 }
 
 // Get the reviews of a place by its id
-export const getReviews = async ({ placeId }) => {
-    const url = `https://${RAPIDAPI_HOST}/reviews/list?location_id=${placeId}&limit=20&currency=USD&lang=en_US`;
+export const getReviews = async ({ placeId, currency, lang }) => {
+    const base_url = `https://${RAPIDAPI_HOST}/reviews/list?`;
+    const params = { location_id: placeId, limit: 20, currency, lang }
+    const url = buildUrl(base_url, params)
 
     return fetch(url, options)
         .then(res => res.json())
