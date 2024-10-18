@@ -3,19 +3,16 @@ import { useLocations } from '../hooks/useLocation.js'
 import LocationCard from '../components/LocationCard.jsx'
 import { MainContext } from '../context/MainContext.jsx'
 import Navbar from '../components/Navbar.jsx'
+import SelectionField from '../components/widgets/SelectionField.jsx'
 
 export default function Home() {
     const [searchString, setSearchString] = useState('')
-    const { type, setType } = useContext(MainContext)
+    const { type, setType, typesSelection } = useContext(MainContext)
     const { locations, searchLocations, isLoading } = useLocations(searchString)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         searchLocations()
-    }
-
-    const handleTypeSelection = (e) => {
-        setType(e.target.value)
     }
 
     return (
@@ -25,14 +22,7 @@ export default function Home() {
                 <h1>Where to go?</h1>
                 <form onSubmit={handleSubmit}>
                     <p>Search for {type} in...</p>
-                    <select name="searchType"
-                        onChange={handleTypeSelection}
-                        value={type}
-                    >
-                        <option value="attractions">Attractions</option>
-                        <option value="hotels">Hotels</option>
-                        <option value="restaurants">Restaurants</option>
-                    </select>
+                    <SelectionField options={typesSelection} defaultValue={type} handlerValue={setType} />
                     <input
                         type="text"
                         placeholder='Paris, Madrid, New York...'

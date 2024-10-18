@@ -14,6 +14,22 @@ export function MainContextProvider({ children }) {
     const [sortPlaces, setSortPlaces] = useState('recommended') // recommended | ranking
     const [minRate, setMinRate] = useState(3) // 3|4|5
 
+    const typesSelection = [
+        {
+            'id': 1,
+            'name': 'Attractions',
+            'value': 'attractions',
+        }, {
+            'id': 2,
+            'name': 'Hotels',
+            'value': 'hotels',
+        },{
+            'id': 3,
+            'name': 'Restaurants',
+            'value': 'restaurants',
+        }
+    ]
+
     return (
         <MainContext.Provider value={{
             lang,
@@ -23,6 +39,7 @@ export function MainContextProvider({ children }) {
             sort,
             sortPlaces,
             minRate,
+            typesSelection
         }}
         >
             {children}
