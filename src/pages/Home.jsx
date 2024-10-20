@@ -7,7 +7,7 @@ import SelectionField from '../components/widgets/SelectionField.jsx'
 
 export default function Home() {
     const [searchString, setSearchString] = useState('')
-    const { type, setType, typesSelection } = useContext(MainContext)
+    const { type, setType, typeList } = useContext(MainContext)
     const { locations, searchLocations, isLoading } = useLocations(searchString)
 
     const handleSubmit = (e) => {
@@ -22,7 +22,7 @@ export default function Home() {
                 <h1>Where to go?</h1>
                 <form onSubmit={handleSubmit}>
                     <p>Search for {type} in...</p>
-                    <SelectionField options={typesSelection} defaultValue={type} handlerValue={setType} />
+                    <SelectionField options={typeList} defaultValue={type} handlerValue={setType} />
                     <input
                         type="text"
                         placeholder='Paris, Madrid, New York...'
