@@ -1,12 +1,14 @@
-export default function SelectionField({options, defaultValue, handlerValue}) {
+export default function SelectionField({options, defaultValue, handlerValue, closeGrid}) {
 
-    const handleTypeSelection = (e) => {
+    console.log('closeGrid', closeGrid)
+
+    const handleChangeValue = (e) => {
         handlerValue(e.target.value)
     }
 
     return (
         <select name="searchType"
-            onChange={handleTypeSelection}
+            onChange={handleChangeValue}
             value={defaultValue}
         >
             {

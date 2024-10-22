@@ -1,13 +1,15 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
-
+// Data
+import { currencies } from '../data/currencies'
 export const MainContext = createContext()
 
 export function MainContextProvider({ children }) {
     // general parameters
     const [lang, setLang] = useLocalStorage('lang', 'en_US')
     const [units, setUnits] = useLocalStorage('units', 'km')
-    const [currency, setCurrency] = useState('USD') // currency code
+    const [currency, setCurrency] = useLocalStorage('currency', 'USD')
+    const [currencyList, setCurrencyList] = useState([])
     const [type, setType] = useLocalStorage('type', 'attractions')
     // contextual params (depends on the type)
     const [sort, setSort] = useState('relevance') // relevance | distance
@@ -46,16 +48,20 @@ export function MainContextProvider({ children }) {
         { 'id': 2, 'value': 'mi', 'name': 'Mi' },
     ]
 
+    useEffect(()=>{
+        setCurrencyList(currencies.data)
+    }, [])
+
     return (
         <MainContext.Provider value={{
             lang, setLang,
             units, setUnits,
-            currency,
+            currency, setCurrency,
             type, setType,
             sort,
             sortPlaces,
             minRate,
-            typeList, langList, unitList
+            typeList, langList, unitList, currencyList
         }}
         >
             {children}
