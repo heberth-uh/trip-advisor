@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react"
-import { reviewsSample } from "../data/reviewsSample.js"
 import { getReviews } from "../api/tripAdvisorApi.js"
 import { MainContext } from "../context/MainContext.jsx"
+// Samples
+import { reviewsSample } from "../data/test/reviewsSample.js"
 
 export const useReviews = (place, placeId) => {
     const { currency, lang } = useContext(MainContext)

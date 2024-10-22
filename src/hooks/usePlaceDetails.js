@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { getPlacesDetails } from "../api/tripAdvisorApi.js";
 import { MainContext } from "../context/MainContext.jsx";
 // Sample reviews
-import { attractionDetailSample } from '../data/attractionDetailSample.js';
+import { attractionDetailSample } from '../data/test/attractionDetailSample.js';
 
 export const usePlaceDetails = (placeId) => {
     const [place, setPlace] = useState({})

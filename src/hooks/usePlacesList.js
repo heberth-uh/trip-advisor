@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../context/MainContext";
 import { getPlacesList } from "../api/tripAdvisorApi";
 // Samples
-import { attractionsSample } from "../data/attractions.sample";
+import { attractionsSample } from "../data/test/attractions.sample";
 
 export const usePlacesList = (locationId) => {
     const { type, lang, units, currency, sortPlaces } = useContext(MainContext)

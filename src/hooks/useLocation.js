@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
-import { locationsSample } from "../data/locations.sample";
 import { getLocation } from "../api/tripAdvisorApi";
 import { MainContext } from "../context/MainContext";
+// Samples
+import { locationsSample } from "../data/test/locations.sample";
 
 export const useLocations = (searchString) => {
     const { lang, units, currency, sort } = useContext(MainContext)
