@@ -7,11 +7,13 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import PlacesPage from "./pages/PlacesPage";
 import PlaceDetailsPage from "./pages/PlaceDetailsPage"
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home />
+        element: <Home />,
+        errorElement: <ErrorPage/>
     },
     {
         path: `/:type/results/location/:locationId`,
