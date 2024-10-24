@@ -8,7 +8,7 @@ import SelectionField from '../components/widgets/SelectionField.jsx'
 export default function Home() {
     const [searchString, setSearchString] = useState('')
     const { type, setType, typeList } = useContext(MainContext)
-    const { locations, searchLocations, isLoading } = useLocations(searchString)
+    const { locations, searchLocations, isLoading, error } = useLocations(searchString)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,6 +35,9 @@ export default function Home() {
                 <section className='location-card'>
                     {
                         isLoading && <div>Loading...</div>
+                    }
+                    {
+                        error && <div><i>{error}</i></div>
                     }
                     {
                         locations && locations.map(({ result_object }) => (

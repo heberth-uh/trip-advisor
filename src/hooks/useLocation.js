@@ -9,21 +9,29 @@ export const useLocations = (searchString) => {
 
     const [locations, setLocations] = useState()
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState('')
 
     const searchLocations = async () => {
         setIsLoading(true)
 
-        // const data = await getLocation({searchString, lang, units, currency, sort })
-        // let filtered = data.data.filter(location => location.result_type === 'geos')
-        // setLocations(filtered)
-        // setIsLoading(false)
+        // try {
+        //     const data = await getLocation({ searchString, lang, units, currency, sort })
+        //     console.log('data', data)
+        //     if (data.errors) throw new Error(data.errors[0].message || `Error getting results`)
+        //     let filtered = data.data.filter(location => location.result_type === 'geos')
+        //     setLocations(filtered)
+        // } catch (error) {
+        //     setError(error.toString())
+        // } finally {
+        //     setIsLoading(false)
+        // }
 
-        // For testing with static data 
+        // For testing with static data
         setTimeout(() => {
             let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
             setLocations(filtered)
             setIsLoading(false)
         }, 500);
     }
-    return { locations, searchLocations, isLoading }
+    return { locations, searchLocations, isLoading, error }
 }

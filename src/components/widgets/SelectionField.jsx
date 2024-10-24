@@ -1,6 +1,4 @@
-export default function SelectionField({options, defaultValue, handlerValue, closeGrid}) {
-
-    console.log('closeGrid', closeGrid)
+export default function SelectionField({options, defaultValue, handlerValue}) {
 
     const handleChangeValue = (e) => {
         handlerValue(e.target.value)
