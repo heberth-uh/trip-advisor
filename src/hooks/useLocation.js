@@ -17,7 +17,7 @@ export const useLocations = (searchString) => {
         // try {
         //     const data = await getLocation({ searchString, lang, units, currency, sort })
         //     console.log('data', data)
-        //     if (data.errors) throw new Error(data.errors[0].message || `Error getting results`)
+        //     if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error getting results`)
         //     let filtered = data.data.filter(location => location.result_type === 'geos')
         //     setLocations(filtered)
         // } catch (error) {

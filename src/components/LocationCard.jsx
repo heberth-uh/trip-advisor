@@ -7,7 +7,7 @@ export default function LocationCard({ location }) {
     const navigate = useNavigate()
 
     return (
-        <article>
+        <div>
             <div onClick={() => navigate(`/${type}/results/location/${location.location_id}`)}>
                 <img src={location.photo?.images?.medium.url} alt={location.location_string} />
                 <h4>{location.name}</h4>
@@ -15,6 +15,6 @@ export default function LocationCard({ location }) {
             <p>{location.location_string}</p>
             <p>{location.subcategory[0].name}</p>
             <hr />
-        </article>
+        </div>
     )
 }

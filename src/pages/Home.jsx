@@ -1,9 +1,10 @@
 import { useState, useContext } from 'react'
 import { useLocations } from '../hooks/useLocation.js'
-import LocationCard from '../components/LocationCard.jsx'
 import { MainContext } from '../context/MainContext.jsx'
+// Components
 import Navbar from '../components/Navbar.jsx'
 import SelectionField from '../components/widgets/SelectionField.jsx'
+import LocationResults from '../components/LocationResults.jsx'
 
 export default function Home() {
     const [searchString, setSearchString] = useState('')
@@ -33,17 +34,12 @@ export default function Home() {
                     <button type="submit" disabled={isLoading}>Search</button>
                 </form>
                 <section className='location-card'>
-                    {
-                        isLoading && <div>Loading...</div>
-                    }
-                    {
-                        error && <div><i>{error}</i></div>
-                    }
-                    {
-                        locations && locations.map(({ result_object }) => (
-                            <LocationCard location={result_object} key={result_object.location_id} />
-                        ))
-                    }
+                    <LocationResults
+                        searchString={searchString}
+                        locations={locations}
+                        isLoading={isLoading}
+                        error={error}
+                    />
                 </section>
             </main>
         </>
