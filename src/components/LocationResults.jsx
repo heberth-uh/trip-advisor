@@ -16,19 +16,18 @@ function LocationList({ locations }) {
     )
 }
 
-export default function LocationResults({ searchString, locations, isLoading, error }) {
+export function LocationResults({ searchString, locations, isFirstSearch, error }) {
     return (
         <section>
-            {
-                isLoading && <div>Loading...</div>
-            }
             {
                 error && <div><i>{error}</i></div>
             }
             {
                 locations?.length > 0
-                ? <LocationList locations={locations}/>
-                : <NoLocationResult searchString={searchString} />
+                ? <LocationList locations={locations} />
+                : isFirstSearch.current
+                    ? ''
+                    : <NoLocationResult searchString={searchString} />
             }
         </section>
     )

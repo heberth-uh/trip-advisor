@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { getLocation } from "../api/tripAdvisorApi";
 import { MainContext } from "../context/MainContext";
 // Samples
@@ -10,9 +10,17 @@ export const useLocations = (searchString) => {
     const [locations, setLocations] = useState()
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
+    const isFirstSearch = useRef(true)
+
+    useEffect(() => {
+        if (isFirstSearch.current && searchString !== ''){
+            return
+        }
+    }, [searchString])
 
     const searchLocations = async () => {
         setIsLoading(true)
+        if (isFirstSearch.current) isFirstSearch.current = false
 
         // try {
         //     const data = await getLocation({ searchString, lang, units, currency, sort })
@@ -33,5 +41,5 @@ export const useLocations = (searchString) => {
             setIsLoading(false)
         }, 500);
     }
-    return { locations, searchLocations, isLoading, error }
+    return { locations, searchLocations, isLoading, isFirstSearch, error }
 }

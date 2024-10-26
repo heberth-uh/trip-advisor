@@ -4,16 +4,18 @@ import { MainContext } from '../context/MainContext.jsx'
 // Components
 import Navbar from '../components/Navbar.jsx'
 import SelectionField from '../components/widgets/SelectionField.jsx'
-import LocationResults from '../components/LocationResults.jsx'
+import { LocationResults } from '../components/LocationResults.jsx'
 
 export default function Home() {
     const [searchString, setSearchString] = useState('')
+    const [submitedSearch, setSubmitedSearch] = useState('')
     const { type, setType, typeList } = useContext(MainContext)
-    const { locations, searchLocations, isLoading, error } = useLocations(searchString)
+    const { locations, searchLocations, isLoading, isFirstSearch, error } = useLocations(searchString)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         searchLocations()
+        setSubmitedSearch(searchString) // Set the value to show message of no results found
     }
 
     return (
@@ -34,12 +36,11 @@ export default function Home() {
                     <button type="submit" disabled={isLoading}>Search</button>
                 </form>
                 <section className='location-card'>
-                    <LocationResults
-                        searchString={searchString}
-                        locations={locations}
-                        isLoading={isLoading}
-                        error={error}
-                    />
+                    {
+                        isLoading
+                        ? <div>Loading...</div>
+                        : <LocationResults searchString={submitedSearch} locations={locations} isFirstSearch={isFirstSearch} error={error} />
+                    }
                 </section>
             </main>
         </>
