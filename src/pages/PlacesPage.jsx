@@ -1,8 +1,10 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useContext } from 'react'
 import { MainContext } from '../context/MainContext'
 import { usePlacesList } from '../hooks/usePlacesList'
+// Components
 import Navbar from '../components/Navbar'
+import PlaceCard from '../components/PlaceCard'
 
 export default function PlacesPage() {
     const params = useParams()
@@ -13,7 +15,7 @@ export default function PlacesPage() {
 
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <main>
                 <h2>{type.charAt(0).toUpperCase() + type.slice(1)} results</h2>
                 <section>
@@ -22,14 +24,7 @@ export default function PlacesPage() {
                     }
                     {
                         places && places.map((place, key) => (
-                            <div key={key}>
-                                <Link to={`/${type}/get-details/${place.location_id}`}>
-                                    <img src={place.photo?.images?.small?.url} alt={place.photo?.caption} />
-                                </Link>
-                                <p>{place.name}</p>
-                                <p>{place.rating}</p>
-                                <hr />
-                            </div>
+                            <PlaceCard key={key} place={place} type={type} />
                         ))
                     }
                 </section>
