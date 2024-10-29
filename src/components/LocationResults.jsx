@@ -3,7 +3,7 @@ import LocationCard from "./LocationCard"
 function NoLocationResult({ searchString }) {
     return (
         <div>
-            No se encontraron resultados para "<i>{searchString}</i>"
+            No results found for this "<i>{searchString}</i>"
         </div>
     )
 }
@@ -20,7 +20,7 @@ export function LocationResults({ searchString, locations, isFirstSearch, error 
     return (
         <section>
             {
-                error && <div><i>{error}</i></div>
+                error && <div><i>{error}</i></div> // Must be a component
             }
             {
                 locations?.length > 0

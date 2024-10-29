@@ -11,7 +11,6 @@ export default function Home() {
     const [submitedSearch, setSubmitedSearch] = useState('')
     const { type, setType, typeList } = useContext(MainContext)
     const { locations, searchLocations, isLoading, isFirstSearch, error } = useLocations(searchString)
-
     const handleSubmit = (e) => {
         e.preventDefault();
         searchLocations()

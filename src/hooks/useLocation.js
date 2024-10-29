@@ -22,24 +22,24 @@ export const useLocations = (searchString) => {
         setIsLoading(true)
         if (isFirstSearch.current) isFirstSearch.current = false
 
-        // try {
-        //     const data = await getLocation({ searchString, lang, units, currency, sort })
-        //     console.log('data', data)
-        //     if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error getting results`)
-        //     let filtered = data.data.filter(location => location.result_type === 'geos')
-        //     setLocations(filtered)
-        // } catch (error) {
-        //     setError(error.toString())
-        // } finally {
-        //     setIsLoading(false)
-        // }
+        try {
+            const data = await getLocation({ searchString, lang, units, currency, sort })
+            console.log('data', data)
+            if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error getting results`)
+            let filtered = data.data.filter(location => location.result_type === 'geos')
+            setLocations(filtered)
+        } catch (error) {
+            setError(error.toString())
+        } finally {
+            setIsLoading(false)
+        }
 
         // For testing with static data
-        setTimeout(() => {
-            let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
-            setLocations(filtered)
-            setIsLoading(false)
-        }, 500);
+        // setTimeout(() => {
+        //     let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
+        //     setLocations(filtered)
+        //     setIsLoading(false)
+        // }, 500);
     }
     return { locations, searchLocations, isLoading, isFirstSearch, error }
 }
