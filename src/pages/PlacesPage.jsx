@@ -4,7 +4,6 @@ import { MainContext } from '../context/MainContext'
 import { usePlacesList } from '../hooks/usePlacesList'
 // Components
 import Navbar from '../components/Navbar'
-import PlaceCard from '../components/PlaceCard'
 import { Places } from '../components/Places'
 
 export default function PlacesPage() {

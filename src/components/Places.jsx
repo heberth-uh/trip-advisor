@@ -8,10 +8,10 @@ function NoPlaces() {
     )
 }
 
-function PlacesList({places}) {
+function PlacesList({ places }) {
     return (
         places.map((place, key) => (
-            <PlaceCard key={key} place={place} type={type} />
+            <PlaceCard key={key} place={place} />
         ))
     )
 }
@@ -21,11 +21,11 @@ export function Places({ places, error }) {
         <section>
             {
                 error
-                ? <div><i>{error}</i></div> // Must be a component
-                :
-                    places.legth > 0
-                    ? <PlacesList places={places}/>
-                    : <NoPlaces/>
+                    ? <div><i>{error}</i></div> // Must be a component
+                    :
+                    places.length > 0
+                        ? <PlacesList places={places} />
+                        : <NoPlaces />
             }
         </section>
     )
