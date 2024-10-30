@@ -29,7 +29,7 @@ export const useLocations = (searchString) => {
         //     let filtered = data.data.filter(location => location.result_type === 'geos')
         //     setLocations(filtered)
         // } catch (error) {
-        //     setError(error.toString())
+        //     setError(error.message)
         // } finally {
         //     setIsLoading(false)
         // }

@@ -7,16 +7,18 @@ import { attractionDetailSample } from '../data/test/attractionDetailSample.js';
 export const usePlaceDetails = (placeId) => {
     const [place, setPlace] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState('')
     const { type, currency, lang } = useContext(MainContext)
 
     useEffect(() => {
         // const fetchPlace = async () => {
         //     try {
         //         const data = await getPlacesDetails({ type, placeId, currency, lang })
-        //         if (data.errors) throw new Error(data.errors[0].message || `Error fetching ${type} details`)
+        //         console.log('data', data)
+        //         if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error fetching ${type} details`)
         //         setPlace(data)
         //     } catch (error) {
-        //         alert(error)
+        //         setError(error.message)
         //     } finally {
         //         setIsLoading(false)
         //     }
@@ -29,5 +31,5 @@ export const usePlaceDetails = (placeId) => {
         }, 500)
     }, [])
 
-    return { place, isLoading }
+    return { place, isLoading, error }
 }
