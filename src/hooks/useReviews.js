@@ -8,17 +8,19 @@ export const useReviews = (place, placeId) => {
     const { currency, lang } = useContext(MainContext)
 
 	const [reviews, setReviews] = useState([])
-	const [isReviewsLoading, setIsReviewsLoading] = useState(true)
+	const [isLoading, setIsLoading] = useState(true)
+	const [error, setError] = useState('')
 
 	useEffect(() => {
 		// const fetchReviews = async () => {
 		// 	try {
 		// 		const data = await getReviews({ placeId, currency, lang })
+        //         if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error fetching ${type} reviews`)
 		// 		setReviews(data.data)
 		// 	} catch (error) {
-		// 		alert(error)
+		// 		setError(error.message)
 		// 	} finally {
-		// 		setIsReviewsLoading(false)
+		// 		setIsLoading(false)
 		// 	}
 		// }
 		// fetchReviews()
@@ -26,10 +28,10 @@ export const useReviews = (place, placeId) => {
 		// for testing with static data
 		setTimeout(() => {
 			setReviews(reviewsSample.data)
-			setIsReviewsLoading(false)
+			setIsLoading(false)
 		}, 500)
 
 	}, [place])
 
-	return { reviews, isReviewsLoading }
+	return { reviews, isLoading, error }
 }

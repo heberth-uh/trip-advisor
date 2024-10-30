@@ -14,7 +14,6 @@ export const usePlaceDetails = (placeId) => {
         // const fetchPlace = async () => {
         //     try {
         //         const data = await getPlacesDetails({ type, placeId, currency, lang })
-        //         console.log('data', data)
         //         if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error fetching ${type} details`)
         //         setPlace(data)
         //     } catch (error) {

@@ -1,4 +1,14 @@
+import { useParams } from "react-router-dom"
+import { useReviews } from "../hooks/useReviews"
+// Components
+import Reviews from "./Reviews"
+
 export default function ({ place }) {
+    const params = useParams()
+    const placeId = params.placeId
+    const { reviews, isLoading, error } = useReviews(place, placeId)
+    // console.log('reviews', reviews)
+
     return (
         <section>
             <section>
@@ -33,6 +43,13 @@ export default function ({ place }) {
                 <p>phone: <span>{place.phone}</span></p>
                 <p>website: <span>{place.website}</span></p>
             </section>
+            {
+                isLoading
+                    ? <div>Loading...</div>
+                    : error
+                        ? <div>{error}</div>
+                        : <Reviews reviews={reviews} />
+            }
         </section>
     )
 }
