@@ -4,6 +4,7 @@ import PlaceDetails from '../components/PlaceDetails.jsx';
 // Hooks
 import { usePlaceDetails } from '../hooks/usePlaceDetails.js';
 import Navbar from '../components/Navbar.jsx';
+import Error from '../components/Error.jsx';
 
 export default function PlaceDetailsPage() {
 
@@ -21,7 +22,7 @@ export default function PlaceDetailsPage() {
                     isLoading
                         ? <div>Loading...</div>
                         : error
-                            ? <div>{error}</div>
+                            ? <Error>{error}</Error>
                             : <PlaceDetails place={place} />
                 }
             </main>

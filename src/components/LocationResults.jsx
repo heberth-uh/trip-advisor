@@ -1,4 +1,5 @@
 import LocationCard from "./LocationCard"
+import Error from "./Error"
 
 function NoLocationResult({ searchString }) {
     return (
@@ -20,7 +21,7 @@ export function LocationResults({ searchString, locations, isFirstSearch, error 
     return (
         <section>
             {
-                error && <div><i>{error}</i></div> // Must be a component
+                error && <Error>{error}</Error> // Must be a component
             }
             {
                 locations?.length > 0

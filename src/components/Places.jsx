@@ -1,4 +1,5 @@
 import PlaceCard from "./PlaceCard"
+import Error from "./Error"
 
 function NoPlaces() {
     return (
@@ -21,7 +22,7 @@ export function Places({ places, error }) {
         <section>
             {
                 error
-                    ? <div><i>{error}</i></div> // Must be a component
+                    ? <Error>{error}</Error> // Must be a component
                     :
                     places.length > 0
                         ? <PlacesList places={places} />

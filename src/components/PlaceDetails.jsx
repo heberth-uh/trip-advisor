@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useReviews } from "../hooks/useReviews"
 // Components
 import Reviews from "./Reviews"
+import Error from "./Error"
 
 export default function ({ place }) {
     const params = useParams()
@@ -47,7 +48,7 @@ export default function ({ place }) {
                 isLoading
                     ? <div>Loading...</div>
                     : error
-                        ? <div>{error}</div>
+                        ? <Error>{error}</Error>
                         : <Reviews reviews={reviews} />
             }
         </section>
