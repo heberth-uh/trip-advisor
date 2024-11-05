@@ -3,6 +3,8 @@ import { useReviews } from "../hooks/useReviews"
 // Components
 import Reviews from "./Reviews"
 import Error from "./Error"
+import Amenity from "./Amenity"
+import RatingHistogram from "./widgets/RatingHisogram"
 
 export default function ({ place }) {
     const params = useParams()
@@ -16,6 +18,7 @@ export default function ({ place }) {
                 <h1>{place.name}</h1> <span>{place.ranking}</span>
                 <img src={place.photo?.images?.large.url} alt={place.name} />
                 <p>{place.rating}</p>
+                <p>{place.price}</p>
                 <p>{place.open_now_text}</p>
                 {place.recommended_visit_length &&
                     <div>
@@ -45,11 +48,20 @@ export default function ({ place }) {
                 <p>website: <span>{place.website}</span></p>
             </section>
             {
+                place.amenities?.length > 0 &&
+                <ul>
+                    {place.amenities.map((amenity, key) => (
+                        <Amenity key={key} amenity={amenity} />
+                    ))}
+                </ul>
+            }
+            <RatingHistogram rating={place.rating_histogram} />
+            {
                 isLoading
                     ? <div>Loading...</div>
                     : error
                         ? <Error>{error}</Error>
-                        : <Reviews reviews={reviews} />
+                        : <Reviews reviews={reviews}/>
             }
         </section>
     )
