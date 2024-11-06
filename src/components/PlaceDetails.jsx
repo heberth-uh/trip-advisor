@@ -32,6 +32,7 @@ export default function ({ place }) {
                     <p>{place.description}</p>
                 </div>
                 <div>
+                    <h4>Tags</h4>
                     {
                         place.subcategory && place.subcategory.map(subcategory => (
                             <p key={subcategory.key}>#{subcategory.name}</p>
@@ -43,25 +44,30 @@ export default function ({ place }) {
             <section>
                 <h3>More information</h3>
                 <p>address: <span>{place.address}</span></p>
-                <p>address: <span>{place.address}</span></p>
                 <p>phone: <span>{place.phone}</span></p>
-                <p>website: <span>{place.website}</span></p>
+                {place.website && <p>website: <span>{place.website}</span></p>}
             </section>
             {
                 place.amenities?.length > 0 &&
-                <ul>
-                    {place.amenities.map((amenity, key) => (
-                        <Amenity key={key} amenity={amenity} />
-                    ))}
-                </ul>
+                <div>
+                    <h3>Amenities</h3>
+                    <ul>
+                        {place.amenities.map((amenity, key) => (
+                            <Amenity key={key} amenity={amenity} />
+                        ))}
+                    </ul>
+                </div>
             }
-            <RatingHistogram rating={place.rating_histogram} />
+            {
+                place.rating_histogram && <RatingHistogram rating={place.rating_histogram} />
+            }
+            <hr />
             {
                 isLoading
                     ? <div>Loading...</div>
                     : error
                         ? <Error>{error}</Error>
-                        : <Reviews reviews={reviews}/>
+                        : <Reviews reviews={reviews} />
             }
         </section>
     )
