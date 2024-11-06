@@ -1,9 +1,8 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { MainContext } from '../context/MainContext'
+import { Link, useParams } from 'react-router-dom'
 
 export default function PlaceCard({ place }) {
-    const { type } = useContext(MainContext)
+    const params = useParams()
+    const type = params.type
     return (
         <div>
             <Link to={`/${type}/get-details/${place.location_id}`}>

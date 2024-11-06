@@ -3,12 +3,18 @@ import { getPlacesDetails } from "../api/tripAdvisorApi.js";
 import { MainContext } from "../context/MainContext.jsx";
 // Sample reviews
 import { attractionDetailSample } from '../data/test/attractionDetailSample.js';
+import attractionSample from '../data/test/place.detail.attraction.json'
+import restaurantSample from '../data/test/place.detail.restaurant.json'
+import hotelSample from '../data/test/place.detail.hotel.json'
+import { useParams } from "react-router-dom";
 
 export const usePlaceDetails = (placeId) => {
+    const params = useParams()
     const [place, setPlace] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState('')
-    const { type, currency, lang } = useContext(MainContext)
+    const {currency, lang } = useContext(MainContext)
+    const type = params.type
 
     useEffect(() => {
         // const fetchPlace = async () => {
@@ -25,7 +31,20 @@ export const usePlaceDetails = (placeId) => {
         // fetchPlace()
 
         setTimeout( () => {
-            setPlace(attractionDetailSample)
+            var placeSample = null
+            switch (type) {
+                case 'attractions':
+                    placeSample = attractionSample
+                    break;
+                case 'hotels':
+                    placeSample = hotelSample.data[0]
+                    console.log(hotelSample)
+                    break;
+                case 'restaurants':
+                    placeSample = restaurantSample
+                    break;
+            }
+            setPlace(placeSample)
             setIsLoading(false)
         }, 500)
     }, [])

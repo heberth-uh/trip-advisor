@@ -1,6 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { useContext } from 'react'
-import { MainContext } from '../context/MainContext'
 import { usePlacesList } from '../hooks/usePlacesList'
 // Components
 import Navbar from '../components/Navbar'
@@ -10,7 +8,7 @@ export default function PlacesPage() {
     const params = useParams()
     const locationId = params.locationId
 
-    const { type } = useContext(MainContext)
+    const type = params.type
     const { places, isLoading, error } = usePlacesList(locationId)
 
     return (

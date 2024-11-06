@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { MainContext } from "../context/MainContext";
 import { getPlacesList } from "../api/tripAdvisorApi";
 // Samples
@@ -7,11 +8,13 @@ import restaurantsSample from "../data/test/places.restaurant.json"
 import hotelsSample from "../data/test/places.hotel.json"
 
 export const usePlacesList = (locationId) => {
-    const { type, lang, units, currency, sortPlaces } = useContext(MainContext)
+    const params = useParams()
+    const { lang, units, currency, sortPlaces } = useContext(MainContext)
 
     const [places, setPlaces] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState('')
+    const type = params.type
 
     useEffect(() => {
         // Fetch a list of places (attractions, restaurants, hotels) by location
@@ -46,7 +49,7 @@ export const usePlacesList = (locationId) => {
                     placesSample = restaurantsSample.data
                     break;
             }
-            const filteredPlaces = placesSample?.filter(place => (!place.detail)) // detial: 0 means it doesn't have detials. Remnove them.
+            const filteredPlaces = placesSample?.filter(place => (!place.detail)) // detail: 0 means it doesn't have detials. Remnove them.
             setPlaces(filteredPlaces)
             setIsLoading(false)
         }, 500);
