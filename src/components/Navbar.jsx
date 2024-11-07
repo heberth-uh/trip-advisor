@@ -21,7 +21,7 @@ export default function Navbar() {
 
     return (
         <header>
-            <h2>Trip Advisor</h2>
+            <h2><a href="/">Trip Advisor</a></h2>
             <ul>
                 <li>
                     <SelectionField options={langList} defaultValue={lang} handlerValue={setLang} />

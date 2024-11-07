@@ -5,6 +5,7 @@ import Reviews from "./Reviews"
 import Error from "./Error"
 import Amenity from "./Amenity"
 import RatingHistogram from "./widgets/RatingHisogram"
+import Hours from "./Hours"
 
 export default function ({ place }) {
     const params = useParams()
@@ -16,8 +17,9 @@ export default function ({ place }) {
         <section>
             <section>
                 <h1>{place.name}</h1> <span>{place.ranking}</span>
-                <img src={place.photo?.images?.large.url} alt={place.name} />
                 <p>{place.rating}</p>
+                <p>{place.price_level}</p>
+                <img src={place.photo?.images?.large.url} alt={place.name} />
                 <p>{place.price}</p>
                 <p>{place.open_now_text}</p>
                 {place.recommended_visit_length &&
@@ -46,6 +48,9 @@ export default function ({ place }) {
                 <p>address: <span>{place.address}</span></p>
                 <p>phone: <span>{place.phone}</span></p>
                 {place.website && <p>website: <span>{place.website}</span></p>}
+                {
+                    place.hours?.week_ranges && <Hours hours={place.hours} />
+                }
             </section>
             {
                 place.amenities?.length > 0 &&
