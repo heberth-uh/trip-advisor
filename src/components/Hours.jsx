@@ -19,11 +19,11 @@ export default function Hours({ hours }) {
             <h3>Hours</h3>
             {
                 hours.week_ranges.map((day, key) => (
-                    <div>
+                    <div key={key}>
                         <p>{getDay(key)}</p>
                         {
-                            day.map(time => (
-                                <div>
+                            day.map((time, key) => (
+                                <div key={key}>
                                     <span>{formatTime(time.open_time)}</span>
                                     <span> - </span>
                                     <span>{formatTime(time.close_time)}</span>

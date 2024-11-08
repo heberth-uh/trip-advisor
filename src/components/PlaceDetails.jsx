@@ -6,6 +6,7 @@ import Error from "./Error"
 import Amenity from "./Amenity"
 import RatingHistogram from "./widgets/RatingHisogram"
 import Hours from "./Hours"
+import Cuisine from "./Cuisine"
 
 export default function ({ place }) {
     const params = useParams()
@@ -30,11 +31,11 @@ export default function ({ place }) {
             </section>
             <article>
                 <div>
-                    <h3>About</h3>
+                    <h2>About</h2>
                     <p>{place.description}</p>
                 </div>
                 <div>
-                    <h4>Tags</h4>
+                    <h3>Tags</h3>
                     {
                         place.subcategory && place.subcategory.map(subcategory => (
                             <p key={subcategory.key}>#{subcategory.name}</p>
@@ -44,7 +45,7 @@ export default function ({ place }) {
                 </div>
             </article>
             <section>
-                <h3>More information</h3>
+                <h2>More information</h2>
                 <p>address: <span>{place.address}</span></p>
                 <p>phone: <span>{place.phone}</span></p>
                 {place.website && <p>website: <span>{place.website}</span></p>}
@@ -52,10 +53,22 @@ export default function ({ place }) {
                     place.hours?.week_ranges && <Hours hours={place.hours} />
                 }
             </section>
+
+            {/* Only for restaurants */}
+            <section>
+                <h2>Cuisine details</h2>
+                { place.cuisine && <Cuisine title={'Cuisines'} cuisine={place.cuisine} /> }
+                { place.dietary_restrictions && <Cuisine title={'Special diets'} cuisine={place.dietary_restrictions} /> }
+                { place.meal_types && <Cuisine title={'Types of meal'} cuisine={place.meal_types} /> }
+                { place.dishes && <Cuisine title={'Dishes'} cuisine={place.dishes} /> }
+                { place.sub_cuisine && <Cuisine title={'Sub cuisines'} cuisine={place.sub_cuisine} /> }
+
+            </section>
             {
+                // Only for hotels
                 place.amenities?.length > 0 &&
                 <div>
-                    <h3>Amenities</h3>
+                    <h2>Amenities</h2>
                     <ul>
                         {place.amenities.map((amenity, key) => (
                             <Amenity key={key} amenity={amenity} />
