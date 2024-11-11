@@ -7,6 +7,8 @@ import Amenity from "./Amenity"
 import RatingHistogram from "./widgets/RatingHisogram"
 import Hours from "./Hours"
 import Cuisine from "./Cuisine"
+import Tag from "./widgets/Tag"
+import Booking from "./Booking"
 
 export default function ({ place }) {
     const params = useParams()
@@ -34,16 +36,21 @@ export default function ({ place }) {
                     <h2>About</h2>
                     <p>{place.description}</p>
                 </div>
-                <div>
-                    <h3>Tags</h3>
-                    {
-                        place.subcategory && place.subcategory.map(subcategory => (
-                            <p key={subcategory.key}>#{subcategory.name}</p>
-                        ))
-                    }
-                    <a href={place.write_review} target='_blank'>Want a write a review?</a>
-                </div>
+                {place.subcategory &&
+                    <div>
+                        <h3>Tags</h3>
+                        {
+                            place.subcategory && place.subcategory.map(subcategory => (
+                                <Tag key={subcategory.key}>{subcategory.name}</Tag>
+                            ))
+                        }
+                    </div>
+                }
+                <a href={place.write_review} target='_blank'>Want a write a review?</a>
             </article>
+            {
+                place.reserve_info && <Booking info={place.reserve_info}/>
+            }
             <section>
                 <h2>More information</h2>
                 <p>address: <span>{place.address}</span></p>
@@ -57,11 +64,11 @@ export default function ({ place }) {
             {/* Only for restaurants */}
             <section>
                 <h2>Cuisine details</h2>
-                { place.cuisine && <Cuisine title={'Cuisines'} cuisine={place.cuisine} /> }
-                { place.dietary_restrictions && <Cuisine title={'Special diets'} cuisine={place.dietary_restrictions} /> }
-                { place.meal_types && <Cuisine title={'Types of meal'} cuisine={place.meal_types} /> }
-                { place.dishes && <Cuisine title={'Dishes'} cuisine={place.dishes} /> }
-                { place.sub_cuisine && <Cuisine title={'Sub cuisines'} cuisine={place.sub_cuisine} /> }
+                {place.cuisine && <Cuisine title={'Cuisines'} cuisine={place.cuisine} />}
+                {place.dietary_restrictions && <Cuisine title={'Special diets'} cuisine={place.dietary_restrictions} />}
+                {place.meal_types && <Cuisine title={'Types of meal'} cuisine={place.meal_types} />}
+                {place.dishes && <Cuisine title={'Dishes'} cuisine={place.dishes} />}
+                {place.sub_cuisine && <Cuisine title={'Sub cuisines'} cuisine={place.sub_cuisine} />}
 
             </section>
             {
