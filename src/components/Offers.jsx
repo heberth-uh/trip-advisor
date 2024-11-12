@@ -1,4 +1,4 @@
-import TicketCard from "./TickerCard"
+import TicketCard from "./TicketCard"
 
 export default function Offers({ offers }) {
 
