@@ -9,6 +9,7 @@ import Hours from "./Hours"
 import Cuisine from "./Cuisine"
 import Tag from "./widgets/Tag"
 import Booking from "./Booking"
+import Offers from "./Offers"
 
 export default function ({ place }) {
     const params = useParams()
@@ -60,17 +61,23 @@ export default function ({ place }) {
                     place.hours?.week_ranges && <Hours hours={place.hours} />
                 }
             </section>
+            {/* Only for attractions */}
+            {
+                <Offers offers={place.offer_group} />
+            }
 
             {/* Only for restaurants */}
-            <section>
-                <h2>Cuisine details</h2>
-                {place.cuisine && <Cuisine title={'Cuisines'} cuisine={place.cuisine} />}
-                {place.dietary_restrictions && <Cuisine title={'Special diets'} cuisine={place.dietary_restrictions} />}
-                {place.meal_types && <Cuisine title={'Types of meal'} cuisine={place.meal_types} />}
-                {place.dishes && <Cuisine title={'Dishes'} cuisine={place.dishes} />}
-                {place.sub_cuisine && <Cuisine title={'Sub cuisines'} cuisine={place.sub_cuisine} />}
-
-            </section>
+            {
+                params.type === 'restaurants' &&
+                <section>
+                    <h2>Cuisine details</h2>
+                    {place.cuisine && <Cuisine title={'Cuisines'} cuisine={place.cuisine} />}
+                    {place.dietary_restrictions && <Cuisine title={'Special diets'} cuisine={place.dietary_restrictions} />}
+                    {place.meal_types && <Cuisine title={'Types of meal'} cuisine={place.meal_types} />}
+                    {place.dishes && <Cuisine title={'Dishes'} cuisine={place.dishes} />}
+                    {place.sub_cuisine && <Cuisine title={'Sub cuisines'} cuisine={place.sub_cuisine} />}
+                </section>
+            }
             {
                 // Only for hotels
                 place.amenities?.length > 0 &&
@@ -88,6 +95,7 @@ export default function ({ place }) {
             }
             <hr />
             {
+                // Reviews
                 isLoading
                     ? <div>Loading...</div>
                     : error
