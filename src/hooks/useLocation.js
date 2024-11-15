@@ -13,7 +13,7 @@ export const useLocations = (searchString) => {
     const isFirstSearch = useRef(true)
 
     useEffect(() => {
-        if (isFirstSearch.current && searchString !== ''){
+        if (isFirstSearch.current && searchString !== '') {
             return
         }
     }, [searchString])
@@ -35,6 +35,11 @@ export const useLocations = (searchString) => {
         // }
 
         // For testing with static data
+        if (searchString == 'notfound') {
+            setLocations([])
+            setIsLoading(false)
+            return
+        }
         setTimeout(() => {
             let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
             setLocations(filtered)
