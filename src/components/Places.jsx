@@ -1,7 +1,9 @@
+import { useParams } from "react-router-dom"
+// Components
 import PlaceCard from "./PlaceCard"
 import Error from "./Error"
 
-function NoPlaces() {
+function NoPlaces() { // Make a component
     return (
         <div>
             No results found for this location
@@ -10,10 +12,17 @@ function NoPlaces() {
 }
 
 function PlacesList({ places }) {
+    const params = useParams()
+    const type = params.type
+    const ancestor = places[0].ancestors[0]?.name
+    const locationName = ancestor ? ` in ${ancestor}` : ''
     return (
-        places.map((place, key) => (
-            <PlaceCard key={key} place={place} />
-        ))
+        <main>
+            <h2>{type.charAt(0).toUpperCase() + type.slice(1)} results{locationName}</h2>
+            <div>
+                {places.map((place, key) => <PlaceCard key={key} place={place} />)}
+            </div>
+        </main>
     )
 }
 
@@ -22,9 +31,8 @@ export function Places({ places, error }) {
         <section>
             {
                 error
-                    ? <Error>{error}</Error> // Must be a component
-                    :
-                    places.length > 0
+                    ? <Error>{error}</Error>
+                    : places.length > 0
                         ? <PlacesList places={places} />
                         : <NoPlaces />
             }
