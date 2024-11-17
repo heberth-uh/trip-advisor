@@ -13,6 +13,11 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
         searchLocations()
     }
 
+    const handleChangeString = (e) => {
+        if (e.target.value.startsWith(' ')) return
+        setSearchString(e.target.value)
+    }
+
     return (
         <div>
             <h1>Where to go?</h1>
@@ -23,7 +28,7 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
                     type="text"
                     placeholder='Paris, Madrid, New York...'
                     value={searchString}
-                    onChange={(e) => setSearchString(e.target.value)}
+                    onChange={handleChangeString}
                 />
                 <button type="submit" disabled={isLoading || searchString.length < 3}>Search</button>
             </form>
