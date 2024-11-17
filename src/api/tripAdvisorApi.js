@@ -10,9 +10,9 @@ const options = {
 };
 
 // Get list of locations by a string
-export const getLocation = async ({ searchString, lang, units, currency, sort }) => {
+export const getLocation = async ({ query, lang, units, currency, sort }) => {
     const base_url = `https://${RAPIDAPI_HOST}/locations/search?`;
-    const params = { query: searchString, lang, units, currency, sort }
+    const params = { query, lang, units, currency, sort }
     const url = buildUrl(base_url, params)
 
     return fetch(url, options)

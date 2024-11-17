@@ -24,7 +24,7 @@ export function LocationResults({ locations, isFirstSearch, error }) {
     return (
         <section>
             {
-                error && <Error>{error}</Error> // Must be a component
+                error && <Error>{error}</Error>
             }
             {
                 locations?.length > 0

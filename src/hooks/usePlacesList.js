@@ -21,7 +21,7 @@ export const usePlacesList = (locationId) => {
         // const fetchPlaces = async () => {
         //     try {
         //         const data = await getPlacesList({ type, locationId, lang, units, currency, sortPlaces })
-        //         console.log(data)
+        //         console.log('places data', data)
         //         if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error getting results`)
         //         // for some locations, it gets 200 as response but there is 'errors' node in the object instead 'data'
         //         if (data.errors) throw new Error(data.errors[0].message || `Error fetching ${type}`)
@@ -35,7 +35,7 @@ export const usePlacesList = (locationId) => {
         // }
         // fetchPlaces()
 
-        // testing with static data
+        // For testing with static data
         setTimeout(() => {
             var placesSample = null
             switch (type) {
@@ -54,7 +54,7 @@ export const usePlacesList = (locationId) => {
             setIsLoading(false)
         }, 500);
 
-    }, [locationId, type])
+    }, [locationId, type, lang, currency])
 
     return { places, isLoading, error }
 }

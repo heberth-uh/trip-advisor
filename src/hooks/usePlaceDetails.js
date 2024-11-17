@@ -30,6 +30,7 @@ export const usePlaceDetails = (placeId) => {
         // }
         // fetchPlace()
 
+        // For testing with static data
         setTimeout( () => {
             var placeSample = null
             switch (type) {
@@ -47,7 +48,7 @@ export const usePlaceDetails = (placeId) => {
             setPlace(placeSample)
             setIsLoading(false)
         }, 500)
-    }, [])
+    }, [currency, lang])
 
     return { place, isLoading, error }
 }
