@@ -4,9 +4,11 @@ import Navbar from '../components/Navbar.jsx'
 import { LocationResults } from '../components/LocationResults.jsx'
 import SearchForm from '../components/SearchForm.jsx'
 import { useState } from 'react'
+import { useURLParam } from '../hooks/useURLParam.js'
 
 export default function Home() {
-    const [searchString, setSearchString] = useState('')
+    const searchParam = useURLParam('search')
+    const [searchString, setSearchString] = useState(searchParam)
     const { locations, searchLocations, isLoading, isFirstSearch, error } = useLocations(searchString)
 
     return (
