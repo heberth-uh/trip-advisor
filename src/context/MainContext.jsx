@@ -12,7 +12,7 @@ export function MainContextProvider({ children }) {
     const [currencyList, setCurrencyList] = useState([])
     const [type, setType] = useLocalStorage('type', 'attractions')
     // contextual params (depends on the type)
-    const [sort, setSort] = useState('relevance') // relevance | distance
+    const [sort, setSort] = useLocalStorage('sort') // relevance | distance
     const [sortPlaces, setSortPlaces] = useState('recommended') // recommended | ranking
     const [minRate, setMinRate] = useState(3) // 3|4|5
 
@@ -47,6 +47,10 @@ export function MainContextProvider({ children }) {
         { 'id': 1, 'value': 'km', 'name': 'Km' },
         { 'id': 2, 'value': 'mi', 'name': 'Mi' },
     ]
+    const sortList = [
+        { 'id': 1, 'value': 'relevance', 'name': 'Relevance'},
+        { 'id': 2, 'value': 'distance', 'name': 'Distance'}
+    ]
 
     useEffect(()=>{
         setCurrencyList(currencies.data)
@@ -54,14 +58,13 @@ export function MainContextProvider({ children }) {
 
     return (
         <MainContext.Provider value={{
-            lang, setLang,
-            units, setUnits,
-            currency, setCurrency,
-            type, setType,
-            sort,
+            lang, setLang, langList,
+            units, setUnits, unitList,
+            currency, setCurrency, currencyList,
+            type, setType, typeList,
+            sort, setSort, sortList,
             sortPlaces,
             minRate,
-            typeList, langList, unitList, currencyList
         }}
         >
             {children}

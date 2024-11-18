@@ -3,12 +3,23 @@ import { useURLParam } from "../hooks/useURLParam"
 import LocationCard from "./LocationCard"
 import Error from "./Error"
 import NoResults from "./NoResults"
+import SelectionField from "./widgets/SelectionField"
+import { useContext } from "react"
+import { MainContext } from "../context/MainContext"
 
 function LocationList({ locations }) {
+    const {sort, setSort, sortList} = useContext(MainContext)
     return (
-        locations.map(({ result_object }) => (
-            <LocationCard location={result_object} key={result_object.location_id} />
-        ))
+        <div>
+            <div>
+                <SelectionField options={sortList} defaultValue={sort} handlerValue={setSort} />
+            </div>
+            <section>
+                {locations.map(({ result_object }) => (
+                    <LocationCard location={result_object} key={result_object.location_id} />
+                ))}
+            </section>
+        </div>
     )
 }
 
@@ -22,8 +33,8 @@ export function LocationResults({ locations, isFirstSearch, error }) {
             }
             {
                 locations?.length > 0
-                ? <LocationList locations={locations} />
-                : !isFirstSearch.current && <NoResults message={message}/>
+                    ? <LocationList locations={locations} />
+                    : !isFirstSearch.current && <NoResults message={message} />
             }
         </section>
     )
