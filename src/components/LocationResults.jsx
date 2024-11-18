@@ -1,16 +1,8 @@
+import { useLocation } from "react-router-dom"
+// Components
 import LocationCard from "./LocationCard"
 import Error from "./Error"
-import { useLocation, useSearchParams } from "react-router-dom"
-
-function NoLocationResult() {
-    const location = useLocation()
-    const searchString = new URLSearchParams(location.search).get('search')
-    return (
-        <div>
-            No results found for this "<i>{searchString}</i>"
-        </div>
-    )
-}
+import NoResults from "./NoResults"
 
 function LocationList({ locations }) {
     return (
@@ -21,6 +13,9 @@ function LocationList({ locations }) {
 }
 
 export function LocationResults({ locations, isFirstSearch, error }) {
+    const location = useLocation()
+    const searchString = new URLSearchParams(location.search).get('search')
+    const message = `No results found for "${searchString}"`
     return (
         <section>
             {
@@ -29,9 +24,7 @@ export function LocationResults({ locations, isFirstSearch, error }) {
             {
                 locations?.length > 0
                 ? <LocationList locations={locations} />
-                : isFirstSearch.current
-                    ? ''
-                    : <NoLocationResult/>
+                : !isFirstSearch.current && <NoResults message={message}/>
             }
         </section>
     )

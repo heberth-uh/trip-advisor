@@ -2,14 +2,7 @@ import { useParams } from "react-router-dom"
 // Components
 import PlaceCard from "./PlaceCard"
 import Error from "./Error"
-
-function NoPlaces() { // Make a component
-    return (
-        <div>
-            No results found for this location
-        </div>
-    )
-}
+import NoResults from "./NoResults"
 
 function PlacesList({ places }) {
     const params = useParams()
@@ -34,7 +27,7 @@ export function Places({ places, error }) {
                     ? <Error>{error}</Error>
                     : places.length > 0
                         ? <PlacesList places={places} />
-                        : <NoPlaces />
+                        : <NoResults message={'No results found for this location'} />
             }
         </section>
     )
