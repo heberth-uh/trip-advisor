@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { getLocation } from "../api/tripAdvisorApi";
 import { MainContext } from "../context/MainContext";
+import { useURLParam } from "./useURLParam";
 // Samples
 import { locationsSample } from "../data/test/locations.sample";
-import { useLocation } from "react-router-dom";
 
 export const useLocations = (search) => {
     const { lang, units, currency, sort } = useContext(MainContext)
@@ -13,8 +13,7 @@ export const useLocations = (search) => {
     const [error, setError] = useState('')
     const isFirstSearch = useRef(true)
 
-    const locationURL = useLocation()
-    const searchParam = new URLSearchParams(locationURL.search).get('search')
+    const searchParam = useURLParam('search')
 
     useEffect(() => {
         if (isFirstSearch.current && search !== '') { // <--- check if this is still necesary due now the search we get it from urlParams

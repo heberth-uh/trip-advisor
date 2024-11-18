@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useURLParam } from "../hooks/useURLParam"
 // Components
 import LocationCard from "./LocationCard"
 import Error from "./Error"
@@ -13,9 +13,8 @@ function LocationList({ locations }) {
 }
 
 export function LocationResults({ locations, isFirstSearch, error }) {
-    const location = useLocation()
-    const searchString = new URLSearchParams(location.search).get('search')
-    const message = `No results found for "${searchString}"`
+    const searchParam = useURLParam('search')
+    const message = `No results found for "${searchParam}"`
     return (
         <section>
             {
