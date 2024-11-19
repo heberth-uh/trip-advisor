@@ -1,11 +1,11 @@
+import { useContext } from "react"
+import { MainContext } from "../context/MainContext"
 import { useURLParam } from "../hooks/useURLParam"
 // Components
 import LocationCard from "./LocationCard"
 import Error from "./Error"
 import NoResults from "./NoResults"
 import SelectionField from "./widgets/SelectionField"
-import { useContext } from "react"
-import { MainContext } from "../context/MainContext"
 
 function LocationList({ locations }) {
     const {sort, setSort, sortList} = useContext(MainContext)

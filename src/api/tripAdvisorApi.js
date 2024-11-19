@@ -23,9 +23,9 @@ export const getLocation = async ({ query, lang, units, currency, sort }) => {
 }
 
 // Get list of places (attractions, hotels or restaurants) by locations and parameters
-export const getPlacesList = async ({ type, locationId, lang, units, currency, sortPlaces }) => {
+export const getPlacesList = async ({ type, locationId, lang, units, currency, sortPlaces, minRating }) => {
     const base_url = `https://${RAPIDAPI_HOST}/${type}/list?`
-    const params = { location_id: locationId, currency, lang, lunit: units, sort: sortPlaces }
+    const params = { location_id: locationId, currency, lang, lunit: units, sort: sortPlaces, min_rating: minRating }
     const url = buildUrl(base_url, params)
 
     return fetch(url, options)

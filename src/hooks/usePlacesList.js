@@ -9,7 +9,7 @@ import hotelsSample from "../data/test/places.hotel.json"
 
 export const usePlacesList = (locationId) => {
     const params = useParams()
-    const { lang, units, currency, sortPlaces } = useContext(MainContext)
+    const { lang, units, currency, sortPlaces, minRating } = useContext(MainContext)
 
     const [places, setPlaces] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -20,7 +20,7 @@ export const usePlacesList = (locationId) => {
         // Fetch a list of places (attractions, restaurants, hotels) by location
         // const fetchPlaces = async () => {
         //     try {
-        //         const data = await getPlacesList({ type, locationId, lang, units, currency, sortPlaces })
+        //         const data = await getPlacesList({ type, locationId, lang, units, currency, sortPlaces, minRating})
         //         console.log('places data', data)
         //         if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error getting results`)
         //         // for some locations, it gets 200 as response but there is 'errors' node in the object instead 'data'
@@ -54,7 +54,7 @@ export const usePlacesList = (locationId) => {
             setIsLoading(false)
         }, 500);
 
-    }, [locationId, type, lang, currency])
+    }, [locationId, type, lang, currency, sortPlaces, minRating])
 
     return { places, isLoading, error }
 }

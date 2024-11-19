@@ -9,7 +9,9 @@ export default function PlaceCard({ place }) {
                 <img src={place.photo?.images?.small?.url} alt={place.photo?.caption} />
             </Link>
             <p>{place.name}</p>
-            <p>⭐ {place.rating}</p>
+            {
+                place.rating && <p>⭐ {place.rating}</p>
+            }
             <p>{place.price}</p>
             <p>{place.open_now_text}</p>
             {
