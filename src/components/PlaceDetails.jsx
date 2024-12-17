@@ -63,6 +63,7 @@ export default function ({ place }) {
             </section>
             {/* Only for attractions */}
             {
+                params.type === 'attractions' &&
                 <Offers offers={place.offer_group} />
             }
 
@@ -91,7 +92,7 @@ export default function ({ place }) {
                 </div>
             }
             {
-                place.rating_histogram && <RatingHistogram rating={place.rating_histogram} />
+                place.rating_histogram && <RatingHistogram ratings={place.rating_histogram} rating={place.rating} num_reviews={place.num_reviews}/>
             }
             <hr />
             {

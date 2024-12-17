@@ -14,7 +14,8 @@ export default function SelectionGrid({ options, defaultValue, handlerValue, clo
                 <ul>
                     {options.map(option => (
                         <li key={option.code} onClick={(event) => handleChangeValue(event, option.code)}>
-                            <p>{option.name} {defaultValue === option.code && '✅'} <span>{option.symbol}</span></p>
+                            <p title={option.name}><span>{option.code}</span>{defaultValue === option.code && '✅'}</p>
+                            <p><span>{option.name}</span></p>
                             <hr />
                         </li>
                     ))

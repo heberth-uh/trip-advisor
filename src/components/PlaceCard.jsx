@@ -9,6 +9,7 @@ export default function PlaceCard({ place }) {
                 <img src={place.photo?.images?.small?.url} alt={place.photo?.caption} />
             </Link>
             <p>{place.name}</p>
+            <p>{place.description}</p>
             {
                 place.rating && <p>⭐ {place.rating}</p>
             }
@@ -17,7 +18,7 @@ export default function PlaceCard({ place }) {
             {
                 type === 'hotels'
                     ? <p>📍 {place.location_string}</p>
-                    : <p>📍 {place.address_obj?.street1}, {place.address_obj?.postalcode}</p>
+                    : <p>📍 {place.address_obj?.street1 || place.address_obj?.street2}, {place.address_obj?.postalcode}</p>
             }
             <hr />
         </div>
