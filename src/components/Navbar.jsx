@@ -4,6 +4,7 @@ import { MainContext } from '../context/MainContext'
 import SelectionField from './widgets/SelectionField'
 import Modal from './Modal'
 import SelectionGrid from './widgets/SelectionGrid'
+import Logo from './Logo'
 
 export default function Navbar() {
     const { lang, setLang, units, setUnits, currency, setCurrency, langList, unitList, currencyList } = useContext(MainContext)
@@ -21,7 +22,7 @@ export default function Navbar() {
 
     return (
         <header>
-            <h2><a href="/">Trip Advisor</a></h2>
+            <Logo/>
             <ul>
                 <li>
                     <SelectionField options={langList} defaultValue={lang} handlerValue={setLang} />
