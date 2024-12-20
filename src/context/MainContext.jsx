@@ -32,16 +32,16 @@ export function MainContextProvider({ children }) {
         }
     ]
     const langList = [
-        { 'id': 1, 'value': 'en_US', 'name': 'English' },
-        { 'id': 2, 'value': 'es_MX', 'name': 'Español (México)' },
-        { 'id': 3, 'value': 'es_ES', 'name': 'Español (España)' },
-        { 'id': 4, 'value': 'de_DE', 'name': 'Deutsch' },
-        { 'id': 5, 'value': 'fr_FR', 'name': 'France' },
-        { 'id': 6, 'value': 'it_IT', 'name': 'Italiano' },
-        { 'id': 7, 'value': 'pt_BR', 'name': 'Português (Brasil)' },
-        { 'id': 8, 'value': 'pt_PT', 'name': 'Português (Portugal)' },
-        { 'id': 9, 'value': 'tr_TR', 'name': 'Türkçe' },
-        { 'id': 10, 'value': 'el_GR', 'name': 'Ελληνικά' },
+        { 'id': 1, 'value': 'en_US', 'name': 'English', 'code': 'EN' },
+        { 'id': 2, 'value': 'es_MX', 'name': 'Español (México)', 'code': 'ES' },
+        { 'id': 3, 'value': 'es_ES', 'name': 'Español (España)', 'code': 'ES' },
+        { 'id': 4, 'value': 'de_DE', 'name': 'Deutsch', 'code': 'DE' },
+        { 'id': 5, 'value': 'fr_FR', 'name': 'France', 'code': 'FR' },
+        { 'id': 6, 'value': 'it_IT', 'name': 'Italiano', 'code': 'IT' },
+        { 'id': 7, 'value': 'pt_BR', 'name': 'Português (Brasil)', 'code': 'PT' },
+        { 'id': 8, 'value': 'pt_PT', 'name': 'Português (Portugal)', 'code': 'PT' },
+        { 'id': 9, 'value': 'tr_TR', 'name': 'Türkçe', 'code': 'TR' },
+        { 'id': 10, 'value': 'el_GR', 'name': 'Ελληνικά', 'code': 'EL' },
     ]
     const unitList = [
         { 'id': 1, 'value': 'km', 'name': 'Km' },

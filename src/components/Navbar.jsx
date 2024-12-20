@@ -5,6 +5,10 @@ import SelectionField from './widgets/SelectionField'
 import Modal from './Modal'
 import SelectionGrid from './widgets/SelectionGrid'
 import Logo from './Logo'
+// Icons
+import { FaRegMoneyBillAlt } from "react-icons/fa";
+import { CgRuler } from "react-icons/cg";
+
 
 export default function Navbar() {
     const { lang, setLang, units, setUnits, currency, setCurrency, langList, unitList, currencyList } = useContext(MainContext)
@@ -16,19 +20,23 @@ export default function Navbar() {
             return;
         }
         modalRef.current.hasAttribute('open')
-        ? modalRef.current.close()
-        : modalRef.current.showModal()
+            ? modalRef.current.close()
+            : modalRef.current.showModal()
     }
 
     return (
-        <header>
-            <Logo/>
-            <ul>
+        <header className='flex items-center justify-between'>
+            <Logo />
+            <ul className='lg:flex gap-4'>
                 <li>
-                    <SelectionField options={langList} defaultValue={lang} handlerValue={setLang} />
+                    <SelectionField options={unitList} defaultValue={units} handlerValue={setUnits}>
+                        <CgRuler/>
+                    </SelectionField>
                 </li>
                 <li>
-                    <SelectionField options={unitList} defaultValue={units} handlerValue={setUnits} />
+                    <SelectionField options={langList} defaultValue={lang} handlerValue={setLang} >
+                        <FaRegMoneyBillAlt/>
+                    </SelectionField>
                 </li>
                 <li>
                     <button onClick={(event) => toggleDialog(event, currencyModalRef)}>
@@ -43,7 +51,7 @@ export default function Navbar() {
                     defaultValue={currency}
                     handlerValue={setCurrency}
                     closeOnSelect={toggleDialog}
-                    modalReftoClose={currencyModalRef}/>
+                    modalReftoClose={currencyModalRef} />
             </Modal>
         </header>
     )
