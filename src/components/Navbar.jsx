@@ -25,9 +25,9 @@ export default function Navbar() {
     }
 
     return (
-        <header className='flex items-center justify-between'>
+        <header className='flex items-center lg:justify-between container mx-auto py-7'>
             <Logo />
-            <ul className='lg:flex gap-4'>
+            <ul className='hidden lg:flex gap-4'>
                 <li>
                     <SelectionField options={unitList} defaultValue={units} handlerValue={setUnits}>
                         <CgRuler/>
@@ -44,7 +44,6 @@ export default function Navbar() {
                     </button>
                 </li>
             </ul>
-            <hr />
             <Modal modalRef={currencyModalRef} toggleModal={toggleDialog}>
                 <SelectionGrid
                     options={currencyList}
