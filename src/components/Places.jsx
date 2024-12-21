@@ -5,7 +5,7 @@ import { MainContext } from "../context/MainContext"
 import PlaceCard from "./PlaceCard"
 import Error from "./Error"
 import NoResults from "./NoResults"
-import SelectionField from "./widgets/SelectionField"
+import Dropdown from "./widgets/Dropdown"
 
 function PlacesList({ places }) {
     const params = useParams()
@@ -20,9 +20,9 @@ function PlacesList({ places }) {
             <h2>{type.charAt(0).toUpperCase() + type.slice(1)} results{locationName}</h2>
             <div>
                 {/* Sort only for attractions */}
-                <SelectionField options={sortPlacesList} defaultValue={sortPlaces} handlerValue={setSortPlaces} />
+                <Dropdown options={sortPlacesList} defaultValue={sortPlaces} handlerValue={setSortPlaces} />
                 {/* min_rating only for attractions and restaurants */}
-                <SelectionField options={minRatingList} defaultValue={minRating} handlerValue={setMinRating} />
+                <Dropdown options={minRatingList} defaultValue={minRating} handlerValue={setMinRating} />
             </div>
             <div>
                 {places.map((place, key) => <PlaceCard key={key} place={place} />)}

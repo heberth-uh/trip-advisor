@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 
-export default function SelectionField({ children, options, defaultValue, handlerValue }) {
+export default function Dropdown({ children, options, defaultValue, handlerValue }) {
     const [showDropdown, setShowDropdown] = useState(false)
     const dropdownRef = useRef()
     const defaultOption = options.filter(option => option.value === defaultValue)[0]

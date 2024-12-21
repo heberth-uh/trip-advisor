@@ -5,14 +5,14 @@ import { useURLParam } from "../hooks/useURLParam"
 import LocationCard from "./LocationCard"
 import Error from "./Error"
 import NoResults from "./NoResults"
-import SelectionField from "./widgets/SelectionField"
+import Dropdown from "./widgets/Dropdown"
 
 function LocationList({ locations }) {
     const {sort, setSort, sortList} = useContext(MainContext)
     return (
         <div>
             <div>
-                <SelectionField options={sortList} defaultValue={sort} handlerValue={setSort} />
+                <Dropdown options={sortList} defaultValue={sort} handlerValue={setSort} />
             </div>
             <section>
                 {locations.map(({ result_object }) => (

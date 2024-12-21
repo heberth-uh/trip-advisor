@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react'
 import { MainContext } from '../context/MainContext'
 // Components
-import SelectionField from './widgets/SelectionField'
+import Dropdown from './widgets/Dropdown'
 import Modal from './Modal'
 import SelectionGrid from './widgets/SelectionGrid'
 import Logo from './Logo'
@@ -29,14 +29,14 @@ export default function Navbar() {
             <Logo />
             <ul className='hidden lg:flex gap-4'>
                 <li>
-                    <SelectionField options={unitList} defaultValue={units} handlerValue={setUnits}>
+                    <Dropdown options={unitList} defaultValue={units} handlerValue={setUnits}>
                         <CgRuler/>
-                    </SelectionField>
+                    </Dropdown>
                 </li>
                 <li>
-                    <SelectionField options={langList} defaultValue={lang} handlerValue={setLang} >
+                    <Dropdown options={langList} defaultValue={lang} handlerValue={setLang} >
                         <FaRegMoneyBillAlt/>
-                    </SelectionField>
+                    </Dropdown>
                 </li>
                 <li>
                     <button onClick={(event) => toggleDialog(event, currencyModalRef)}>

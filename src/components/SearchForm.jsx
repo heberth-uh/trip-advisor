@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 import { MainContext } from "../context/MainContext";
-import SelectionField from "./widgets/SelectionField";
+import Dropdown from "./widgets/Dropdown";
 
 export default function SearchForm({ searchString, setSearchString, searchLocations, isLoading }) {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +23,7 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
             <h1>Where to go?</h1>
             <p>Search for {type} in...</p>
             <form onSubmit={handleSubmit}>
-                <SelectionField options={typeList} defaultValue={type} handlerValue={setType} />
+                <Dropdown options={typeList} defaultValue={type} handlerValue={setType} />
                 <input
                     type="text"
                     placeholder='Paris, Madrid, New York...'
