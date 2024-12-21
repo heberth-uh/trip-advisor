@@ -9,7 +9,6 @@ export default function SelectionField({ children, options, defaultValue, handle
     const defaultOption = options.filter(option => option.value === defaultValue)[0]
     const defaultOptionValue = defaultOption.code || defaultOption.value
 
-    // Fix bug when clicking in button to close the dropwdown
     const handleClickDropdown = () => {
         setShowDropdown(!showDropdown)
     }
@@ -29,7 +28,7 @@ export default function SelectionField({ children, options, defaultValue, handle
     }, [showDropdown])
 
     return (
-        <div className="relative">
+        <div ref={dropdownRef} className="relative">
             <button
                 onClick={handleClickDropdown}
                 className="flex items-center justify-center bg-secondary text-center text-sm font-medium uppercase rounded-full py-[6px] pl-4 pr-3">
@@ -41,7 +40,7 @@ export default function SelectionField({ children, options, defaultValue, handle
                     <IoIosArrowDown className="ml-1" />
                 </span>
             </button>
-            <ul ref={dropdownRef} className={`bg-white border-2 border-light-gray py-1 rounded-xl mt-[2px] overflow-hidden z-50 ${showDropdown ? 'absolute top-full' : 'hidden'}`}>
+            <ul className={`bg-white border-2 border-light-gray py-1 rounded-xl mt-[2px] overflow-hidden z-50 ${showDropdown ? 'absolute top-full' : 'hidden'}`}>
                 {
                     options.map(option => (
                         <li
