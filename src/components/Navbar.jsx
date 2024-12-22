@@ -5,9 +5,12 @@ import Dropdown from './common/Dropdown'
 import Modal from './Modal'
 import SelectionGrid from './common/SelectionGrid'
 import Logo from './Logo'
+import Button from './common/Button'
 // Icons
 import { FaRegMoneyBillAlt } from "react-icons/fa";
 import { CgRuler } from "react-icons/cg";
+import { MdLanguage } from "react-icons/md";
+
 
 
 export default function Navbar() {
@@ -35,13 +38,15 @@ export default function Navbar() {
                 </li>
                 <li>
                     <Dropdown options={langList} defaultValue={lang} handlerValue={setLang} >
-                        <FaRegMoneyBillAlt/>
+                        <MdLanguage/>
                     </Dropdown>
                 </li>
                 <li>
-                    <button onClick={(event) => toggleDialog(event, currencyModalRef)}>
-                        Currency {currency}
-                    </button>
+                    <Button
+                    handleOnclick={(event) => toggleDialog(event, currencyModalRef)}
+                    Icon={FaRegMoneyBillAlt}>
+                        {currency}
+                    </Button>
                 </li>
             </ul>
             <Modal modalRef={currencyModalRef} toggleModal={toggleDialog}>
