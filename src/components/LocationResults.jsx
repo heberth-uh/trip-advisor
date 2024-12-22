@@ -5,7 +5,7 @@ import { useURLParam } from "../hooks/useURLParam"
 import LocationCard from "./LocationCard"
 import Error from "./Error"
 import NoResults from "./NoResults"
-import Dropdown from "./widgets/Dropdown"
+import Dropdown from "./common/Dropdown"
 
 function LocationList({ locations }) {
     const {sort, setSort, sortList} = useContext(MainContext)

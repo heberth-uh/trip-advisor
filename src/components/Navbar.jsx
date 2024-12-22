@@ -1,9 +1,9 @@
 import React, { useContext, useRef } from 'react'
 import { MainContext } from '../context/MainContext'
 // Components
-import Dropdown from './widgets/Dropdown'
+import Dropdown from './common/Dropdown'
 import Modal from './Modal'
-import SelectionGrid from './widgets/SelectionGrid'
+import SelectionGrid from './common/SelectionGrid'
 import Logo from './Logo'
 // Icons
 import { FaRegMoneyBillAlt } from "react-icons/fa";
@@ -27,7 +27,7 @@ export default function Navbar() {
     return (
         <header className='flex items-center lg:justify-between container mx-auto py-7'>
             <Logo />
-            <ul className='hidden lg:flex gap-4'>
+            <ul className='lg:flex gap-4'>
                 <li>
                     <Dropdown options={unitList} defaultValue={units} handlerValue={setUnits}>
                         <CgRuler/>

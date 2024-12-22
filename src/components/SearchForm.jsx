@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 import { MainContext } from "../context/MainContext";
-import Dropdown from "./widgets/Dropdown";
+import Dropdown from "./common/Dropdown";
 
 export default function SearchForm({ searchString, setSearchString, searchLocations, isLoading }) {
     const [searchParams, setSearchParams] = useSearchParams();

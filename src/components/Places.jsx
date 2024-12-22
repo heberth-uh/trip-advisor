@@ -5,7 +5,7 @@ import { MainContext } from "../context/MainContext"
 import PlaceCard from "./PlaceCard"
 import Error from "./Error"
 import NoResults from "./NoResults"
-import Dropdown from "./widgets/Dropdown"
+import Dropdown from "./common/Dropdown"
 
 function PlacesList({ places }) {
     const params = useParams()
