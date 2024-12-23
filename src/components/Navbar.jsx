@@ -30,7 +30,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className='container flex justify-between items-center mx-auto py-4 lg:py-7 relative'>
+        <header className='container flex justify-between items-center mx-auto py-4 lg:py-7'>
             <div className='lg:hidden'>
                 <span onClick={() => setShowMenu(true)} className="text-black text-2xl lg:text-3xl cursor-pointer">
                     <FiMenu />
@@ -38,8 +38,8 @@ export default function Navbar() {
             </div>
             <Logo />
             {/* Mobile Menu */}
-            <div className={`absolute top-0 left-0 bg-white w-[100%] h-[100vh] z-50 ${showMenu ? 'translate-y-0 duration-200 ease-out' : '-translate-y-full duration-100'}`}>
-                <div className='px-6 pt-4'>
+            <div className={`lg:hidden absolute top-0 left-0 bg-white w-[100%] h-[100vh] z-50 ${showMenu ? 'translate-y-0 duration-200 ease-out' : '-translate-y-full duration-100'}`}>
+                <div className='container mx-auto px-6 pt-4'>
                     <div className='flex justify-between items-center'>
                         <h4 className='font-semibold text-xl'>
                             Settings
@@ -97,7 +97,7 @@ export default function Navbar() {
                     <IoIosSearch />
                 </span>
             </div>
-            <Modal modalRef={currencyModalRef} toggleModal={toggleDialog}>
+            <Modal modalRef={currencyModalRef} toggleModal={toggleDialog} title={'Set the currency'}>
                 <SelectionGrid
                     options={currencyList}
                     defaultValue={currency}
