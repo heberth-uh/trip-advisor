@@ -1,6 +1,7 @@
-export default function SelectionGrid({ options, defaultValue, handlerValue, closeOnSelect, modalReftoClose }) {
+// Icons
+import { FaCheck } from "react-icons/fa";
 
-    // special css styles for 'defaultValue'
+export default function SelectionGrid({ options, defaultValue, handlerValue, closeOnSelect, modalReftoClose }) {
 
     const handleChangeValue = (event, value) => {
         event.preventDefault()
@@ -14,13 +15,13 @@ export default function SelectionGrid({ options, defaultValue, handlerValue, clo
                 <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 py-6">
                     {options.map(option => (
                         <button key={option.code} onClick={(event) => handleChangeValue(event, option.code)}
-                            className={`rounded-lg px-2 py-1 ${defaultValue === option.code ? 'bg-black hover:bg-black/80 text-white' : 'bg-secondary hover:bg-light-gray text-black'}`}>
+                            className={`rounded-lg px-3 py-2 ${defaultValue === option.code ? 'bg-black hover:bg-black/80 text-white' : 'bg-secondary hover:bg-light-gray text-black'}`}>
                             <p title={option.name} className="flex flex-col justify-start items-start">
-                                <span>
+                                <span className="flex items-center justify-between w-full text-base font-medium">
                                     {option.code}
-                                    {defaultValue === option.code && '✅'}
+                                    {defaultValue === option.code && <FaCheck/>}
                                 </span>
-                                <span className="text-xs text-start">
+                                <span className="text-xs">
                                     {option.name}
                                 </span>
                             </p>
