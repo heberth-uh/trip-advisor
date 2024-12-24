@@ -17,16 +17,14 @@ export default function SelectionGrid({ options, defaultValue, handlerValue, clo
                         <button key={option.code}
                             onClick={(event) => handleChangeValue(event, option.code)}
                             title={option.name}
-                            className={`flex rounded-lg px-3 py-2 ${defaultValue === option.code ? 'bg-black hover:bg-black/80 text-white' : 'bg-secondary hover:bg-light-gray text-black'}`}>
-                            <div className="flex flex-col justify-start items-start">
-                                <p className="flex items-center justify-between w-full h-full text-base font-medium">
-                                    {option.code}
-                                    {defaultValue === option.code && <FaCheck />}
-                                </p>
-                                <p className="text-xs text-start w-full h-full">
-                                    {option.name}
-                                </p>
-                            </div>
+                            className={`flex flex-col justify-start items-start rounded-lg px-3 py-2 ${defaultValue === option.code ? 'bg-black hover:bg-black/80 text-white' : 'bg-secondary hover:bg-light-gray text-black'}`}>
+                            <p className="flex items-center justify-between w-full text-base font-medium">
+                                {option.code}
+                                {defaultValue === option.code && <FaCheck />}
+                            </p>
+                            <p className="text-xs text-start">
+                                {option.name}
+                            </p>
                         </button>
                     ))
                     }
