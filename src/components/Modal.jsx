@@ -16,8 +16,8 @@ export default function Modal({ modalRef, toggleModal, title, children }) {
 
     return (
         <dialog ref={modalRef} onClick={handleToggleModal} aria-labelledby="modal-title"
-            className="bg-white border-2 border-light-gray rounded-2xl max-h-[60vh] w-screen md:w-3/5 lg:w-1/2 xl:w-2/5 2xl:w-1/3 my-auto">
-            <header className="sticky bottom-0 left-0 bg-white w-full border-b-[1px] px-6 py-4">
+            className="bg-white border-2 border-light-gray rounded-2xl w-screen md:w-3/5 lg:w-1/2 xl:w-2/5 2xl:w-1/3 my-auto">
+            <header className="bg-white w-full border-b-[1px] px-6 py-4">
                 <div className="flex justify-between items-center">
                     <p className='font-medium text-base'>
                         {title}
@@ -27,10 +27,10 @@ export default function Modal({ modalRef, toggleModal, title, children }) {
                     </button>
                 </div>
             </header>
-            <main className="px-6">
+            <main className="px-6 overflow-y-auto max-h-[50vh]">
                 {children}
             </main>
-            <footer className="sticky bottom-0 left-0 bg-white w-full border-t-[1px] px-6 py-4">
+            <footer className="bg-white w-full border-t-[1px] px-6 py-4">
                 <div className="flex justify-end">
                     <Button handleOnclick={(event) => toggleModal(event, modalRef)}>
                         Close
