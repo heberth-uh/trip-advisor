@@ -14,17 +14,19 @@ export default function SelectionGrid({ options, defaultValue, handlerValue, clo
             {!options ? <p>No items availabl</p> :
                 <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 py-6">
                     {options.map(option => (
-                        <button key={option.code} onClick={(event) => handleChangeValue(event, option.code)}
-                            className={`rounded-lg px-3 py-2 ${defaultValue === option.code ? 'bg-black hover:bg-black/80 text-white' : 'bg-secondary hover:bg-light-gray text-black'}`}>
-                            <p title={option.name} className="flex flex-col justify-start items-start">
-                                <span className="flex items-center justify-between w-full text-base font-medium">
+                        <button key={option.code}
+                            onClick={(event) => handleChangeValue(event, option.code)}
+                            title={option.name}
+                            className={`flex rounded-lg px-3 py-2 ${defaultValue === option.code ? 'bg-black hover:bg-black/80 text-white' : 'bg-secondary hover:bg-light-gray text-black'}`}>
+                            <div className="flex flex-col justify-start items-start">
+                                <p className="flex items-center justify-between w-full h-full text-base font-medium">
                                     {option.code}
-                                    {defaultValue === option.code && <FaCheck/>}
-                                </span>
-                                <span className="text-xs">
+                                    {defaultValue === option.code && <FaCheck />}
+                                </p>
+                                <p className="text-xs text-start w-full h-full">
                                     {option.name}
-                                </span>
-                            </p>
+                                </p>
+                            </div>
                         </button>
                     ))
                     }
