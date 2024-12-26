@@ -9,9 +9,12 @@ export default {
       colors: {
         'primary': '#E7AB06',
         'secondary': '#E5E5E5',
-        'yellow': '#FFC014',
+        'highlight': '#FFC014',
         'dark-gray': '#9C9C9C',
         'light-gray': '#DCDCDC'
+      },
+      backgroundImage: {
+        'search-form': "url('public/vacation.jpg')"
       },
       fontFamily: {
         content: ['Poppins', 'sans-serif']

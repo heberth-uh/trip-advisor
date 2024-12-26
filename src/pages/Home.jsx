@@ -14,25 +14,23 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            <div>
-                <SearchForm
-                    searchString={searchString}
-                    setSearchString={setSearchString}
-                    searchLocations={searchLocations}
-                    isLoading={isLoading}
-                />
-                <main>
-                    {
-                        isLoading
-                            ? <div>Loading...</div>
-                            : <LocationResults
-                                locations={locations}
-                                isFirstSearch={isFirstSearch}
-                                error={error}
-                            />
-                    }
-                </main>
-            </div>
+            <SearchForm
+                searchString={searchString}
+                setSearchString={setSearchString}
+                searchLocations={searchLocations}
+                isLoading={isLoading}
+            />
+            <main>
+                {
+                    isLoading
+                        ? <div>Loading...</div>
+                        : <LocationResults
+                            locations={locations}
+                            isFirstSearch={isFirstSearch}
+                            error={error}
+                        />
+                }
+            </main>
         </>
     )
 }
