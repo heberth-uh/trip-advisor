@@ -5,42 +5,48 @@
             "name": "Paris",
             "location": "France",
             "full_name": "Paris, France",
-            "image": "https://media-cdn.tripadvisor.com/media/photo-s/17/15/6d/d6/paris.jpg"
+            "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/17/15/6d/d6/paris.jpg",
+            "location_id": "187147"
         },
         {
             "id": 2,
             "name": "New York City",
             "location": "United States",
             "full_name": "New York City, United States",
-            "image": "https://media-cdn.tripadvisor.com/media/photo-s/1c/c5/7c/68/caption.jpg"
+            "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/1c/c5/7c/68/caption.jpg",
+            "location_id": "60763"
         },
         {
             "id": 3,
             "name": "Tokyo",
             "location": "Japan",
             "full_name": "Tokyo, Japan",
-            "image": "https://media-cdn.tripadvisor.com/media/photo-s/1b/33/f6/60/caption.jpg"
+            "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/27/84/4b/d7/caption.jpg",
+            "location_id": "298184"
         },
         {
             "id": 4,
             "name": "London",
             "location": "UK",
             "full_name": "London, UK",
-            "image": "https://media-cdn.tripadvisor.com/media/photo-o/15/33/f5/de/london.jpg"
+            "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-o/15/33/f5/de/london.jpg",
+            "location_id": "186338"
         },
         {
             "id": 5,
             "name": "Istanbul",
             "location": "Türkiye",
             "full_name": "Istanbul, Türkiye",
-            "image": "https://media-cdn.tripadvisor.com/media/photo-s/1b/33/f6/60/caption.jpg"
+            "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/1b/33/f6/60/caption.jpg",
+            "location_id": "293974"
         },
         {
             "id": 6,
             "name": "Singapore",
             "location": "Singapore",
             "full_name": "Singapore, Singapore",
-            "image": "https://media-cdn.tripadvisor.com/media/photo-o/15/33/fc/b1/singapore.jpg"
+            "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-o/15/33/fc/b1/singapore.jpg",
+            "location_id": "294265"
         }
     ]
 }

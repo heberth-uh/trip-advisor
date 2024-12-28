@@ -1,10 +1,12 @@
+import { useState } from 'react'
+// Hooks
 import { useLocations } from '../hooks/useLocation.js'
+import { useURLParam } from '../hooks/useURLParam.js'
 // Components
 import Navbar from '../components/Navbar.jsx'
 import { LocationResults } from '../components/LocationResults.jsx'
 import SearchForm from '../components/SearchForm.jsx'
-import { useState } from 'react'
-import { useURLParam } from '../hooks/useURLParam.js'
+import PopularCities from '../components/Home/PopularCities.jsx'
 
 export default function Home() {
     const searchParam = useURLParam('search')
@@ -12,7 +14,7 @@ export default function Home() {
     const { locations, searchLocations, isLoading, isFirstSearch, error } = useLocations(searchString)
 
     return (
-        <>
+        <div>
             <Navbar />
             <SearchForm
                 searchString={searchString}
@@ -30,7 +32,8 @@ export default function Home() {
                             error={error}
                         />
                 }
+                <PopularCities/>
             </main>
-        </>
+        </div>
     )
 }

@@ -24,9 +24,9 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
     }
 
     return (
-        <section className="mx-4"> {/* Delete this class, padding-x will be added in Home container */}
+        <section className="mt-3">
             <TypeRadioButton options={typeList} defaultValue={type} handlerValue={setType} />
-            <div className="bg-search-form bg-cover bg-no-repeat rounded-2xl py-10 px-6 min-h-60 lg:min-h-fit relative overflow-hidden">
+            <div className="bg-search-form bg-cover bg-no-repeat rounded-2xl mt-3 py-10 px-6 min-h-60 lg:min-h-fit relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/0 via-black/30 to-black/40" />
                 <div className="flex flex-col gap-6 items-center relative">
                     <h1 className="text-3xl font-semibold text-white drop-shadow-xl">Where to go?</h1>

@@ -2,9 +2,12 @@ import { createContext, useEffect, useState } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 // Data
 import { currencies } from '../data/currencies'
+import popularCitiesData from  '../data/popularCities.json'
 export const MainContext = createContext()
 
 export function MainContextProvider({ children }) {
+    // Static data
+    const [popularCities, setPopularCities] = useState([])
     // general parameters
     const [lang, setLang] = useLocalStorage('lang', 'en_US')
     const [units, setUnits] = useLocalStorage('units', 'km')
@@ -63,11 +66,13 @@ export function MainContextProvider({ children }) {
     ]
 
     useEffect(()=>{
+        setPopularCities(popularCitiesData.data)
         setCurrencyList(currencies.data)
     }, [])
 
     return (
         <MainContext.Provider value={{
+            popularCities,
             lang, setLang, langList,
             units, setUnits, unitList,
             currency, setCurrency, currencyList,
