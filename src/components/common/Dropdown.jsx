@@ -11,7 +11,8 @@ export default function Dropdown({ children, options, defaultValue, handlerValue
     const defaultOption = options.filter(option => option.value === defaultValue)[0]
     const defaultOptionValue = defaultOption.code || defaultOption.value
 
-    const handleClickDropdown = () => {
+    const handleClickDropdown = (event) => {
+        event.preventDefault()
         setShowDropdown(!showDropdown)
     }
 
