@@ -30,7 +30,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className='container flex justify-between items-center mx-auto py-4 lg:py-7'>
+        <header className='px-4 container flex justify-between items-center mx-auto py-4 lg:py-7'>
             <div className='lg:hidden'>
                 <span onClick={() => setShowMenu(true)} className="text-black text-2xl lg:text-3xl cursor-pointer">
                     <FiMenu />
