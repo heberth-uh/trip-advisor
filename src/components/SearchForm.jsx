@@ -24,7 +24,7 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
     }
 
     return (
-        <section className="px-4 mt-3 container mx-auto">
+        <section className="px-4 mt-3 mb-8 md:mb-10 lg:mb-16 container mx-auto">
             <TypeRadioButton options={typeList} defaultValue={type} handlerValue={setType} />
             <div className="bg-search-form bg-cover bg-no-repeat rounded-2xl mt-3 px-6 py-10 lg:py-28 min-h-60 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/0 via-black/30 to-black/40" />

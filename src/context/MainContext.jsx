@@ -3,11 +3,13 @@ import { useLocalStorage } from '../hooks/useLocalStorage'
 // Data
 import { currencies } from '../data/currencies'
 import popularCitiesData from  '../data/popularCities.json'
+import popularAttractionsData from  '../data/popularAttractions.json'
 export const MainContext = createContext()
 
 export function MainContextProvider({ children }) {
     // Static data
     const [popularCities, setPopularCities] = useState([])
+    const [popularAttractions, setPopularAttractions] = useState([])
     // general parameters
     const [lang, setLang] = useLocalStorage('lang', 'en_US')
     const [units, setUnits] = useLocalStorage('units', 'km')
@@ -67,12 +69,13 @@ export function MainContextProvider({ children }) {
 
     useEffect(()=>{
         setPopularCities(popularCitiesData.data)
+        setPopularAttractions(popularAttractionsData.data)
         setCurrencyList(currencies.data)
     }, [])
 
     return (
         <MainContext.Provider value={{
-            popularCities,
+            popularCities, popularAttractions,
             lang, setLang, langList,
             units, setUnits, unitList,
             currency, setCurrency, currencyList,

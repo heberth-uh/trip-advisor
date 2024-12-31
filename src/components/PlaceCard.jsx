@@ -1,15 +1,20 @@
 import { Link, useParams } from 'react-router-dom'
 
-export default function PlaceCard({ place }) {
+export default function PlaceCard({ place, simpleView = false }) {
     const params = useParams()
     const type = params.type
     return (
         <div>
             <Link to={`/${type}/get-details/${place.location_id}`}>
-                <img src={place.photo?.images?.small?.url} alt={place.photo?.caption} />
+                <img src={place.photo?.images?.medium?.url} alt={place.photo?.caption}
+                className='rounded-xl w-[250px] h-[150px] min-w-[220px] min-h-[120px]'/>
             </Link>
-            <p>{place.name}</p>
-            <p>{place.description}</p>
+            <p className='text-base font-semibold'>
+                {place.name}
+            </p>
+            <p className={`${simpleView && 'hidden'}`}>
+                {place.description}
+            </p>
             {
                 place.rating && <p>⭐ {place.rating}</p>
             }
