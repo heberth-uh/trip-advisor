@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { MainContext } from "../../context/MainContext"
-import PlaceCard from "../../components/PlaceCard.jsx"
+// Icon
+import { FaStar } from "react-icons/fa";
 
 export function TopAttractions() {
     const { popularAttractions } = useContext(MainContext)
@@ -14,20 +15,19 @@ export function TopAttractions() {
                     {
                         popularAttractions.map(attraction => (
                             <div key={attraction.location_id}
-                                className="flex-none sflex sflex-colw-[200px] h-[150px]d">
+                                className="flex-none sflex sflex-col max-w-[200px] md:max-w-full">
                                 <img src={attraction.photo?.images?.medium?.url} alt={attraction.photo?.caption}
-                                    className="rounded-lg w-[200px] h-[150px] md:w-full md:h-[200px]" />
-                                <div className="flex justify-between items-center flex-wrap">
-                                    <p className="text-sm font-semibold text-wrap">
+                                    className="rounded-lg w-[200px] h-[150px] md:w-full md:h-[200px] lg:h-[150px]" />
+                                <div className="flex flex-col md:flex-row md:justify-between items-start md:items-start mt-2">
+                                    <p className="text-sm md:text-base font-semibold leading-noned">
                                         {attraction.name}
                                     </p>
-                                    <div>
-                                        {
-                                            attraction.rating && <p>⭐ {attraction.rating}</p>
-                                        }
-                                    </div>
+                                    {attraction.rating && <div className="flex justify-center items-center gap-1">
+                                        <span className="text-highlight"><FaStar/></span>
+                                        <p className="text-sm md:text-base">{attraction.rating}</p>
+                                    </div>}
                                 </div>
-                                <p className="text-xs font-normal">
+                                <p className="text-xs md:text-sm font-normal">
                                     {attraction.location_string}
                                 </p>
                             </div>

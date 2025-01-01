@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar.jsx'
 import { LocationResults } from '../components/LocationResults.jsx'
 import SearchForm from '../components/SearchForm.jsx'
 import PopularCities from '../components/Home/PopularCities.jsx'
+import { TopAttractions } from '../components/Home/TopAttractions.jsx'
 
 export default function Home() {
     const searchParam = useURLParam('search')
@@ -33,6 +34,7 @@ export default function Home() {
                         />
                 }
                 <PopularCities/>
+                <TopAttractions/>
             </main>
         </div>
     )
