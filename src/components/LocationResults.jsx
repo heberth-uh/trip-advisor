@@ -10,19 +10,19 @@ import Dropdown from "./common/Dropdown"
 function LocationList({ locations, query }) {
     const { sort, setSort, sortList } = useContext(MainContext)
     return (
-        <div>
+        <>
             <div className="flex flex-col gap-y-3 mb-4">
                 <h1 className="text-lg font-semibold">
                     Results from <span className="italic font-bold">"{query}"</span>
                 </h1>
                 <Dropdown options={sortList} defaultValue={sort} handlerValue={setSort} />
             </div>
-            <div>
+            <div className="flex flex-col gap-5">
                 {locations.map(({ result_object }) => (
                     <LocationCard location={result_object} key={result_object.location_id} />
                 ))}
             </div>
-        </div>
+        </>
     )
 }
 
