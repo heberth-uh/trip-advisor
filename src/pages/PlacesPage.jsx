@@ -12,13 +12,13 @@ export default function PlacesPage() {
     return (
         <>
             <Navbar />
-            <section>
+            <main className='px-4 pt-4 pb-16 mx-auto container'>
                 {
                     isLoading
                     ? <div>Loading...</div>
                     : <Places places={places} error={error} />
                 }
-            </section>
+            </main>
         </>
     )
 }
