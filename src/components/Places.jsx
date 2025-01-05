@@ -11,23 +11,28 @@ function PlacesList({ places }) {
     const params = useParams()
     const type = params.type
     const ancestor = places[0].ancestors[0]?.name
-    const locationName = ancestor ? ` in ${ancestor}` : ''
+    const typeFormatted = type.charAt(0).toUpperCase() + type.slice(1)
 
     const { sortPlaces, setSortPlaces, sortPlacesList, minRating, setMinRating, minRatingList } = useContext(MainContext)
 
     return (
-        <main>
-            <h2>{type.charAt(0).toUpperCase() + type.slice(1)} results{locationName}</h2>
-            <div>
-                {/* Sort only for attractions */}
-                <Dropdown options={sortPlacesList} defaultValue={sortPlaces} handlerValue={setSortPlaces} />
-                {/* min_rating only for attractions and restaurants */}
-                <Dropdown options={minRatingList} defaultValue={minRating} handlerValue={setMinRating} />
+        <>
+            <div className="flex flex-col gap-y-3 mb-4">
+                <h1 className="text-lg font-semibold">
+                    {typeFormatted} results {ancestor && <span> in <span className="text-primary">{ancestor}</span></span>}
+                </h1>
+
+                <div className="flex gap-2 flex-wrap">
+                    {/* Sort only for attractions */}
+                    <Dropdown options={sortPlacesList} defaultValue={sortPlaces} handlerValue={setSortPlaces} />
+                    {/* min_rating only for attractions and restaurants */}
+                    <Dropdown options={minRatingList} defaultValue={minRating} handlerValue={setMinRating} />
+                </div>
             </div>
-            <div>
+            <section>
                 {places.map((place, key) => <PlaceCard key={key} place={place} />)}
-            </div>
-        </main>
+            </section>
+        </>
     )
 }
 

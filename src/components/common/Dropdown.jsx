@@ -9,7 +9,7 @@ export default function Dropdown({ children, options, defaultValue, handlerValue
     const [showDropdown, setShowDropdown] = useState(false)
     const dropdownRef = useRef(false)
     const defaultOption = options.filter(option => option.value === defaultValue)[0]
-    const defaultOptionValue = defaultOption.code || defaultOption.value
+    const defaultOptionValue = defaultOption.code || defaultOption.value || defaultOption.name
 
     const handleClickDropdown = (event) => {
         event.preventDefault()
