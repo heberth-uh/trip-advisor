@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { MainContext } from "../../context/MainContext";
+import { MainContext } from "../context/MainContext";
 
-export default function CityCard({ location_id, imageUrl, children }) {
+export default function ImagePlace({ location_id, imageUrl, children }) {
     const navigate = useNavigate()
     const { type } = useContext(MainContext)
     return (

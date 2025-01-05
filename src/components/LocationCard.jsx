@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { MainContext } from "../context/MainContext"
 // Components
-import CityCard from "./Home/CityCard";
+import ImagePlace from "./ImagePlace";
 // Icons
 import { PiMapPinSimpleFill } from "react-icons/pi";
 import { IoLocationSharp } from "react-icons/io5";
@@ -11,12 +11,12 @@ export default function LocationCard({ location }) {
 
     return (
         <div className="flex gap-3 lg:gap-4">
-            <CityCard location_id={location.location_id} imageUrl={location.photo?.images?.large.url}>
+            <ImagePlace location_id={location.location_id} imageUrl={location.photo?.images?.large.url}>
                 <p className="text-white text-sm px-3 pb-2 flex justify-start items-center gap-1">
                     <PiMapPinSimpleFill />
                     {location.subcategory[0].name}
                 </p>
-            </CityCard>
+            </ImagePlace>
             <div className="flex flex-col justify-start gap-1">
                 <a href={`/${type}/results/location/${location.location_id}`}>
                     <h4 className="text-base lg:text-lg font-semibold cursor-pointer hover:underline">
