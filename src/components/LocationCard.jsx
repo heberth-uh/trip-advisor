@@ -11,21 +11,27 @@ export default function LocationCard({ location }) {
     const navigate = useNavigate()
 
     return (
-        <div className="flex gap-3 lg:gap-4 cursor-pointer" onClick={() => navigate(`/${type}/results/location/${location.location_id}`)}>
-            <div className="rounded-2xl lg:rounded-2xl overflow-hidden min-w-36 min-h-36 lg:min-w-44 lg:min-h-44 bg-cover bg-no-repeat bg-[20%] relative aspect-square"
-                style={{ backgroundImage: `url('${location.photo?.images?.large.url}')` }}>
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/0 via-black/10 to-black/60" />
+        <div className="flex gap-3 lg:gap-4">
+            <a href={`/${type}/results/location/${location.location_id}`} className="rounded-2xl lg:rounded-2xl overflow-hidden min-w-36 min-h-36 lg:min-w-44 lg:min-h-44 relative">
+                <div className="bg-cover bg-no-repeat bg-[20%] aspect-square cursor-pointer hover:scale-110 transition-all ease-out duration-300"
+                    style={{ backgroundImage: `url('${location.photo?.images?.large.url}')` }}
+                    onClick={() => navigate(`/${type}/results/location/${location.location_id}`)}>
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/0 via-black/5 to-black/60" />
+                </div>
                 <div className="absolute bottom-0 left-0">
                     <p className="text-white text-sm px-3 pb-2 flex justify-start items-center gap-1">
                         <PiMapPinSimpleFill />
                         {location.subcategory[0].name}
                     </p>
                 </div>
-            </div>
+            </a>
+
             <div className="flex flex-col justify-start gap-1">
-                <h4 className="text-base lg:text-lg font-semibold">
-                    {location.name}
-                </h4>
+                <a href={`/${type}/results/location/${location.location_id}`}>
+                    <h4 className="text-base lg:text-lg font-semibold cursor-pointer hover:underline">
+                        {location.name}
+                    </h4>
+                </a>
                 <div className="flex items-start gap-1 font-light">
                     <span className="self-start lg:self-center">
                         <IoLocationSharp />
