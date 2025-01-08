@@ -29,7 +29,7 @@ function PlacesList({ places }) {
                     <Dropdown options={minRatingList} defaultValue={minRating} handlerValue={setMinRating} />
                 </div>
             </div>
-            <section>
+            <section className="flex flex-col gap-5 lg:gap-6">
                 {places.map((place, key) => <PlaceCard key={key} place={place} />)}
             </section>
         </>
