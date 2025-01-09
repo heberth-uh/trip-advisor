@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 // Components
 import ImagePlace from './ImagePlace'
+import Tag from './common/Tag';
 // Icons
 import { IoLocationSharp } from "react-icons/io5";
 
@@ -37,7 +38,11 @@ export default function PlaceCard({ place, simpleView = false }) {
                         <br />
                     </p>
                 </div>
-                <p>{place.open_now_text}</p>
+                <div className='flex'>
+                    <Tag bg={'bg-highlight'}>
+                        {place.open_now_text}
+                    </Tag>
+                </div>
             </div>
         </div>
     )
