@@ -1,9 +1,10 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 // Components
 import ImagePlace from './ImagePlace'
 import Tag from './common/Tag';
 // Icons
 import { IoLocationSharp } from "react-icons/io5";
+import StarsRating from './widgets/StarsRating';
 
 export default function PlaceCard({ place, simpleView = false }) {
     const params = useParams()
@@ -19,11 +20,11 @@ export default function PlaceCard({ place, simpleView = false }) {
         <div className='flex gap-3'>
             <ImagePlace location_id={place.location_id} url={`/${type}/get-details/${place.location_id}`} imageUrl={place.photo?.images?.large?.url} largeImage={true} />
             <div className='flex flex-col justify-between'>
-                <div className='flex flex-col gap-1'>
-                    {place.rating && <div className='text-sm'>⭐ {place.rating}</div>}
-                    <p className='text-sm font-semibold'>
+                <div className='flex flex-col gap-[2px]'>
+                    <StarsRating rate={place.rating} />
+                    <h3 className='text-sm font-semibold'>
                         {place.name}
-                    </p>
+                    </h3>
                     {/* <p className={`${simpleView && 'hidden'}`}>
                         {place.description}
                     </p> */}
@@ -39,9 +40,11 @@ export default function PlaceCard({ place, simpleView = false }) {
                     </p>
                 </div>
                 <div className='flex'>
-                    <Tag bg={'bg-highlight'}>
-                        {place.open_now_text}
-                    </Tag>
+                    {place.open_now_text &&
+                        <Tag bg={'bg-highlight'}>
+                            {place.open_now_text}
+                        </Tag>
+                    }
                 </div>
             </div>
         </div>
