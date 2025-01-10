@@ -18,13 +18,13 @@ export default function PlaceCard({ place, simpleView = false }) {
     const placeUrl = `/${type}/get-details/${place.location_id}`
 
     return (
-        <div className='flex gap-3'>
+        <div className='flex gap-3 md:gap-4 xl:gap-5'>
             <ImagePlace location_id={place.location_id} url={placeUrl} imageUrl={place.photo?.images?.large?.url} largeImage={true} />
             <div className='flex flex-col justify-between'>
-                <div className='flex flex-col gap-[2px]'>
+                <div className='flex flex-col gap-[2px] xl:gap-1'>
                     <StarsRating rate={place.rating} />
                     <a href={placeUrl} className='cursor-pointer hover:underline'>
-                        <h3 className='text-sm font-semibold'>
+                        <h3 className='text-sm md:text-base xl:text-lg font-semibold'>
                             {place.name}
                         </h3>
                     </a>
@@ -32,11 +32,11 @@ export default function PlaceCard({ place, simpleView = false }) {
                         {place.description}
                     </p> */}
                     <p>{place.price}</p>
-                    <p className='text-xs flex gap-1'>
-                        <span className='pt-[2px]'>
+                    <p className='text-xs md:text-sm xl:text-base flex gap-1'>
+                        <span className='pt-[2px] xl:pt-[4px]'>
                             <IoLocationSharp />
                         </span>
-                        <span className=''>
+                        <span className='md:font-light'>
                             {address}
                         </span>
                         <br />
