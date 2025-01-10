@@ -15,16 +15,19 @@ export default function PlaceCard({ place, simpleView = false }) {
             ? `${place.address_obj?.street2}, ${place.address_obj?.postalcode}`
             : place.address
     const address = type === 'hotels' ? place.location_string : formattedAdress
+    const placeUrl = `/${type}/get-details/${place.location_id}`
 
     return (
         <div className='flex gap-3'>
-            <ImagePlace location_id={place.location_id} url={`/${type}/get-details/${place.location_id}`} imageUrl={place.photo?.images?.large?.url} largeImage={true} />
+            <ImagePlace location_id={place.location_id} url={placeUrl} imageUrl={place.photo?.images?.large?.url} largeImage={true} />
             <div className='flex flex-col justify-between'>
                 <div className='flex flex-col gap-[2px]'>
                     <StarsRating rate={place.rating} />
-                    <h3 className='text-sm font-semibold'>
-                        {place.name}
-                    </h3>
+                    <a href={placeUrl} className='cursor-pointer hover:underline'>
+                        <h3 className='text-sm font-semibold'>
+                            {place.name}
+                        </h3>
+                    </a>
                     {/* <p className={`${simpleView && 'hidden'}`}>
                         {place.description}
                     </p> */}
