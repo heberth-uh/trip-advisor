@@ -2,22 +2,22 @@
 import { FaStar } from "react-icons/fa6";
 import { FaStarHalf } from "react-icons/fa6";
 
-export default function StarsRating({ rate, hideNumber = false }) {
+export default function StarsRating({ rate, size='sm', hideNumber = false }) {
     const fullStarsAmount = Math.floor(parseFloat(rate)) // Get the amount full stars
     const stars = new Array(fullStarsAmount).fill(1) // Create an array with the amount of full stars represented by 1
     if (parseFloat(rate) % fullStarsAmount > 0) stars.push(0) // Add a 0 (which represents a half star) if rating has float number
 
     return (
-        <div className="flex gap-[5px]">
+        <div className="flex items-center gap-[5px] xl:gap-2">
             {
                 !hideNumber &&
-                <span className="text-sm">
+                <span className={`${size == 'sm' ? 'text-sm lg:text-base xl:text-lg' : ''}`}>
                     {rate}
                 </span>
             }
-            <div className="flex gap-[2px]">
+            <div className="flex items-center gap-[2px] pb-[3px] xl:pb-[4px]">
                 {stars.map((star, key) =>
-                    <span key={key} className="text-highlight">
+                    <span key={key} className={`text-highlight ${size == 'sm' ? 'text-base xl:text-xl' : ''}`}>
                         {star == 1 ? <FaStar /> : <FaStarHalf />}
                     </span>
                 )}

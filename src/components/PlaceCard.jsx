@@ -28,9 +28,6 @@ export default function PlaceCard({ place, simpleView = false }) {
                             {place.name}
                         </h3>
                     </a>
-                    {/* <p className={`${simpleView && 'hidden'}`}>
-                        {place.description}
-                    </p> */}
                     <p>{place.price}</p>
                     <p className='text-xs md:text-sm xl:text-base flex gap-1'>
                         <span className='pt-[2px] xl:pt-[4px]'>
@@ -41,6 +38,11 @@ export default function PlaceCard({ place, simpleView = false }) {
                         </span>
                         <br />
                     </p>
+                    {   place.description &&
+                        <p className='hidden xl:block text-base font-extralight mt-2'>
+                            {place.description.split('').slice(0, 450).join('') + '...'} <a className='font-normal text-highlight cursor-pointer'>See more</a>
+                        </p>
+                    }
                 </div>
                 <div className='flex'>
                     {place.open_now_text &&
