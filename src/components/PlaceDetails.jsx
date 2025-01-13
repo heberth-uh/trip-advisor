@@ -13,6 +13,9 @@ import Offers from "./Offers"
 import StarsRating from "./widgets/StarsRating"
 // Icons
 import { PiClockCountdownBold } from "react-icons/pi";
+import { IoLocationSharp } from "react-icons/io5";
+import { FaPhoneAlt } from "react-icons/fa";
+import { BiWorld } from "react-icons/bi";
 
 export default function ({ place }) {
     const params = useParams()
@@ -21,7 +24,7 @@ export default function ({ place }) {
     // console.log('reviews', reviews)
 
     return (
-        <section>
+        <section className="flex flex-col gap-10">
             <section>
                 <div className="flex flex-col gap-y-2 lg:flex-row lg:justify-between">
                     <div className="flex justify-between items-center gap-x-3">
@@ -77,10 +80,24 @@ export default function ({ place }) {
                     More information
                 </h2>
 
-                <p>address: <span>{place.address}</span></p>
-                <p>phone: <span>{place.phone}</span></p>
-                {place.website && <p>website: <span>{place.website}</span></p>}
-                {
+                <div className="flex flex-col gap-3">
+                    <div className="flex items-start gap-2 leading-none">
+                        <IoLocationSharp />
+                        <p className="text-sm font-light">{place.address}</p>
+                    </div>
+                    <div className="flex items-start gap-2 text-sm font-light leading-none">
+                        <FaPhoneAlt />
+                        <p>{place.phone}</p>
+                    </div>
+                    {place.website &&
+                        <div className="flex items-start gap-2 leading-none">
+                            <BiWorld />
+                            <p className="text-sm font-light">{place.website}</p>
+                        </div>
+                    }
+                </div>
+            </section>
+            {
                     place.hours?.week_ranges && <Hours hours={place.hours} />
                 }
             </section>
