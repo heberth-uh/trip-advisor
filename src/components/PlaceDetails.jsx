@@ -80,19 +80,25 @@ export default function ({ place }) {
                     More information
                 </h2>
                 <div className="flex flex-col gap-3 mt-3">
-                    <div className="flex items-start gap-2 leading-none">
-                        <IoLocationSharp />
+                    <div className="flex items-center gap-2">
+                        <span>
+                            <IoLocationSharp />
+                        </span>
                         <p className="text-sm font-light">{place.address}</p>
                     </div>
-                    <div className="flex items-start gap-2 text-sm font-light leading-none">
-                        <FaPhoneAlt />
+                    <a href={`tel:${place.phone}`} className="flex items-center gap-2 text-sm font-light">
+                        <span>
+                            <FaPhoneAlt />
+                        </span>
                         <p>{place.phone}</p>
-                    </div>
+                    </a>
                     {place.website &&
-                        <div className="flex items-start gap-2 leading-none">
-                            <BiWorld />
-                            <p className="text-sm font-light">{place.website}</p>
-                        </div>
+                        <a href={place.website} className="flex items-center gap-2" target="_bnlank">
+                            <span>
+                                <BiWorld />
+                            </span>
+                            <span className="text-sm font-light">{place.website}</span>
+                        </a>
                     }
                 </div>
             </section>
