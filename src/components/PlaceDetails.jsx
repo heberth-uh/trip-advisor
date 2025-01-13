@@ -26,7 +26,7 @@ export default function ({ place }) {
     return (
         <section className="flex flex-col gap-10">
             <section>
-                <div className="flex flex-col gap-y-2 lg:flex-row lg:justify-between">
+                <div className="flex flex-col gap-y-2 lg:flex-row lg:justify-between mb-2">
                     <div className="flex justify-between items-center gap-x-3">
                         <h1 className="text-lg font-semibold">
                             {place.name}
@@ -47,12 +47,12 @@ export default function ({ place }) {
                     </div>
                 </div>
 
-                <p>{place.price_level}</p>
                 <img src={place.photo?.images?.large.url} alt={place.name}
                     className="rounded-3xl w-full" />
+                <p>{place.price_level}</p>
                 <p>{place.price}</p>
                 {place.recommended_visit_length &&
-                    <div className="flex items-center gap-1 text-gray-500 text-sm">
+                    <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
                         <PiClockCountdownBold />
                         <p>Duration: {place.recommended_visit_length}</p>
                     </div>
