@@ -16,10 +16,12 @@ export default function Hours({ hours }) {
 
     return (
         <div>
-            <h3>Hours</h3>
+            <h2 className="font-semibold text-lg text-primary mb-2">
+                Working hours
+            </h2>
             {
                 hours.week_ranges.map((day, key) => (
-                    <div key={key}>
+                    <div key={key} className="flex items-center flex-wrap gap-4 justify-between text-base font-light mb-2">
                         <p>{getDay(key)}</p>
                         {
                             day.map((time, key) => (

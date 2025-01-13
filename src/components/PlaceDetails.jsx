@@ -79,8 +79,7 @@ export default function ({ place }) {
                 <h2 className="font-semibold text-lg text-primary mb-2">
                     More information
                 </h2>
-
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 mt-3">
                     <div className="flex items-start gap-2 leading-none">
                         <IoLocationSharp />
                         <p className="text-sm font-light">{place.address}</p>
@@ -98,9 +97,11 @@ export default function ({ place }) {
                 </div>
             </section>
             {
-                    place.hours?.week_ranges && <Hours hours={place.hours} />
-                }
-            </section>
+                place.hours?.week_ranges &&
+                <section>
+                    <Hours hours={place.hours} />
+                </section>
+            }
             {/* Only for attractions */}
             {
                 params.type === 'attractions' &&
