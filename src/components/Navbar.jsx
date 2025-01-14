@@ -63,11 +63,13 @@ export default function Navbar() {
                         </li>
                         <li className='flex justify-between items-center'>
                             <p className='font-medium text-sm'>Currency</p>
-                            <Button
-                                handleOnclick={(event) => toggleDialog(event, currencyModalRef)}
-                                Icon={FaRegMoneyBillAlt}>
-                                {currency}
-                            </Button>
+                            <div>
+                                <Button
+                                    handleOnclick={(event) => toggleDialog(event, currencyModalRef)}
+                                    Icon={FaRegMoneyBillAlt}>
+                                    {currency}
+                                </Button>
+                            </div>
                         </li>
                     </ul>
                 </div>
