@@ -32,9 +32,11 @@ export default function Modal({ modalRef, toggleModal, title, children }) {
             </main>
             <footer className="bg-white w-full border-t-[1px] px-6 py-4">
                 <div className="flex justify-end">
-                    <Button handleOnclick={(event) => toggleModal(event, modalRef)}>
-                        Close
-                    </Button>
+                    <div>
+                        <Button handleOnclick={(event) => toggleModal(event, modalRef)}>
+                            Close
+                        </Button>
+                    </div>
                 </div>
             </footer>
         </dialog>
