@@ -15,7 +15,7 @@ export default function Hours({ hours }) {
     }
 
     return (
-        <div>
+        <section>
             <h2 className="font-semibold text-lg text-primary mb-2">
                 Working hours
             </h2>
@@ -35,6 +35,6 @@ export default function Hours({ hours }) {
                     </div>
                 ))
             }
-        </div>
+        </section>
     )
 }

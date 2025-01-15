@@ -6,7 +6,8 @@ export default function Offers({ offers }) {
     if (offers.offer_list?.length === 0 && offers.ticket_list?.length === 0) return
 
     return (
-        <section>
+        <section className="mt-4">
+            <h3 className="text-base font-medium mb-2">Reserve Now</h3>
             <div className="flex flex-cols gap-1">
                 {
                     offers.offer_list && <Button bg={'primary'}>Show Offers</Button>

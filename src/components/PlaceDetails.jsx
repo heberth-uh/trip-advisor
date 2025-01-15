@@ -27,7 +27,7 @@ export default function ({ place }) {
         <section className="flex flex-col gap-10">
             <section>
                 <div className="flex flex-col gap-y-2 lg:flex-row lg:justify-between mb-2">
-                    <div className="flex justify-between items-center gap-x-3">
+                    <div className="flex justify-between items-center flex-wrap gap-y-1 gap-x-3">
                         <h1 className="text-lg font-semibold">
                             {place.name}
                         </h1>
@@ -41,7 +41,7 @@ export default function ({ place }) {
                         <span className="text-base hidden lg:block">{place.ranking}</span>
                     </div>
 
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center flex-wrap gap-y-1">
                         <StarsRating rate={place.rating} />
                         <span className="text-sm lg:hidden">{place.ranking}</span>
                     </div>
@@ -57,14 +57,19 @@ export default function ({ place }) {
                         <p>Duration: {place.recommended_visit_length}</p>
                     </div>
                 }
+                {/* Only for attractions */}
+                {
+                    params.type === 'attractions' &&
+                    <Offers offers={place.offer_group} />
+                }
             </section>
             <article>
                 <h2 className="font-semibold text-lg text-primary mb-2">About</h2>
-                <p className="text-base font-extralight leading-7 text-balance mb-2">
+                <p className="text-base font-extralight leading-7 text-balance mb-3">
                     {place.description}
                 </p>
                 {place.subcategory &&
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-wrap">
                         {place.subcategory && place.subcategory.map(subcategory => (
                             <Tag key={subcategory.key}>#{subcategory.name}</Tag>
                         ))}
@@ -93,27 +98,19 @@ export default function ({ place }) {
                         <p>{place.phone}</p>
                     </a>
                     {place.website &&
-                        <a href={place.website} className="flex items-center gap-2" target="_bnlank">
+                        <a href={place.website} className="flex items-center gap-2" target="_blank">
                             <span>
                                 <BiWorld />
                             </span>
-                            <span className="text-sm font-light">{place.website}</span>
+                            <span className="text-sm font-light break-all">{place.website}</span>
                         </a>
                     }
                 </div>
             </section>
             {
                 place.hours?.week_ranges &&
-                <section>
-                    <Hours hours={place.hours} />
-                </section>
+                <Hours hours={place.hours} />
             }
-            {/* Only for attractions */}
-            {
-                params.type === 'attractions' &&
-                <Offers offers={place.offer_group} />
-            }
-
             {/* Only for restaurants */}
             {
                 params.type === 'restaurants' &&
