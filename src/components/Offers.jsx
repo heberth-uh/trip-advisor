@@ -45,15 +45,19 @@ export default function Offers({ offers }) {
                 modalRef={offersModalRef}
                 toggleModal={toggleModal}
                 title={'Offers'}
-                >
-                {offers.offer_list.map(offer => <TicketCard key={offer.product_code} ticket={offer} />)}
+            >
+                <div className="flex flex-col gap-y-4 py-4">
+                    {offers.offer_list.map(offer => <TicketCard key={offer.product_code} ticket={offer} />)}
+                </div>
             </Modal>
             <Modal
                 modalRef={ticketsModalRef}
                 toggleModal={toggleModal}
                 title={'Tickets'}
-                >
-                {offers.ticket_list.map(offer => <TicketCard key={offer.product_code} ticket={offer} />)}
+            >
+                <div className="flex flex-col gap-y-4 py-4">
+                    {offers.ticket_list.map(offer => <TicketCard key={offer.product_code} ticket={offer} />)}
+                </div>
             </Modal>
         </section>
     )
