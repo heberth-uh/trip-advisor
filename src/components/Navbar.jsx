@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { MainContext } from '../context/MainContext'
 // Components
 import Dropdown from './common/Dropdown'
@@ -28,6 +28,10 @@ export default function Navbar() {
             ? modalRef.current.close()
             : modalRef.current.showModal()
     }
+
+    useEffect(()=>{
+        document.body.style.overflow = showMenu ? 'hidden' : 'unset'
+    }, [showMenu])
 
     return (
         <header className='px-4 container flex justify-between items-center mx-auto py-4 lg:py-7'>
