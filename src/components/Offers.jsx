@@ -14,9 +14,13 @@ export default function Offers({ offers }) {
     const toggleModal = (event, modalRef) => {
         event.preventDefault()
         if (!modalRef.current) return
-        modalRef.current.hasAttribute('open')
-            ? modalRef.current.close()
-            : modalRef.current.showModal()
+        if (modalRef.current.hasAttribute('open')) {
+            modalRef.current.close()
+            document.body.style.overflow = 'unset'
+        } else {
+            modalRef.current.showModal()
+            document.body.style.overflow = 'hidden'
+        }
     }
 
     return (
