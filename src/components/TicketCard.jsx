@@ -13,7 +13,7 @@ export default function TicketCard({ ticket }) {
                     <p className="font-light">{ticket.price}</p>
                 </div>
                 <div className="self-end">
-                    <a href={ticket.url} target="_blank"
+                    <a href={ticket.url} target="_blank" onClick={(e)=>e.stopPropagation()}
                         className="bg-highlight text-black py-[6px] px-4 rounded-2xl flex items-center gap-1">
                         <span className="text-xs md:text-sm font-medium md:font-normal">
                             Buy ticket
