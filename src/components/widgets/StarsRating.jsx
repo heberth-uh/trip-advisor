@@ -11,13 +11,13 @@ export default function StarsRating({ rate, size='sm', hideNumber = false }) {
         <div className="flex items-center gap-[5px] xl:gap-2">
             {
                 !hideNumber &&
-                <span className={`${size == 'sm' ? 'text-sm lg:text-base xl:text-lg' : ''}`}>
+                <span className={`${size == 'sm' ? 'text-sm lg:text-base xl:text-lg' : size == 'lg' ? 'text-2xl xl:text-[34px] font-light leading-none xl:font-extralight' : ''}`}>
                     {rate}
                 </span>
             }
             <div className="flex items-center gap-[2px] pb-[3px] xl:pb-[4px]">
                 {stars.map((star, key) =>
-                    <span key={key} className={`text-highlight ${size == 'sm' ? 'text-base xl:text-xl' : ''}`}>
+                    <span key={key} className={`text-highlight ${size == 'sm' ? 'text-base xl:text-xl' : size == 'lg' ? 'text-2xl xl:text-3xl' : ''}`}>
                         {star == 1 ? <FaStar /> : <FaStarHalf />}
                     </span>
                 )}
