@@ -80,6 +80,9 @@ export default function ({ place }) {
                     params.type === 'attractions' &&
                     <Offers offers={place.offer_group} />
                 }
+                {/* Only for restaurants */
+                    place.reserve_info && <Booking info={place.reserve_info} />
+                }
             </section>
             <article>
                 <h2 className="font-semibold text-lg text-primary mb-2">About</h2>
@@ -95,9 +98,6 @@ export default function ({ place }) {
                 }
                 {/* <a href={place.write_review} target='_blank'>Want a write a review?</a> */}
             </article>
-            {
-                place.reserve_info && <Booking info={place.reserve_info} />
-            }
             <section>
                 <h2 className="font-semibold text-lg text-primary mb-2">
                     More information
