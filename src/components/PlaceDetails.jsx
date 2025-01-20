@@ -16,6 +16,7 @@ import { PiClockCountdownBold } from "react-icons/pi";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { BiWorld } from "react-icons/bi";
+import { MdOutlineShowChart } from "react-icons/md";
 
 export default function ({ place }) {
     const params = useParams()
@@ -49,14 +50,31 @@ export default function ({ place }) {
 
                 <img src={place.photo?.images?.large.url} alt={place.name}
                     className="rounded-3xl w-full" />
-                <p>{place.price_level}</p>
-                <p>{place.price}</p>
-                {place.recommended_visit_length &&
-                    <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
-                        <PiClockCountdownBold />
-                        <p>Duration: {place.recommended_visit_length}</p>
-                    </div>
-                }
+
+                <div className="flex justify-between items-center flex-wrap gap-y-2">
+                    {place.price &&
+                        <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                            <span className="text-base">
+                                <MdOutlineShowChart />
+                            </span>
+                            <p>{place.price}</p>
+                        </div>
+                    }
+                    {place.price_level &&
+                        <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                            <span className="text-base">
+                                <MdOutlineShowChart />
+                            </span>
+                            <p>{place.price_level}</p>
+                        </div>
+                    }
+                    {place.recommended_visit_length &&
+                        <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                            <PiClockCountdownBold />
+                            <p>Duration: {place.recommended_visit_length}</p>
+                        </div>
+                    }
+                </div>
                 {/* Only for attractions */}
                 {
                     params.type === 'attractions' &&
