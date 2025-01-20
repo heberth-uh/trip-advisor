@@ -1,3 +1,6 @@
+// Components
+import Heading2 from "./common/Heading2"
+
 export default function Hours({ hours }) {
 
     const getDay = (dayNumber) => {
@@ -7,18 +10,16 @@ export default function Hours({ hours }) {
     }
 
     const formatTime = (timeStr) => {
-        if (timeStr > 1300) timeStr = timeStr -1200
+        if (timeStr > 1300) timeStr = timeStr - 1200
         const seconds = timeStr.toString().slice(-2)
-        const minutes = timeStr.toString().slice(0,-2)
+        const minutes = timeStr.toString().slice(0, -2)
         const indicator = seconds < 12 ? 'AM' : 'PM'
         return `${minutes}:${seconds} ${indicator}`
     }
 
     return (
         <section>
-            <h2 className="font-semibold text-lg text-primary mb-2">
-                Working hours
-            </h2>
+            <Heading2>Working Hours</Heading2>
             {
                 hours.week_ranges.map((day, key) => (
                     <div key={key} className="flex items-center flex-wrap gap-4 justify-between text-base font-light mb-2">

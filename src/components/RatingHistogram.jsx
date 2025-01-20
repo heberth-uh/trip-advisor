@@ -1,14 +1,12 @@
 // Components
+import Heading2 from "./common/Heading2";
 import StarsRating from "./widgets/StarsRating";
 
 export default function RatingHistogram({ ratings, rating, num_reviews }) {
     const sort_ratings = Object.entries(ratings).reverse() // Get the sorted descending array of ratings
     return (
         <div>
-            <h2 className="font-semibold text-lg text-primary mb-4">
-                Summary of reviews
-            </h2>
-
+            <Heading2>Summary of reviews</Heading2>
             <div className="flex items-start gap-4 flex-wrap">
                 <div className="flex items-center gap-2">
                     <p className="text-[3rem] font-extralight leading-none">{rating}</p>

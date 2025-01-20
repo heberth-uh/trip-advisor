@@ -8,6 +8,7 @@ import RatingHistogram from "./RatingHistogram"
 import Hours from "./Hours"
 import Cuisine from "./Cuisine"
 import Tag from "./common/Tag"
+import Heading2 from "./common/Heading2"
 import Booking from "./Booking"
 import Offers from "./Offers"
 import StarsRating from "./widgets/StarsRating"
@@ -85,7 +86,7 @@ export default function ({ place }) {
                 }
             </section>
             <article>
-                <h2 className="font-semibold text-lg text-primary mb-2">About</h2>
+                <Heading2>About</Heading2>
                 <p className="text-base font-extralight leading-7 text-balance mb-3">
                     {place.description}
                 </p>
@@ -99,9 +100,7 @@ export default function ({ place }) {
                 {/* <a href={place.write_review} target='_blank'>Want a write a review?</a> */}
             </article>
             <section>
-                <h2 className="font-semibold text-lg text-primary mb-2">
-                    More information
-                </h2>
+                <Heading2>More information</Heading2>
                 <div className="flex flex-col gap-3 mt-3">
                     <div className="flex items-center gap-2">
                         <span>
