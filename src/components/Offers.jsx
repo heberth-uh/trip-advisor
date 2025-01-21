@@ -3,6 +3,7 @@ import { useRef } from "react"
 import Button from "./common/Button"
 import Modal from "./Modal"
 import TicketCard from "./TicketCard"
+import Heading3 from "./common/Heading3"
 
 export default function Offers({ offers }) {
 
@@ -25,7 +26,7 @@ export default function Offers({ offers }) {
 
     return (
         <section className="mt-4">
-            <h3 className="text-base font-medium mb-2">Reserve Now</h3>
+            <Heading3>Reserve Now</Heading3>
             <div className="flex flex-cols gap-1">
                 {
                     offers.offer_list &&

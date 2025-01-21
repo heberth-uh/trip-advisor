@@ -1,10 +1,10 @@
+import Heading3 from "./common/Heading3";
+
 export default function Booking({ info }) {
     return (
         <section className="mt-4">
             <div className="flex justify-between items-center">
-                <h3 className="text-base font-medium mb-2">
-                    Booking
-                </h3>
+                <Heading3>Booking</Heading3>
                 <img src={info.provider_img} alt={info.provider} className="h-4 lg:h-5 mb-2" />
             </div>
             <a href={info.url} target="_blank" onClick={(e) => e.stopPropagation()}
