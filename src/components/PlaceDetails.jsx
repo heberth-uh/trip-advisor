@@ -132,12 +132,14 @@ export default function ({ place }) {
             {
                 params.type === 'restaurants' &&
                 <section>
-                    <h2>Cuisine details</h2>
-                    {place.cuisine && <Cuisine title={'Cuisines'} cuisine={place.cuisine} />}
-                    {place.dietary_restrictions && <Cuisine title={'Special diets'} cuisine={place.dietary_restrictions} />}
-                    {place.meal_types && <Cuisine title={'Types of meal'} cuisine={place.meal_types} />}
-                    {place.dishes && <Cuisine title={'Dishes'} cuisine={place.dishes} />}
-                    {place.sub_cuisine && <Cuisine title={'Sub cuisines'} cuisine={place.sub_cuisine} />}
+                    <Heading2>Cuisine details</Heading2>
+                    <div className="flex flex-col gap-4">
+                        {place.cuisine && <Cuisine title={'Cuisines'} cuisine={place.cuisine} />}
+                        {place.dietary_restrictions && <Cuisine title={'Special diets'} cuisine={place.dietary_restrictions} />}
+                        {place.meal_types && <Cuisine title={'Types of meal'} cuisine={place.meal_types} />}
+                        {place.dishes && <Cuisine title={'Dishes'} cuisine={place.dishes} />}
+                        {place.sub_cuisine && <Cuisine title={'Sub cuisines'} cuisine={place.sub_cuisine} />}
+                    </div>
                 </section>
             }
             {
