@@ -27,8 +27,8 @@ export default function ({ place }) {
 
     return (
         <section className="flex flex-col gap-10">
-            <section>
-                <div className="flex flex-col gap-y-2 lg:flex-row lg:justify-between mb-2">
+            <section className="flex flex-col lg:flex-row lg:flex-wrap gap-y-1">
+                <div className="lg:basis-full flex flex-col gap-y-2 lg:flex-row lg:justify-between mb-2">
                     <div className="flex justify-between items-center flex-wrap gap-y-1 gap-x-3">
                         <h1 className="text-lg font-semibold">
                             {place.name}
@@ -49,41 +49,46 @@ export default function ({ place }) {
                     </div>
                 </div>
 
-                <img src={place.photo?.images?.large.url} alt={place.name}
-                    className="rounded-3xl w-full" />
+                <div className="lg:basis-3/4 lg:pr-6">
+                    <img src={place.photo?.images?.large.url} alt={place.name}
+                        className="rounded-3xl w-full" />
+                </div>
 
-                <div className="flex justify-between items-center flex-wrap gap-y-2">
-                    {place.price &&
-                        <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
-                            <span className="text-base">
-                                <MdOutlineShowChart />
-                            </span>
-                            <p>{place.price}</p>
-                        </div>
+                <div className="lg:basis-1/4 flex flex-col gap-y-3 lg:gap-y-5">
+                    <div className="flex justify-between items-center flex-wrap gap-y-2 lg:order-last">
+                        {place.price &&
+                            <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                                <span className="text-base">
+                                    <MdOutlineShowChart />
+                                </span>
+                                <p>{place.price}</p>
+                            </div>
+                        }
+                        {place.price_level &&
+                            <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                                <span className="text-base">
+                                    <MdOutlineShowChart />
+                                </span>
+                                <p>{place.price_level}</p>
+                            </div>
+                        }
+                        {place.recommended_visit_length &&
+                            <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                                <PiClockCountdownBold />
+                                <p>Duration: {place.recommended_visit_length}</p>
+                            </div>
+                        }
+                    </div>
+                    {/* Only for attractions */}
+                    {
+                        params.type === 'attractions' &&
+                        <Offers offers={place.offer_group} />
                     }
-                    {place.price_level &&
-                        <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
-                            <span className="text-base">
-                                <MdOutlineShowChart />
-                            </span>
-                            <p>{place.price_level}</p>
-                        </div>
-                    }
-                    {place.recommended_visit_length &&
-                        <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
-                            <PiClockCountdownBold />
-                            <p>Duration: {place.recommended_visit_length}</p>
-                        </div>
+                    {/* Only for restaurants */
+                        place.reserve_info && <Booking info={place.reserve_info} />
                     }
                 </div>
-                {/* Only for attractions */}
-                {
-                    params.type === 'attractions' &&
-                    <Offers offers={place.offer_group} />
-                }
-                {/* Only for restaurants */
-                    place.reserve_info && <Booking info={place.reserve_info} />
-                }
+
             </section>
             <article>
                 <Heading2>About</Heading2>

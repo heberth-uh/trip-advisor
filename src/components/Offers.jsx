@@ -25,9 +25,9 @@ export default function Offers({ offers }) {
     }
 
     return (
-        <section className="mt-4">
+        <section>
             <Heading3>Reserve Now</Heading3>
-            <div className="flex flex-cols gap-1">
+            <div className="flex flex-cols gap-1 lg:flex-col lg:gap-y-3">
                 {
                     offers.offer_list &&
                     <Button
