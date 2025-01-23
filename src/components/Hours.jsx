@@ -18,21 +18,23 @@ export default function Hours({ hours }) {
     }
 
     return (
-        <section>
+        <section className="flex flex-col gap-2">
             <Heading2>Working Hours</Heading2>
             {
                 hours.week_ranges.map((day, key) => (
-                    <div key={key} className="flex items-center flex-wrap gap-4 justify-between text-base font-light mb-2">
-                        <p>{getDay(key)}</p>
-                        {
-                            day.map((time, key) => (
-                                <div key={key}>
-                                    <span>{formatTime(time.open_time)}</span>
-                                    <span> - </span>
-                                    <span>{formatTime(time.close_time)}</span>
-                                </div>
-                            ))
-                        }
+                    <div key={key} className="flex items-center flex-wrap justify-between text-base lg:text-sm font-light">
+                        <p className="font-medium">{getDay(key)}</p>
+                        <div className="flex flex-nowrap gap-2">
+                            {
+                                day.map((time, key) => (
+                                    <div key={key}>
+                                        <span>{formatTime(time.open_time)}</span>
+                                        <span> - </span>
+                                        <span>{formatTime(time.close_time)}</span>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
                 ))
             }

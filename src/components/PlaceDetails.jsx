@@ -55,9 +55,9 @@ export default function ({ place }) {
                 </div>
 
                 <div className="lg:basis-1/4 flex flex-col gap-y-3 lg:gap-y-5">
-                    <div className="flex justify-between items-center flex-wrap gap-y-2 lg:order-last">
+                    <div className="flex justify-between items-center flex-wrap gap-y-2 lg:order-2">
                         {place.price &&
-                            <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                            <div className="flex items-center gap-1 text-gray-500 text-sm lg:text-base mt-2">
                                 <span className="text-base">
                                     <MdOutlineShowChart />
                                 </span>
@@ -65,7 +65,7 @@ export default function ({ place }) {
                             </div>
                         }
                         {place.price_level &&
-                            <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                            <div className="flex items-center gap-1 text-gray-500 text-sm lg:text-base mt-2" title="Price level">
                                 <span className="text-base">
                                     <MdOutlineShowChart />
                                 </span>
@@ -73,7 +73,7 @@ export default function ({ place }) {
                             </div>
                         }
                         {place.recommended_visit_length &&
-                            <div className="flex items-center gap-1 text-gray-500 text-sm mt-2">
+                            <div className="flex items-center gap-1 text-gray-500 text-sm lg:text-base mt-2">
                                 <PiClockCountdownBold />
                                 <p>Duration: {place.recommended_visit_length}</p>
                             </div>
@@ -87,6 +87,12 @@ export default function ({ place }) {
                     {/* Only for restaurants */
                         place.reserve_info && <Booking info={place.reserve_info} />
                     }
+                    <div className="hidden lg:block order-last mt-5">
+                        {
+                            place.hours?.week_ranges &&
+                            <Hours hours={place.hours} />
+                        }
+                    </div>
                 </div>
 
             </section>
@@ -129,10 +135,12 @@ export default function ({ place }) {
                     }
                 </div>
             </section>
-            {
-                place.hours?.week_ranges &&
-                <Hours hours={place.hours} />
-            }
+            <div className="lg:hidden">
+                {
+                    place.hours?.week_ranges &&
+                    <Hours hours={place.hours} />
+                }
+            </div>
             {/* Only for restaurants */}
             {
                 params.type === 'restaurants' &&
