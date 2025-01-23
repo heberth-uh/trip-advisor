@@ -148,7 +148,7 @@ export default function ({ place }) {
                 params.type === 'restaurants' &&
                 <section>
                     <Heading2>Cuisine details</Heading2>
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4 lg:grid lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
                         {place.cuisine && <Cuisine title={'Cuisines'} cuisine={place.cuisine} />}
                         {place.dietary_restrictions && <Cuisine title={'Special diets'} cuisine={place.dietary_restrictions} />}
                         {place.meal_types && <Cuisine title={'Types of meal'} cuisine={place.meal_types} />}
