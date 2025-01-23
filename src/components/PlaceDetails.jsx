@@ -96,45 +96,47 @@ export default function ({ place }) {
                 </div>
 
             </section>
-            <article>
-                <Heading2>About</Heading2>
-                <p className="text-base font-extralight leading-7 text-balance mb-3">
-                    {place.description}
-                </p>
-                {place.subcategory &&
-                    <div className="flex gap-2 flex-wrap">
-                        {place.subcategory && place.subcategory.map(subcategory => (
-                            <Tag key={subcategory.key}>#{subcategory.name}</Tag>
-                        ))}
-                    </div>
-                }
-                {/* <a href={place.write_review} target='_blank'>Want a write a review?</a> */}
-            </article>
-            <section>
-                <Heading2>More information</Heading2>
-                <div className="flex flex-col gap-3 mt-3">
-                    <div className="flex items-center gap-2">
-                        <span>
-                            <IoLocationSharp />
-                        </span>
-                        <p className="text-sm font-light">{place.address}</p>
-                    </div>
-                    <a href={`tel:${place.phone}`} className="flex items-center gap-2 text-sm font-light">
-                        <span>
-                            <FaPhoneAlt />
-                        </span>
-                        <p>{place.phone}</p>
-                    </a>
-                    {place.website &&
-                        <a href={place.website} className="flex items-center gap-2" target="_blank">
-                            <span>
-                                <BiWorld />
-                            </span>
-                            <span className="text-sm font-light break-all">{place.website}</span>
-                        </a>
+            <div className="flex flex-col lg:flex-row gap-10">
+                <article className="lg:basis-3/5">
+                    <Heading2>About</Heading2>
+                    <p className="text-base font-extralight leading-7 text-balance lg:text-pretty mb-3">
+                        {place.description}
+                    </p>
+                    {place.subcategory &&
+                        <div className="flex gap-2 flex-wrap">
+                            {place.subcategory && place.subcategory.map(subcategory => (
+                                <Tag key={subcategory.key}>#{subcategory.name}</Tag>
+                            ))}
+                        </div>
                     }
-                </div>
-            </section>
+                    {/* <a href={place.write_review} target='_blank'>Want a write a review?</a> */}
+                </article>
+                <section className="lg:basis-2/5 lg:order-first">
+                    <Heading2>More information</Heading2>
+                    <div className="flex flex-col gap-3 mt-3">
+                        <div className="flex items-center gap-2">
+                            <span>
+                                <IoLocationSharp />
+                            </span>
+                            <p className="text-sm font-light">{place.address}</p>
+                        </div>
+                        <a href={`tel:${place.phone}`} className="flex items-center gap-2 text-sm font-light">
+                            <span>
+                                <FaPhoneAlt />
+                            </span>
+                            <p>{place.phone}</p>
+                        </a>
+                        {place.website &&
+                            <a href={place.website} className="flex items-center gap-2" target="_blank">
+                                <span>
+                                    <BiWorld />
+                                </span>
+                                <span className="text-sm font-light break-all">{place.website}</span>
+                            </a>
+                        }
+                    </div>
+                </section>
+            </div>
             <div className="lg:hidden">
                 {
                     place.hours?.week_ranges &&
