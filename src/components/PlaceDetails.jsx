@@ -169,18 +169,22 @@ export default function ({ place }) {
                     </ul>
                 </div>
             }
-            {
-                place.rating_histogram && <RatingHistogram ratings={place.rating_histogram} rating={place.rating} num_reviews={place.num_reviews} />
-            }
-            <hr />
-            {
-                // Reviews
-                isLoading
-                    ? <div>Loading...</div>
-                    : error
-                        ? <Error>{error}</Error>
-                        : <Reviews reviews={reviews} />
-            }
+            <section className="flex flex-col md:flex-row gap-10">
+                {
+                    place.rating_histogram &&
+                    <div className="lg:basis-2/5">
+                        <RatingHistogram ratings={place.rating_histogram} rating={place.rating} num_reviews={place.num_reviews} />
+                    </div>
+                }
+                {
+                    // Reviews
+                    isLoading
+                        ? <div>Loading...</div>
+                        : error
+                            ? <Error>{error}</Error>
+                            : <Reviews reviews={reviews} />
+                }
+            </section>
         </section>
     )
 }
