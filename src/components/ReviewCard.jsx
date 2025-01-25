@@ -22,7 +22,7 @@ export default function ReviewCard({ review }) {
                 <StarsRating rate={review.rating} />
             </div>
             <div>
-                <h4 className="text-base font-medium mb-1">
+                <h4 className="text-sm font-medium mb-1">
                     {review.title}
                 </h4>
                 <p className="text-sm font-extralight leading-6">
@@ -43,10 +43,16 @@ export default function ReviewCard({ review }) {
             }
             {
                 review.owner_response &&
-                <div>
-                    <p>{review.owner_response.responder}</p>
-                    <p>{review.owner_response.text}</p>
-                    <p>{formatDate(review.owner_response.published_date)}</p>
+                <div className="flex flex-col gap-y-2 border-l-4 border-lighter-gray pl-5 ml-10">
+                    <p className="text-sm font-medium">
+                        {review.owner_response.responder}
+                    </p>
+                    <p className="text-sm font-extralight leading-6">
+                        {review.owner_response.text}
+                    </p>
+                    <p className="text-[#747474] text-sm font-light text-end">
+                        {formatDate(review.owner_response.published_date)}
+                    </p>
                 </div>
             }
             <hr />
