@@ -22,10 +22,10 @@ export default function ReviewCard({ review }) {
                 <StarsRating rate={review.rating} />
             </div>
             <div>
-                <h4 className="text-sm font-medium mb-1">
+                <h4 className="text-base font-medium mb-1">
                     {review.title}
                 </h4>
-                <p className="text-sm font-extralight leading-6">
+                <p className="text-base font-extralight leading-6">
                     {review.text}
                 </p>
             </div>
