@@ -1,6 +1,5 @@
 export default function Gallery({ photos, alt }) {
     // it need a dialog to show each photo in high quality, date and user
-    console.log(photos)
     const photosList = photos.length > 4 ? photos.slice(0, 3) : photos
     return (
         <section className="flex gap-2">
