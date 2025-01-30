@@ -9,7 +9,6 @@ import { FaAngleUp } from "react-icons/fa6";
 export default function ReviewCard({ review }) {
 
     const [isExpanded, setIsExpanded] = useState(false)
-    // this method need to be callable everywhere (hook/useState)
     function formatDate(stringDate) {
         let newDate = new Date(stringDate)
         return newDate.toDateString()
@@ -19,6 +18,10 @@ export default function ReviewCard({ review }) {
         let textArray = text.split(' ')
         if (textArray.length <= length) return text
         return textArray.slice(0, length).join(' ') + '...'
+    }
+
+    const toggleExapand = () => {
+        setIsExpanded(!isExpanded)
     }
 
     return (
@@ -38,15 +41,20 @@ export default function ReviewCard({ review }) {
                 <p className="text-base font-extralight leading-6">
                     {isExpanded ? review.text : shortenText(review.text, 30)}
                     {
-                        review.text.split(' ').length > 30 ? isExpanded ?
-                            <span className="text-primary font-normal flex items-center">
-                                Read more <FaAngleDown />
-                            </span>
-                            :
-                            <span className="text-primary font-normal flex items-center">
-                                Read less <FaAngleUp />
-                            </span>
-                            : ''
+                        review.text.split(' ').length > 30 &&
+                        <span className="text-primary font-normal"
+                            onClick={() => toggleExapand()}
+                            role="button"
+                        >
+                            {isExpanded
+                                ? <span className=" flex items-center">
+                                    Read less <FaAngleUp />
+                                </span>
+                                : <span className=" flex items-center">
+                                    Read more <FaAngleDown />
+                                </span>
+                            }
+                        </span>
                     }
                 </p>
             </div>
