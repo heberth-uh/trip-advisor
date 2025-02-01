@@ -25,7 +25,6 @@ export default function ReviewCard({ review }) {
         setIsExpanded(!isExpanded)
     }
 
-
     const toggleExandReviews = () => {
         setAnswersExpanded(!answersExpanded)
     }
