@@ -1,8 +1,10 @@
 // Components
 import Heading2 from "./common/Heading2";
+import ProgressBar from "./common/ProgressBar";
 import StarsRating from "./widgets/StarsRating";
 
 export default function RatingHistogram({ ratings, rating, num_reviews }) {
+    console.log(ratings)
     const sort_ratings = Object.entries(ratings).reverse() // Get the sorted descending array of ratings
     return (
         <div>
@@ -19,14 +21,7 @@ export default function RatingHistogram({ ratings, rating, num_reviews }) {
                 </div>
                 <div className="flex flex-col gap-y-[2px]">
                     {Object.values(sort_ratings).map((rating, key) =>
-                        <div key={key} className="flex items-center gap-2 grow">
-                            <p className="text-xs text-end font-light w-2">
-                                {rating[0].split('_')[1]}
-                            </p>
-                            <div className="bg-[#EBEBEB] min-w-32 max-w-40 h-[4px] rounded-full overflow-hidden">
-                                <div className={`bg-[#C8C8C8] w-[${Math.ceil(100 * parseInt(rating[1]) / parseInt(num_reviews))}%] h-full`} />
-                            </div>
-                        </div>
+                        <ProgressBar key={key} rating={rating} num_reviews={num_reviews} />
                     )}
                 </div>
             </div>

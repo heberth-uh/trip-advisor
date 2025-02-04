@@ -2,7 +2,6 @@
 import { Image } from "antd";
 
 export default function Gallery({ photos, alt }) {
-    // it need a dialog to show each photo in high quality, date and user
     return (
         <section className="flex gap-2">
             <Image.PreviewGroup
