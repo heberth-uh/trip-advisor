@@ -6,7 +6,7 @@ import Tag from './common/Tag';
 import { IoLocationSharp } from "react-icons/io5";
 import StarsRating from './widgets/StarsRating';
 
-export default function PlaceCard({ place, simpleView = false }) {
+export default function PlaceCard({ place }) {
     const params = useParams()
     const type = params.type
     const formattedAdress = place.address_obj?.street1
