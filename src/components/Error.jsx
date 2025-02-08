@@ -1,7 +1,7 @@
 import Heading3 from "./common/Heading3"
 import errorImg from "../../public/error-preview.png"
 
-export default function Error({ children }) {
+export default function Error({ children, showImage=true }) {
     return (
         <div>
             <Heading3>Ops! Something went wrong</Heading3>
@@ -13,9 +13,11 @@ export default function Error({ children }) {
                     {children}
                 </i>
             </div>
-            <div className="my-2 flex justify-center">
-                <img src={errorImg} className="h-60 w-60" alt="Error illustration" />
-            </div>
+            {showImage &&
+                <div className="my-2 flex justify-center">
+                    <img src={errorImg} className="h-60 w-60" alt="Error illustration" />
+                </div>
+            }
         </div>
     )
 }

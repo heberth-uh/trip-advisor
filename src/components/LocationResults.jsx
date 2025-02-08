@@ -32,10 +32,9 @@ export function LocationResults({ locations, isFirstSearch, error }) {
     return (
         <section className="px-4 pt-4 pb-16 mx-auto container">
             {
-                error && <Error>{error}</Error>
-            }
-            {
-                locations?.length > 0
+                error
+                ? <Error showImage={false}>{error}</Error>
+                : locations?.length > 0
                     ? <LocationList locations={locations} query={searchParam} />
                     : !isFirstSearch.current && <NoResults message={message} />
             }
