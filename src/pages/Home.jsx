@@ -8,6 +8,7 @@ import { LocationResults } from '../components/LocationResults.jsx'
 import SearchForm from '../components/SearchForm.jsx'
 import PopularCities from '../components/Home/PopularCities.jsx'
 import { TopAttractions } from '../components/Home/TopAttractions.jsx'
+import ResultsSkeleton from '../components/loaders/ResultsSkeleton.jsx'
 
 export default function Home() {
     const searchParam = useURLParam('search')
@@ -26,7 +27,7 @@ export default function Home() {
             <main>
                 {
                     isLoading
-                        ? <div>Loading...</div>
+                        ? <ResultsSkeleton/>
                         : <LocationResults
                             locations={locations}
                             isFirstSearch={isFirstSearch}
