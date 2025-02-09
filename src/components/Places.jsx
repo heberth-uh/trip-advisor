@@ -10,7 +10,7 @@ import Dropdown from "./common/Dropdown"
 function PlacesList({ places }) {
     const params = useParams()
     const type = params.type
-    const ancestor = places[0].ancestors[0]?.name
+    const ancestor = places[0].ancestors ? places[0].ancestors[0].name : places[0].location_string
     const typeFormatted = type.charAt(0).toUpperCase() + type.slice(1)
 
     const { sortPlaces, setSortPlaces, sortPlacesList, minRating, setMinRating, minRatingList } = useContext(MainContext)
