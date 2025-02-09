@@ -3,6 +3,7 @@ import { usePlacesList } from '../hooks/usePlacesList'
 // Components
 import Navbar from '../components/Navbar'
 import { Places } from '../components/Places'
+import PlacesSkeleton from '../components/loaders/PlacesSkeleton'
 
 export default function PlacesPage() {
     const params = useParams()
@@ -15,7 +16,7 @@ export default function PlacesPage() {
             <main className='px-4 pt-4 pb-16 mx-auto container'>
                 {
                     isLoading
-                    ? <div>Loading...</div>
+                    ? <PlacesSkeleton/>
                     : <Places places={places} error={error} />
                 }
             </main>
