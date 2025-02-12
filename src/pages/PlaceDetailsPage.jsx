@@ -5,6 +5,7 @@ import PlaceDetails from '../components/PlaceDetails.jsx';
 import { usePlaceDetails } from '../hooks/usePlaceDetails.js';
 import Navbar from '../components/Navbar.jsx';
 import Error from '../components/Error.jsx';
+import PlaceDetailsSkeleton from '../components/loaders/PlaceDetailsSkeleton.jsx';
 
 export default function PlaceDetailsPage() {
 
@@ -20,7 +21,7 @@ export default function PlaceDetailsPage() {
             <main className='px-4 pt-4 pb-16 mx-auto container'>
                 {
                     isLoading
-                        ? <div>Loading...</div>
+                        ? <PlaceDetailsSkeleton/>
                         : error
                             ? <Error>{error}</Error>
                             : <PlaceDetails place={place} />
