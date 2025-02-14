@@ -14,7 +14,8 @@ export function TopAttractions() {
                 <div className="flex items-start justify-start gap-3 md:grid md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-8 overflow-x-auto scrollbar-invisible">
                     {
                         popularAttractions.map(attraction => (
-                            <div key={attraction.location_id}
+                            <a key={attraction.location_id}
+                                href={`/attractions/get-details/${attraction.location_id}`}
                                 className="flex-none sflex sflex-col max-w-[200px] md:max-w-full">
                                 <img src={attraction.photo?.images?.medium?.url} alt={attraction.photo?.caption}
                                     className="rounded-lg w-[200px] h-[150px] md:w-full md:h-[200px] lg:h-[150px]" />
@@ -30,7 +31,7 @@ export function TopAttractions() {
                                 <p className="text-xs md:text-sm font-normal">
                                     {attraction.location_string}
                                 </p>
-                            </div>
+                            </a>
                         ))
                     }
                 </div>
