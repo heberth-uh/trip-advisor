@@ -28,7 +28,7 @@ export default function Home() {
                 {
                     isLoading
                         ? <ResultsSkeleton/>
-                        : <LocationResults
+                        : !isFirstSearch.current && <LocationResults
                             locations={locations}
                             isFirstSearch={isFirstSearch}
                             error={error}
