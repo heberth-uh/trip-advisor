@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { MainContext } from "../context/MainContext";
 // Components
@@ -10,11 +10,14 @@ import { IoIosSearch } from "react-icons/io";
 
 export default function SearchForm({ searchString, setSearchString, searchLocations, isLoading }) {
     const [searchParams, setSearchParams] = useSearchParams();
+    const prevSearch = useRef(null)
     const { type, setType, typeList } = useContext(MainContext)
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (searchString === prevSearch.current) return
         setSearchParams({ search: searchString })
+        prevSearch.current = searchString // Update previous search to compare it in the next submit
         searchLocations()
     }
 
@@ -41,6 +44,7 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
                         </div>
                         <input
                             type="text"
+                            name="searchInput"
                             placeholder='Paris, Madrid, New York...'
                             value={searchString}
                             onChange={handleChangeString}
