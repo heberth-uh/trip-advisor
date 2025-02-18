@@ -15,7 +15,8 @@ export default {
         'lighter-gray': '#EFEFEF'
       },
       backgroundImage: {
-        'search-form': "url('public/vacation.jpg')"
+        'search-form': "url('public/vacation.jpg')",
+        'hero': "url('public/blob-scene.svg')"
       },
       fontFamily: {
         content: ['Poppins', 'sans-serif']
