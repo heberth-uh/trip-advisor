@@ -17,9 +17,10 @@ export default function Hero() {
                             Find the best places to visit, explore hidden gems, and experience unforgettable moments
                         </p>
                         <div className="mx-auto">
-                            <Button bg={'dark'} Icon={FaPaperPlane} >
+                            <a href="#searchSection" className="flex justify-center items-center gap-[6px] py-[6px] lg:py-[10px] pl-4 pr-3 lg:pl-5 lg:pr-4 bg-black hover:bg-primary text-white hover:text-black text-sm lg:text-base font-medium lg:font-semibold rounded-full uppercase">
                                 Start
-                            </Button>
+                                <FaPaperPlane/>
+                            </a>
                         </div>
                     </div>
                     <div className="grid grid-cols-4 lg:grid-cols-8 gap-5 min-w-[320px] w-full">
