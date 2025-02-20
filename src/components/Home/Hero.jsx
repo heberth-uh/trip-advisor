@@ -1,11 +1,14 @@
 import curveSvg from "../../../public/curve.svg"
-import picture1 from "../../../public/hero-pic-01.jpg"
+import picture1 from "../../../public/hero-pic1.jpg"
+import picture2 from "../../../public/hero-pic2.jpg"
+import picture3 from "../../../public/hero-pic3.jpg"
+import picture4 from "../../../public/hero-pic4.jpg"
 // Icons
 import { FaPaperPlane } from "react-icons/fa";
 
 export default function Hero() {
     return (
-        <section className="bg-hero bg-center bg-cover bg-no-repeat h-[90vh]">
+        <section className="bg-hero bg-center bg-cover bg-no-repeat dh-[90vh]">
             <div className="px-4 py-10 pb-16 mx-auto container">
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -23,16 +26,24 @@ export default function Hero() {
                             </span>
                         </div>
                         <div className="mx-auto">
-                            <a href="#searchSection" className="py-[6px] lg:py-[10px] pl-4 pr-3 lg:pl-5 lg:pr-4 bg-black hover:bg-primary text-white hover:text-black text-sm lg:text-base font-medium lg:font-semibold rounded-full uppercase">
+                            <a href="#searchSection" className="py-[6px] lg:py-[10px] pl-4 pr-3 lg:pl-5 lg:pr-4 bg-black hover:bg-primary text-white hover:text-white text-sm lg:text-base font-medium lg:font-semibold rounded-full uppercase">
                                 Start
                             </a>
                         </div>
                     </div>
                     <div className="grid grid-cols-4 lg:grid-cols-8 gap-5 min-w-[320px] w-full">
-                        <div className="h-[300px] lg:h-[400px] col-span-2 sm:col-span-1 lg:sm:col-span-3 bg-emerald-700 rounded-tr-full rounded-b-full hover:transition-all hover:translate-x-2 hover:translate-y-2 ease-in-out hover:duration-500 duration-500"/>
-                        <div className="h-[300px] lg:h-[400px] col-span-2 sm:col-span-3 lg:sm:col-span-5 bg-emerald-700 rounded-t-full rounded-bl-full hover:transition-all hover:-translate-x-2 hover:translate-y-2 ease-in-out hover:duration-500 duration-500"/>
-                        <div className="h-[200px] lg:h-[300px] col-span-2 sm:col-span-3 lg:sm:col-span-5 bg-emerald-700 rounded-t-full rounded-br-full hover:transition-all hover:translate-x-2 hover:-translate-y-2 ease-in-out hover:duration-500 duration-500"/>
-                        <div className="h-[200px] lg:h-[300px] col-span-2 sm:col-span-1 lg:sm:col-span-3 bg-emerald-700 rounded-tr-full rounded-b-full hover:transition-all hover:translate-x-2 hover:-translate-y-2 ease-in-out hover:duration-500 duration-500"/>
+                        <div className="h-[200px] sm:h-[300px] lg:h-[400px] col-span-2 sm:col-span-1 lg:sm:col-span-3 rounded-tr-full rounded-b-full hover:transition-all hover:translate-x-2 hover:translate-y-2 ease-in-out hover:duration-500 duration-500 overflow-hidden">
+                            <img src={picture4} className="w-full h-full object-cover object-center bg-coverbg-centerbg-no-repeat" alt="vacation picture"/>
+                        </div>
+                        <div className="h-[200px] sm:h-[300px] lg:h-[400px] col-span-2 sm:col-span-3 lg:sm:col-span-5 rounded-t-full rounded-bl-full hover:transition-all hover:-translate-x-2 hover:translate-y-2 ease-in-out hover:duration-500 duration-500 overflow-hidden">
+                            <img src={picture1} className="w-full h-full object-cover object-center bg-coverbg-centerbg-no-repeat" alt="vacation picture"/>
+                        </div>
+                        <div className="h-[100px] sm:h-[200px] lg:h-[300px] col-span-2 sm:col-span-3 lg:sm:col-span-5 rounded-t-full rounded-br-full hover:transition-all hover:translate-x-2 hover:-translate-y-2 ease-in-out hover:duration-500 duration-500 overflow-hidden">
+                            <img src={picture3} className="w-full h-full object-cover object- bg-coverbg-centerbg-no-repeat" alt="vacation picture"/>
+                        </div>
+                        <div className="h-[100px] sm:h-[200px] lg:h-[300px] col-span-2 sm:col-span-1 lg:sm:col-span-3 rounded-tr-full rounded-b-full hover:transition-all hover:translate-x-2 hover:-translate-y-2 ease-in-out hover:duration-500 duration-500 overflow-hidden">
+                            <img src={picture2} className="w-full h-full object-cover object- bg-coverbg-centerbg-no-repeat" alt="vacation picture"/>
+                        </div>
                     </div>
                 </div>
 
