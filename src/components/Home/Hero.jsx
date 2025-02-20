@@ -1,3 +1,6 @@
+import { useContext } from "react"
+import { MainContext } from "../../context/MainContext"
+// Media
 import curveSvg from "../../../public/curve.svg"
 import picture1 from "../../../public/hero-pic1.jpg"
 import picture2 from "../../../public/hero-pic2.jpg"
@@ -7,6 +10,12 @@ import picture4 from "../../../public/hero-pic4.jpg"
 import { FaPaperPlane } from "react-icons/fa";
 
 export default function Hero() {
+    const { searchInputRef } = useContext(MainContext)
+
+    const handleStart = e => {
+        e.preventDefault()
+        searchInputRef?.current.focus()
+    }
     return (
         <section className="bg-hero bg-center bg-cover bg-no-repeat dh-[90vh]">
             <div className="px-4 py-10 pb-16 mx-auto container">
@@ -26,7 +35,7 @@ export default function Hero() {
                             </span>
                         </div>
                         <div className="mx-auto">
-                            <a href="#searchSection" className="py-[6px] lg:py-[10px] pl-4 pr-3 lg:pl-5 lg:pr-4 bg-black hover:bg-primary text-white hover:text-white text-sm lg:text-base font-medium lg:font-semibold rounded-full uppercase">
+                            <a href="#searchSection" onClick={(e) => handleStart(e)} className="py-[6px] lg:py-[10px] pl-4 pr-3 lg:pl-5 lg:pr-4 bg-black hover:bg-primary text-white hover:text-white text-sm lg:text-base font-medium lg:font-semibold rounded-full uppercase">
                                 Start
                             </a>
                         </div>

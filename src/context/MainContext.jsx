@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 // Data
 import { currencies } from '../data/currencies'
@@ -20,6 +20,8 @@ export function MainContextProvider({ children }) {
     const [sort, setSort] = useState('relevance') // relevance | distance
     const [sortPlaces, setSortPlaces] = useState('recommended') // recommended | ranking
     const [minRating, setMinRating] = useState(false) // 3|4|5
+
+    const searchInputRef = useRef(null)
 
     const typeList = [
         {
@@ -82,7 +84,8 @@ export function MainContextProvider({ children }) {
             type, setType, typeList,
             sort, setSort, sortList,
             sortPlaces, setSortPlaces, sortPlacesList,
-            minRating, setMinRating, minRatingList
+            minRating, setMinRating, minRatingList,
+            searchInputRef
         }}
         >
             {children}

@@ -11,7 +11,7 @@ import { IoIosSearch } from "react-icons/io";
 export default function SearchForm({ searchString, setSearchString, searchLocations, isLoading }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const prevSearch = useRef(null)
-    const { type, setType, typeList } = useContext(MainContext)
+    const { type, setType, typeList, searchInputRef } = useContext(MainContext)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -45,6 +45,7 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
                         <input
                             type="text"
                             name="searchInput"
+                            ref={searchInputRef}
                             placeholder='Paris, Madrid, New York...'
                             value={searchString}
                             onChange={handleChangeString}
