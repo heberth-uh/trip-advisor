@@ -1,25 +1,30 @@
-// Components
-import Button from "../../components/common/Button"
+import curveSvg from "../../../public/curve.svg"
+import picture1 from "../../../public/hero-pic-01.jpg"
 // Icons
 import { FaPaperPlane } from "react-icons/fa";
 
 export default function Hero() {
     return (
-        <section className="bg-hero bg-centers bg-cover bg-no-repeat h-[90vh]">
+        <section className="bg-hero bg-center bg-cover bg-no-repeat h-[90vh]">
             <div className="px-4 py-10 pb-16 mx-auto container">
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div className="flex flex-col justify-center gap-y-5">
-                        <h2 class="text-3xl lg:text-5xl text-center font-semibold text-dark drop-shadow-xl">
+                        <h2 class="text-2xl lg:text-5xl text-center font-semibold text-dark drop-shadow-xl">
                             Discover your next adventure
                         </h2>
-                        <p className="text-black font-light text-center mx-10">
+                        <p className="text-black font-light text-center lg:mx-10">
                             Find the best places to visit, explore hidden gems, and experience unforgettable moments
                         </p>
-                        <div className="mx-auto">
-                            <a href="#searchSection" className="flex justify-center items-center gap-[6px] py-[6px] lg:py-[10px] pl-4 pr-3 lg:pl-5 lg:pr-4 bg-black hover:bg-primary text-white hover:text-black text-sm lg:text-base font-medium lg:font-semibold rounded-full uppercase">
-                                Start
+                        <div className="hidden md:flex justify-center items-start my-1">
+                            <img src={curveSvg} className="w-60 lg:w-80" aria-hidden/>
+                            <span className="text-[30px] animate-float">
                                 <FaPaperPlane/>
+                            </span>
+                        </div>
+                        <div className="mx-auto">
+                            <a href="#searchSection" className="py-[6px] lg:py-[10px] pl-4 pr-3 lg:pl-5 lg:pr-4 bg-black hover:bg-primary text-white hover:text-black text-sm lg:text-base font-medium lg:font-semibold rounded-full uppercase">
+                                Start
                             </a>
                         </div>
                     </div>
