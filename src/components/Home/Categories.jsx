@@ -1,5 +1,8 @@
 // Components
 import Heading1 from "../common/Heading1";
+import { CategoryCard } from "../CategoryCard";
+// Media
+import imgCategory1 from "../../../public/categories/mountains.jpg"
 
 export default function Categories() {
   return (
@@ -7,35 +10,19 @@ export default function Categories() {
       <div className="container py-16 lg:py-16 md:px-10 mx-auto lg:w-3/4 xl:w-3/5 2xl:w-1/2">
 
         <Heading1>Inspiration for your Next Trip</Heading1>
-		<div className="flex flex-col gap-4">
-
-			<div className="flex justify- gap-4">
-				<div className="shape size-20 bg-dry-green">
-					<img src="" alt="Adventure picture" />
-				</div>
-				<div>
-					<h3>
-						Adventure
-					</h3>
-					<p>
-						Description of category goes here.
-					</p>
-				</div>
-			</div>
-			<div className="flex justify- gap-4">
-				<div className="shape size-20 bg-dry-green">
-					<img src="" alt="Adventure picture" />
-				</div>
-				<div>
-					<h3>
-						Adventure
-					</h3>
-					<p>
-						Description of category larger than the previous one goes here.
-					</p>
-				</div>
-			</div>
-
+		<div className="flex flex-col gap-8">
+			<CategoryCard title={'Adventure'} imgSrc={imgCategory1}>
+				Ideal destination for hiking or extreme sports
+			</CategoryCard>
+			<CategoryCard title={'Relax'} imgSrc={imgCategory1}>
+				places with beaches, spas and luxury resorts
+			</CategoryCard>
+			<CategoryCard title={'Gastronomy'} imgSrc={imgCategory1}>
+				Cities with outstanding food
+			</CategoryCard>
+			<CategoryCard title={'Culture'} imgSrc={imgCategory1}>
+				Cities with history and iconic monuments
+			</CategoryCard>
 		</div>
 
       </div>
