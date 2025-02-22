@@ -22,7 +22,7 @@ export default function Hero() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div className="flex flex-col justify-center gap-y-5">
-                        <h2 class="text-2xl lg:text-5xl text-center font-semibold text-dark drop-shadow-xl">
+                        <h2 className="text-2xl lg:text-5xl text-center font-semibold text-dark drop-shadow-xl">
                             Discover your next adventure
                         </h2>
                         <p className="text-black font-light text-center lg:mx-10">
