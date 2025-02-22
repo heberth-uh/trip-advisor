@@ -17,7 +17,7 @@ export default function Hero() {
         searchInputRef?.current.focus()
     }
     return (
-        <section className="bg-hero bg-center bg-cover bg-no-repeat dh-[90vh]">
+        <section className="bg-hero lg:bg-hero-desktop bg-center bg-cover bg-no-repeat dh-[90vh]">
             <div className="px-4 py-10 pb-16 mx-auto container">
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

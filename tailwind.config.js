@@ -17,7 +17,8 @@ export default {
       },
       backgroundImage: {
         'search-form': "url('public/vacation.jpg')",
-        'hero': "url('public/blob-scene.svg')"
+        'hero': "url('public/blob-scene.svg')",
+        'hero-desktop': "url('public/blob-scene-desktop.svg')"
       },
       fontFamily: {
         content: ['Poppins', 'sans-serif']
