@@ -12,7 +12,8 @@ export default {
         'highlight': '#FFC014',
         'dark-gray': '#9C9C9C',
         'light-gray': '#DCDCDC',
-        'lighter-gray': '#EFEFEF'
+        'lighter-gray': '#EFEFEF',
+        'dry-green': '#909C5F'
       },
       backgroundImage: {
         'search-form': "url('public/vacation.jpg')",
