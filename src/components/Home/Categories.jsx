@@ -3,6 +3,9 @@ import Heading1 from "../common/Heading1";
 import { CategoryCard } from "../CategoryCard";
 // Media
 import imgCategory1 from "../../../public/categories/mountains.jpg"
+import imgCategory2 from "../../../public/categories/resort.jpg"
+import imgCategory3 from "../../../public/categories/gastronomy.jpg"
+import imgCategory4 from "../../../public/categories/culture.jpg"
 
 export default function Categories() {
   return (
@@ -14,13 +17,13 @@ export default function Categories() {
 			<CategoryCard title={'Adventure'} imgSrc={imgCategory1}>
 				Ideal destination for hiking or extreme sports
 			</CategoryCard>
-			<CategoryCard title={'Relax'} imgSrc={imgCategory1}>
+			<CategoryCard title={'Relax'} imgSrc={imgCategory2}>
 				places with beaches, spas and luxury resorts
 			</CategoryCard>
-			<CategoryCard title={'Gastronomy'} imgSrc={imgCategory1}>
+			<CategoryCard title={'Gastronomy'} imgSrc={imgCategory3}>
 				Cities with outstanding food
 			</CategoryCard>
-			<CategoryCard title={'Culture'} imgSrc={imgCategory1}>
+			<CategoryCard title={'Culture'} imgSrc={imgCategory4}>
 				Cities with history and iconic monuments
 			</CategoryCard>
 		</div>
