@@ -8,6 +8,8 @@ import picture3 from "../../../public/hero-pic3.jpg"
 import picture4 from "../../../public/hero-pic4.jpg"
 // Icons
 import { FaPaperPlane } from "react-icons/fa";
+// Components
+import Button from "../common/Button"
 
 export default function Hero() {
     const { searchInputRef } = useContext(MainContext)
@@ -15,6 +17,16 @@ export default function Hero() {
     const handleStart = e => {
         e.preventDefault()
         searchInputRef?.current.focus()
+
+        setTimeout(()=>{
+            const offset = 560;
+            const elementPosition = searchInputRef.current.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset
+            window.scrollTo({
+                top: offsetPosition
+            })
+        }, 100)
+
     }
     return (
         <section className="bg-hero lg:bg-hero-desktop bg-center bg-cover bg-no-repeat dh-[90vh]">
@@ -35,9 +47,9 @@ export default function Hero() {
                             </span>
                         </div>
                         <div className="mx-auto">
-                            <a href="#searchSection" onClick={(e) => handleStart(e)} className="py-[6px] lg:py-[10px] pl-4 pr-3 lg:pl-5 lg:pr-4 bg-black hover:bg-primary text-white hover:text-white text-sm lg:text-base font-medium lg:font-semibold rounded-full uppercase">
+                            <Button bg={'dark'} handleOnclick={handleStart}>
                                 Start
-                            </a>
+                            </Button>
                         </div>
                     </div>
                     <div className="grid grid-cols-4 lg:grid-cols-8 gap-5 min-w-[320px] w-full">
