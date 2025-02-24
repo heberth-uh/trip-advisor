@@ -11,6 +11,7 @@ import { TopAttractions } from '../components/Home/TopAttractions.jsx'
 import ResultsSkeleton from '../components/loaders/ResultsSkeleton.jsx'
 import Hero from '../components/Home/Hero.jsx'
 import Categories from '../components/Home/Categories.jsx'
+import { Footer } from '../components/Footer.jsx'
 
 export default function Home() {
     const searchParam = useURLParam('search')
@@ -20,14 +21,14 @@ export default function Home() {
     return (
         <div>
             <Navbar />
-            <Hero/>
-            <SearchForm
-                searchString={searchString}
-                setSearchString={setSearchString}
-                searchLocations={searchLocations}
-                isLoading={isLoading}
-            />
             <main>
+                <Hero/>
+                <SearchForm
+                    searchString={searchString}
+                    setSearchString={setSearchString}
+                    searchLocations={searchLocations}
+                    isLoading={isLoading}
+                />
                 {
                     isLoading
                         ? <ResultsSkeleton/>
@@ -41,6 +42,7 @@ export default function Home() {
                 <PopularCities/>
                 <TopAttractions/>
             </main>
+            <Footer/>
         </div>
     )
 }
