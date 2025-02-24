@@ -75,6 +75,16 @@ export function MainContextProvider({ children }) {
         setCurrencyList(currencies.data)
     }, [])
 
+    // Scroll the page where SearchForm component is centered (to fix offset content when keyboard is pop up in mobile devices)
+    const scrollToSearch = () => {
+        const offset = 560;
+        const elementPosition = searchInputRef.current.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset
+        window.scrollTo({
+            top: offsetPosition
+        })
+    }
+
     return (
         <MainContext.Provider value={{
             popularCities, popularAttractions,
@@ -85,7 +95,9 @@ export function MainContextProvider({ children }) {
             sort, setSort, sortList,
             sortPlaces, setSortPlaces, sortPlacesList,
             minRating, setMinRating, minRatingList,
-            searchInputRef
+            searchInputRef,
+            // functions
+            scrollToSearch
         }}
         >
             {children}

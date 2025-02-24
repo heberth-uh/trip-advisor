@@ -12,19 +12,14 @@ import { FaPaperPlane } from "react-icons/fa";
 import Button from "../common/Button"
 
 export default function Hero() {
-    const { searchInputRef } = useContext(MainContext)
+    const { searchInputRef, scrollToSearch } = useContext(MainContext)
 
     const handleStart = e => {
         e.preventDefault()
         searchInputRef?.current.focus()
 
         setTimeout(()=>{
-            const offset = 560;
-            const elementPosition = searchInputRef.current.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset
-            window.scrollTo({
-                top: offsetPosition
-            })
+            scrollToSearch()
         }, 100)
 
     }

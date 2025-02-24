@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { MainContext } from '../context/MainContext'
 // Components
 import Dropdown from './common/Dropdown'
@@ -15,9 +16,10 @@ import { IoIosSearch, IoMdClose } from "react-icons/io";
 
 
 export default function Navbar() {
-    const { lang, setLang, units, setUnits, currency, setCurrency, langList, unitList, currencyList } = useContext(MainContext)
+    const { lang, setLang, units, setUnits, currency, setCurrency, langList, unitList, currencyList, searchInputRef, scrollToSearch } = useContext(MainContext)
     const currencyModalRef = useRef(null)
     const [showMenu, setShowMenu] = useState(false)
+    const navigate = useNavigate()
 
     const toggleDialog = (event, modalRef) => {
         event.preventDefault();
@@ -32,6 +34,17 @@ export default function Navbar() {
     useEffect(()=>{
         document.body.style.overflow = showMenu ? 'hidden' : 'unset'
     }, [showMenu])
+
+    const handleSearch = () => {
+        // ⚠️ Background images in / are not loaded. It's important to fix it
+        navigate('/')
+        setTimeout(() => {
+            searchInputRef?.current.focus();
+        }, 100);
+        setTimeout(() => {
+            scrollToSearch()
+        }, 150);
+    }
 
     return (
         <header className='sticky top-0 left-0 z-50 bg-white border-b-[1px] lg:border-b-[2px] border-b-lighter-gray'>
@@ -100,7 +113,7 @@ export default function Navbar() {
                     </li>
                 </ul>
                 <div className='lg:hidden'>
-                    <span className="text-black text-2xl lg:text-3xl cursor-pointer">
+                    <span onClick={()=>handleSearch()} className="text-black text-2xl lg:text-3xl cursor-pointer" role='link'>
                         <IoIosSearch />
                     </span>
                 </div>
