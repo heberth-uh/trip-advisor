@@ -13,7 +13,7 @@ export default function Categories() {
       <div className="container py-16 lg:py-16 md:px-10 mx-auto lg:w-3/4 xl:w-3/5 2xl:w-1/2">
 
         <Heading1>Inspiration for your Next Trip</Heading1>
-		<div className="flex flex-col gap-8">
+		<div className="grid lg:grid-cols-2 gap-8 lg:gap-y-14 mt-4 mb-2 lg:mt-10 lg:mb-6">
 			<CategoryCard title={'Adventure'} imgSrc={imgCategory1}>
 				Ideal destination for hiking or extreme sports
 			</CategoryCard>
