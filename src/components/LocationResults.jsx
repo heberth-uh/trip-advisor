@@ -15,7 +15,9 @@ function LocationList({ locations, query }) {
                 <h1 className="text-lg font-semibold">
                     Results from <span className="italic font-bold">"{query}"</span>
                 </h1>
-                <Dropdown options={sortList} defaultValue={sort} handlerValue={setSort} />
+                <div className="flex justify-end">
+                    <Dropdown options={sortList} defaultValue={sort} handlerValue={setSort} />
+                </div>
             </div>
             <div className="flex flex-col gap-5">
                 {locations.map(({ result_object }) => (
