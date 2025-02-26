@@ -1,7 +1,9 @@
-export default function NoResults({ message }) {
+export default function NoResults({ query }) {
     return (
         <div>
-            {message}
+            <h1 className="text-lg text-dark font-semibold">
+                No results found for <span className="italic font-bold">"{query}"</span>
+            </h1>
         </div>
     )
 }

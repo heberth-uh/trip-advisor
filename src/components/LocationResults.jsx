@@ -30,7 +30,6 @@ function LocationList({ locations, query }) {
 
 export function LocationResults({ locations, isFirstSearch, error }) {
     const searchParam = useURLParam('search')
-    const message = `No results found for "${searchParam}"`
     return (
         <section className="px-4 pt-4 pb-16 mx-auto container">
             {
@@ -38,7 +37,7 @@ export function LocationResults({ locations, isFirstSearch, error }) {
                 ? <Error showImage={false}>{error}</Error>
                 : locations?.length > 0
                     ? <LocationList locations={locations} query={searchParam} />
-                    : !isFirstSearch.current && <NoResults message={message} />
+                    : !isFirstSearch.current && <NoResults query={searchParam} />
             }
         </section>
     )

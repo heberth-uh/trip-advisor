@@ -16,17 +16,13 @@ export const useLocations = (search) => {
     const searchParam = useURLParam('search')
 
     useEffect(() => {
-        if (isFirstSearch.current && search !== '') return // <--- check if this is still necesary due now the search we get it from urlParams
-    }, [search])
-
-    useEffect(() => {
         // fetch if there's a search query and some states change
         if (searchParam) searchLocations()
     }, [lang, currency, units, sort])
 
     const searchLocations = async () => {
         setIsLoading(true)
-        if (isFirstSearch.current) isFirstSearch.current = false // <--- check if this is still necesary due now the search we get it from urlParams
+        if (isFirstSearch.current) isFirstSearch.current = false
 
         // const query = search || searchParam
         // try {
