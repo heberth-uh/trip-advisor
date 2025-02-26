@@ -6,9 +6,9 @@ import Dropdown from "./common/Dropdown";
 import TypeRadioButton from "./widgets/TypeRadioButton.jsx";
 // Icons
 import { IoIosSearch } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 
-
-export default function SearchForm({ searchString, setSearchString, searchLocations, isLoading }) {
+export default function SearchForm({ searchString, setSearchString, searchLocations, isLoading, isFirstSearch }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const prevSearch = useRef(null)
     const { type, setType, typeList, searchInputRef } = useContext(MainContext)
@@ -24,6 +24,16 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
     const handleChangeString = (e) => {
         if (e.target.value.startsWith(' ')) return
         setSearchString(e.target.value)
+    }
+
+    const handleClearSearch = () => {
+        // Deleting 'search' search param
+        searchParams.delete('search')
+        setSearchParams(searchParams)
+        // Cleaning the search state
+        setSearchString('')
+        // Reset useRef firstSearch to hide 'Results from ...'
+        isFirstSearch.current = true
     }
 
     return (
@@ -42,15 +52,24 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
                         <div className="hidden lg:block">
                             <Dropdown options={typeList} defaultValue={type} handlerValue={setType} />
                         </div>
-                        <input
-                            type="text"
-                            name="searchInput"
-                            ref={searchInputRef}
-                            placeholder='Paris, Madrid, New York...'
-                            value={searchString}
-                            onChange={handleChangeString}
-                            className="text-sm lg:text-base text-start border-2 border-light-gray rounded-full py-2 px-4 w-full min-w-36 lg:min-w-80 outline-none placeholder:text-dark-gray placeholder:text-center"
-                        />
+                        <div className="relative h-auto">
+                            <input
+                                type="text"
+                                name="searchInput"
+                                ref={searchInputRef}
+                                placeholder='Paris, Madrid, New York...'
+                                value={searchString}
+                                onChange={handleChangeString}
+                                className="text-sm lg:text-base text-start border-2 border-light-gray rounded-full py-2 px-4 w-full min-w-36 lg:min-w-80 outline-none placeholder:text-dark-gray placeholder:text-center"
+                            />
+                            <div className={`absolute right-0 top-1/2 -translate-y-1/2 py-[10px] rounded-full px-3 cursor-pointer ${!searchString ? 'hidden' : '' }`}
+                                role="button"
+                                onClick={() => handleClearSearch()}>
+                                <span className="text-xl text-dark-gray hover:text-gray-500">
+                                    <IoClose/>
+                                </span>
+                            </div>
+                        </div>
                         <button type="submit"
                             disabled={isLoading || searchString.length < 3}
                             className="p-2 lg:p-[10px] rounded-full border-2 bg-highlight text-xl hover:bg-primary border-highlight hover:border-primary cursor-pointer">

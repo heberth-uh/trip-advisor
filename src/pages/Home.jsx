@@ -28,6 +28,7 @@ export default function Home() {
                     setSearchString={setSearchString}
                     searchLocations={searchLocations}
                     isLoading={isLoading}
+                    isFirstSearch={isFirstSearch}
                 />
                 {
                     isLoading

@@ -29,6 +29,7 @@ export const useLocations = (search) => {
         //     const data = await getLocation({ query, lang, units, currency, sort })
         //     console.log('locations data', data)
         //     if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error getting results`)
+        //     // Add filter subcategory city, region. We need to esclud country, state due they don't show any results.
         //     let filtered = data.data.filter(location => location.result_type === 'geos')
         //     setLocations(filtered)
         // } catch (error) {
