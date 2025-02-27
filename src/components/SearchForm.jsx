@@ -11,6 +11,7 @@ import { IoClose } from "react-icons/io5";
 export default function SearchForm({ searchString, setSearchString, searchLocations, isLoading, isFirstSearch }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const prevSearch = useRef(null)
+    const searchFormRef = useRef(null)
     const { type, setType, typeList, searchInputRef } = useContext(MainContext)
 
     const handleSubmit = (e) => {
@@ -19,6 +20,7 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
         setSearchParams({ search: searchString })
         prevSearch.current = searchString // Update previous search to compare it in the next submit
         searchLocations()
+        setTimeout(() => scrollToForm(), 100);
     }
 
     const handleChangeString = (e) => {
@@ -36,6 +38,15 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
         isFirstSearch.current = true
     }
 
+    const scrollToForm = () => {
+        const offset = 0;
+        const elementPosition = searchFormRef.current.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset
+        window.scrollTo({
+            top: offsetPosition
+        })
+    }
+
     return (
         <section className="px-4 m-8 md:mb-10 lg:mb-16 lg:pt-16 container mx-auto">
             <TypeRadioButton options={typeList} defaultValue={type} handlerValue={setType} />
@@ -48,7 +59,7 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
                     <p className="text-sm lg:text-base text-white text-center drop-shadow-lg">
                         Search for {type} in...
                     </p>
-                    <form onSubmit={handleSubmit} className="flex justify-center items-center gap-2">
+                    <form onSubmit={handleSubmit} className="flex justify-center items-center gap-2" ref={searchFormRef}>
                         <div className="hidden lg:block">
                             <Dropdown options={typeList} defaultValue={type} handlerValue={setType} />
                         </div>

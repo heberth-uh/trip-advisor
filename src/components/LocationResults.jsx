@@ -15,7 +15,7 @@ function LocationList({ locations, query }) {
                 <h1 className="text-lg font-semibold">
                     Results from <span className="italic font-bold">"{query}"</span>
                 </h1>
-                <div className="flex justify-end">
+                <div className="flex">
                     <Dropdown options={sortList} defaultValue={sort} handlerValue={setSort} />
                 </div>
             </div>
