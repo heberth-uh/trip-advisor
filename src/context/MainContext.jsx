@@ -22,6 +22,7 @@ export function MainContextProvider({ children }) {
     const [minRating, setMinRating] = useState(false) // 3|4|5
 
     const searchInputRef = useRef(null)
+    const searchFormRef = useRef(null)
 
     const typeList = [
         {
@@ -93,7 +94,8 @@ export function MainContextProvider({ children }) {
             sort, setSort, sortList,
             sortPlaces, setSortPlaces, sortPlacesList,
             minRating, setMinRating, minRatingList,
-            searchInputRef,
+            // useRefs
+            searchInputRef, searchFormRef,
             // functions
             scrollToElement
         }}

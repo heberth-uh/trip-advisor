@@ -11,8 +11,7 @@ import { IoClose } from "react-icons/io5";
 export default function SearchForm({ searchString, setSearchString, searchLocations, isLoading, isFirstSearch }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const prevSearch = useRef(null)
-    const searchFormRef = useRef(null)
-    const { type, setType, typeList, searchInputRef } = useContext(MainContext)
+    const { type, setType, typeList, searchInputRef, searchFormRef, scrollToElement } = useContext(MainContext)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,7 +19,7 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
         setSearchParams({ search: searchString })
         prevSearch.current = searchString // Update previous search to compare it in the next submit
         searchLocations()
-        setTimeout(() => scrollToForm(), 100);
+        setTimeout(() => scrollToElement(0, searchFormRef), 100);
     }
 
     const handleChangeString = (e) => {
@@ -36,15 +35,6 @@ export default function SearchForm({ searchString, setSearchString, searchLocati
         setSearchString('')
         // Reset useRef firstSearch to hide 'Results from ...'
         isFirstSearch.current = true
-    }
-
-    const scrollToForm = () => {
-        const offset = 0;
-        const elementPosition = searchFormRef.current.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset
-        window.scrollTo({
-            top: offsetPosition
-        })
     }
 
     return (
