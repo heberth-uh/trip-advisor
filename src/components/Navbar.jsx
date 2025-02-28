@@ -16,7 +16,7 @@ import { IoIosSearch, IoMdClose } from "react-icons/io";
 
 
 export default function Navbar() {
-    const { lang, setLang, units, setUnits, currency, setCurrency, langList, unitList, currencyList, searchInputRef, scrollToSearch } = useContext(MainContext)
+    const { lang, setLang, units, setUnits, currency, setCurrency, langList, unitList, currencyList, searchInputRef, scrollToElement } = useContext(MainContext)
     const currencyModalRef = useRef(null)
     const [showMenu, setShowMenu] = useState(false)
     const navigate = useNavigate()
@@ -42,7 +42,7 @@ export default function Navbar() {
             searchInputRef?.current.focus();
         }, 100);
         setTimeout(() => {
-            scrollToSearch()
+            scrollToElement(560, searchInputRef)
         }, 150);
     }
 

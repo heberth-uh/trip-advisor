@@ -12,16 +12,13 @@ import { FaPaperPlane } from "react-icons/fa";
 import Button from "../common/Button"
 
 export default function Hero() {
-    const { searchInputRef, scrollToSearch } = useContext(MainContext)
+    const { searchInputRef, scrollToElement } = useContext(MainContext)
 
     const handleStart = e => {
         e.preventDefault()
         searchInputRef?.current.focus()
-
-        setTimeout(()=>{
-            scrollToSearch()
-        }, 100)
-
+        // Scroll to Search
+        setTimeout(()=> scrollToElement(560, searchInputRef), 100)
     }
     return (
         <section className="bg-hero lg:bg-hero-desktop bg-center bg-cover bg-no-repeat dh-[90vh]">

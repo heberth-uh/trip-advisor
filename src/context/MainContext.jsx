@@ -75,14 +75,12 @@ export function MainContextProvider({ children }) {
         setCurrencyList(currencies.data)
     }, [])
 
-    // Scroll the page where SearchForm component is centered (to fix offset content when keyboard is pop up in mobile devices)
-    const scrollToSearch = () => {
-        const offset = 560;
-        const elementPosition = searchInputRef.current.getBoundingClientRect().top;
+    // Scroll to a given element (useRef) with a certain offset
+    const scrollToElement = (offset, elementRef) => {
+        if (!elementRef.current) return
+        const elementPosition = elementRef.current.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset
-        window.scrollTo({
-            top: offsetPosition
-        })
+        window.scrollTo( {top: offsetPosition} )
     }
 
     return (
@@ -97,7 +95,7 @@ export function MainContextProvider({ children }) {
             minRating, setMinRating, minRatingList,
             searchInputRef,
             // functions
-            scrollToSearch
+            scrollToElement
         }}
         >
             {children}
