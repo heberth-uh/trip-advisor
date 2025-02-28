@@ -5,6 +5,8 @@ import StarsRating from "./widgets/StarsRating"
 import { AiFillLike } from "react-icons/ai";
 import { FaAngleDown } from "react-icons/fa";
 import { FaAngleRight, FaAngleUp } from "react-icons/fa6";
+// Media
+import defaultAvatar from "../../public/avatar.png";
 
 export default function ReviewCard({ review }) {
     const [isExpanded, setIsExpanded] = useState(false)
@@ -35,7 +37,8 @@ export default function ReviewCard({ review }) {
             <div className="flex items-center justify-between flex-wrap gap-y-2">
                 <div className="flex items-center gap-x-2">
                     <img src={review.user.avatar?.small.url} alt={`${review.username} avatar`}
-                        className="rounded-full h-8 w-8" />
+                        className="rounded-full h-8 w-8"
+                        onError={(e) => e.currentTarget.src = defaultAvatar} />
                     <p className="text-sm font-light">{review.user.name || review.user.username}</p>
                 </div>
                 <StarsRating rate={review.rating} />
