@@ -17,37 +17,37 @@ export const usePlaceDetails = (placeId) => {
     const type = params.type
 
     useEffect(() => {
-        // const fetchPlace = async () => {
-        //     try {
-        //         const data = await getPlacesDetails({ type, placeId, currency, lang })
-        //         if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error fetching ${type} details`)
-        //         setPlace(data)
-        //     } catch (error) {
-        //         setError(error.message)
-        //     } finally {
-        //         setIsLoading(false)
-        //     }
-        // }
-        // fetchPlace()
+        const fetchPlace = async () => {
+            try {
+                const data = await getPlacesDetails({ type, placeId, currency, lang })
+                if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error fetching ${type} details`)
+                setPlace(data)
+            } catch (error) {
+                setError(error.message)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        fetchPlace()
 
         // For testing with static data
-        setTimeout( () => {
-            var placeSample = null
-            switch (type) {
-                case 'attractions':
-                    placeSample = attractionSample
-                    break;
-                case 'hotels':
-                    placeSample = hotelSample.data[0]
-                    console.log(hotelSample)
-                    break;
-                case 'restaurants':
-                    placeSample = restaurantSample
-                    break;
-            }
-            setPlace(placeSample)
-            setIsLoading(false)
-        }, 500)
+        // setTimeout( () => {
+        //     var placeSample = null
+        //     switch (type) {
+        //         case 'attractions':
+        //             placeSample = attractionSample
+        //             break;
+        //         case 'hotels':
+        //             placeSample = hotelSample.data[0]
+        //             console.log(hotelSample)
+        //             break;
+        //         case 'restaurants':
+        //             placeSample = restaurantSample
+        //             break;
+        //     }
+        //     setPlace(placeSample)
+        //     setIsLoading(false)
+        // }, 500)
     }, [currency, lang])
 
     return { place, isLoading, error }

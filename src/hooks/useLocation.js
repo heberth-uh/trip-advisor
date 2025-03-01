@@ -24,31 +24,31 @@ export const useLocations = (search) => {
         setIsLoading(true)
         if (isFirstSearch.current) isFirstSearch.current = false
 
-        // const query = search || searchParam
-        // try {
-        //     const data = await getLocation({ query, lang, units, currency, sort })
-        //     console.log('locations data', data)
-        //     if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error getting results`)
-        //     // Add filter subcategory city, region. We need to esclud country, state due they don't show any results.
-        //     let filtered = data.data.filter(location => location.result_type === 'geos')
-        //     setLocations(filtered)
-        // } catch (error) {
-        //     setError(error.message)
-        // } finally {
-        //     setIsLoading(false)
-        // }
+        const query = search || searchParam
+        try {
+            const data = await getLocation({ query, lang, units, currency, sort })
+            console.log('locations data', data)
+            if (data.message || data.errors) throw new Error(data.message || data.errors[0].message || `Error getting results`)
+            // Add filter subcategory city, region. We need to esclud country, state due they don't show any results.
+            let filtered = data.data.filter(location => location.result_type === 'geos')
+            setLocations(filtered)
+        } catch (error) {
+            setError(error.message)
+        } finally {
+            setIsLoading(false)
+        }
 
         // For testing with static data
-        if (search == 'notfound') {
-            setLocations([])
-            setIsLoading(false)
-            return
-        }
-        setTimeout(() => {
-            let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
-            setLocations(filtered)
-            setIsLoading(false)
-        }, 500);
+        // if (search == 'notfound') {
+        //     setLocations([])
+        //     setIsLoading(false)
+        //     return
+        // }
+        // setTimeout(() => {
+        //     let filtered = locationsSample.data.filter(location => location.result_type === 'geos')
+        //     setLocations(filtered)
+        //     setIsLoading(false)
+        // }, 500);
     }
     return { locations, searchLocations, isLoading, isFirstSearch, error }
 }
