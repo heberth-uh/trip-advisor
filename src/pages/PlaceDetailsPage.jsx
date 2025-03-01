@@ -6,6 +6,7 @@ import { usePlaceDetails } from '../hooks/usePlaceDetails.js';
 import Navbar from '../components/Navbar.jsx';
 import Error from '../components/Error.jsx';
 import PlaceDetailsSkeleton from '../components/loaders/PlaceDetailsSkeleton.jsx';
+import { Footer } from '../components/Footer.jsx';
 
 export default function PlaceDetailsPage() {
     const params = useParams();
@@ -24,6 +25,7 @@ export default function PlaceDetailsPage() {
                             : <PlaceDetails place={place} />
                 }
             </main>
+            <Footer/>
         </>
     )
 }
