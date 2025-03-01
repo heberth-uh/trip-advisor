@@ -23,7 +23,6 @@ export default function ({ place }) {
     const params = useParams()
     const placeId = params.placeId
     const { reviews, isLoading, error } = useReviews(place, placeId)
-    // console.log('reviews', reviews)
 
     return (
         <section className="flex flex-col gap-10">
@@ -49,9 +48,9 @@ export default function ({ place }) {
                     </div>
                 </div>
 
-                <div className="lg:basis-3/4 lg:pr-6">
-                    <img src={place.photo?.images?.large.url} alt={place.name}
-                        className="rounded-3xl w-full" />
+                <div className="lg:basis-3/4 lg:pr-6 h-[60vh] w-full">
+                    <img src={place.photo?.images?.original.url} alt={place.name}
+                        className="rounded-3xl w-full h-full smax-h-[80%] object-cover object-center" />
                 </div>
 
                 <div className="lg:basis-1/4 flex flex-col gap-y-3 lg:gap-y-5">
