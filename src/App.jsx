@@ -11,7 +11,7 @@ import ErrorPage from "./pages/ErrorPage";
 const typeLoader = ({ params }) => {
     const validTypes = ['attractions', 'restaurants'];
     if (!validTypes.includes(params.type)) {
-      throw new Response("Not Found", { status: 404 });
+        throw new Response("Not Found", { status: 404 });
     }
     return params;
 };
