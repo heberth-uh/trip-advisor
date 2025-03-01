@@ -25,7 +25,7 @@ export default function PlaceDetailsPage() {
                             : <PlaceDetails place={place} />
                 }
             </main>
-            <Footer/>
+            {!isLoading && <Footer/>}
         </>
     )
 }

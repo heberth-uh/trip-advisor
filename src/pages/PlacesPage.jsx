@@ -21,7 +21,7 @@ export default function PlacesPage() {
                     : <Places places={places} error={error} />
                 }
             </main>
-            <Footer/>
+            {!isLoading && <Footer/>}
         </div>
     )
 }
