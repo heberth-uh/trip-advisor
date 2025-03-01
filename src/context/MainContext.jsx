@@ -29,11 +29,13 @@ export function MainContextProvider({ children }) {
             'id': 1,
             'name': 'Attractions',
             'value': 'attractions',
-        }, {
-            'id': 2,
-            'name': 'Hotels',
-            'value': 'hotels',
-        },{
+        },
+        // { hotels are deprecated for Travel Advisor API
+        //     'id': 2,
+        //     'name': 'Hotels',
+        //     'value': 'hotels',
+        // },
+        {
             'id': 3,
             'name': 'Restaurants',
             'value': 'restaurants',

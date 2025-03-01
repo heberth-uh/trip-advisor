@@ -4,7 +4,6 @@ import ProgressBar from "./common/ProgressBar";
 import StarsRating from "./widgets/StarsRating";
 
 export default function RatingHistogram({ ratings, rating, num_reviews }) {
-    console.log(ratings)
     const sort_ratings = Object.entries(ratings).reverse() // Get the sorted descending array of ratings
     return (
         <div>

@@ -8,12 +8,9 @@ import Error from '../components/Error.jsx';
 import PlaceDetailsSkeleton from '../components/loaders/PlaceDetailsSkeleton.jsx';
 
 export default function PlaceDetailsPage() {
-
     const params = useParams();
     const placeId = params.placeId
-
     const { place, isLoading, error } = usePlaceDetails(placeId)
-    // console.log('placeDetails', place)
 
     return (
         <>
