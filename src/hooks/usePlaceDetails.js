@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { getPlacesDetails } from "../api/tripAdvisorApi.js";
 import { MainContext } from "../context/MainContext.jsx";
 // Sample reviews
-import { attractionDetailSample } from '../data/test/attractionDetailSample.js';
-import attractionSample from '../data/test/place.detail.attraction.json'
-import restaurantSample from '../data/test/place.detail.restaurant.json'
-import hotelSample from '../data/test/place.detail.hotel.json'
+// import { attractionDetailSample } from '../data/test/attractionDetailSample.js';
+// import attractionSample from '../data/test/place.detail.attraction.json'
+// import restaurantSample from '../data/test/place.detail.restaurant.json'
+// import hotelSample from '../data/test/place.detail.hotel.json'
 import { useParams } from "react-router-dom";
 
 export const usePlaceDetails = (placeId) => {

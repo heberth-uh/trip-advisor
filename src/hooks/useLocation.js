@@ -3,7 +3,7 @@ import { getLocation } from "../api/tripAdvisorApi";
 import { MainContext } from "../context/MainContext";
 import { useURLParam } from "./useURLParam";
 // Samples
-import { locationsSample } from "../data/test/locations.sample";
+// import { locationsSample } from "../data/test/locations.sample";
 
 export const useLocations = (search) => {
     const { lang, units, currency, sort } = useContext(MainContext)

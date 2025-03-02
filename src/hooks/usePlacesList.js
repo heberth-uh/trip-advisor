@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { MainContext } from "../context/MainContext";
 import { getPlacesList } from "../api/tripAdvisorApi";
 // Samples
-import attractionsSample from "../data/test/places.attraction.json"
-import restaurantsSample from "../data/test/places.restaurant.json"
-import hotelsSample from "../data/test/places.hotel.json"
+// import attractionsSample from "../data/test/places.attraction.json"
+// import restaurantsSample from "../data/test/places.restaurant.json"
+// import hotelsSample from "../data/test/places.hotel.json"
 
 export const usePlacesList = (locationId) => {
     const params = useParams()
