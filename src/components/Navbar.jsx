@@ -36,7 +36,6 @@ export default function Navbar() {
     }, [showMenu])
 
     const handleSearch = () => {
-        // ⚠️ Background images in / are not loaded. It's important to fix it
         navigate('/')
         setTimeout(() => {
             searchInputRef?.current.focus();
