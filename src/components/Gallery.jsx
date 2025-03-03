@@ -8,9 +8,11 @@ export default function Gallery({ photos, alt }) {
             >
                 <div className="flex gap-1 flex-wrap">
                     {
-                        photos.map((photo, key) => (
-                            <Image key={key} src={photo.images.large.url} width={60} height={60} alt={`${alt} photo ${key + 1}`}/>
-                        ))
+                        photos
+                            .filter(item => item !== null)
+                            .map((photo, key) => (
+                                <Image key={key} src={photo.images.large.url} width={60} height={60} alt={`${alt} photo ${key + 1}`}/>
+                            ))
                     }
                 </div>
             </Image.PreviewGroup>

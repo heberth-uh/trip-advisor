@@ -52,7 +52,7 @@ export default function Offers({ offers }) {
                 title={'Offers'}
             >
                 <div className="flex flex-col gap-y-4 py-4">
-                    {offers.offer_list.map(offer => <TicketCard key={offer.product_code} ticket={offer} />)}
+                    {offers.offer_list && offers.offer_list.map(offer => <TicketCard key={offer.product_code} ticket={offer} />)}
                 </div>
             </Modal>
             <Modal
@@ -61,7 +61,7 @@ export default function Offers({ offers }) {
                 title={'Tickets'}
             >
                 <div className="flex flex-col gap-y-4 py-4">
-                    {offers.ticket_list.map(offer => <TicketCard key={offer.product_code} ticket={offer} />)}
+                    {offers.ticket_list && offers.ticket_list.map(offer => <TicketCard key={offer.product_code} ticket={offer} />)}
                 </div>
             </Modal>
         </section>
