@@ -1,11 +1,14 @@
-# Trip Adivisor
+<div align="center">
+  <h1>Trip Advisor</h1>
+</div>
 
+![image](https://github.com/user-attachments/assets/126e2b08-a4bc-434b-98d6-9ab5e63da211)
 
 A website to get information about places, attractions and restaurants all around the world with Rapid API's TravelAdvisor API.
 
-## [Live Previe](https://trip-adivisor.vercel.app/)
+### [Live Preview ✨](https://trip-adivisor.vercel.app/)
 
-## Stack
+## Tech stack
 
 * Reacj.js, react-route-dom
 * Tailwind CSS
@@ -40,6 +43,7 @@ Run the project
 ```
 npm run dev
 ```
+Open [http://localhost:5173](http://localhost:5173) to view the app in your browser.
 
 ---
 
