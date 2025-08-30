@@ -6,7 +6,7 @@
 
 A website to get information about places, attractions and restaurants all around the world with Rapid API's TravelAdvisor API.
 
-### [Live Preview ✨](https://trip-adivisor.vercel.app/)
+### [Live Preview ✨](https://mytrip-advisor.vercel.app/)
 
 ## Tech stack
 
